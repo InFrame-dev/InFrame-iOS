@@ -6,9 +6,16 @@
 //
 
 import UIKit
+import SnapKit
+import Then
 
 class LoginViewController: UIViewController{
     //MARK: - Properties
+    
+    lazy var logo = UIImageView().then {
+        $0.image = UIImage(named: "Arr-Logo")
+        $0.contentMode = .scaleAspectFit
+    }
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -27,7 +34,7 @@ class LoginViewController: UIViewController{
     }
     
     func addView(){
-        
+        view.addSubview(logo)
     }
     
     func cornerRadius(){
@@ -35,7 +42,12 @@ class LoginViewController: UIViewController{
     }
     
     func location(){
-        
+        logo.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(self.view.frame.height/4.78)
+            make.width.equalToSuperview().dividedBy(2.65)
+            make.height.equalToSuperview().dividedBy(5.27)
+        }
     }
 }
 
