@@ -22,6 +22,7 @@ class LoginViewController: UIViewController{
     lazy var pwContainer = LoginTextFieldView().then {
         $0.tfTitle.text = "password"
         $0.tf.placeholder = "password를 입력해주세요."
+        $0.tf.isSecureTextEntry = true
     }
     
     //MARK: - Lifecycle
