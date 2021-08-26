@@ -28,20 +28,20 @@ class LoginViewController: UIViewController{
     lazy var forgotPwBtn = UIButton().then {
         $0.setTitle("Forgot my password", for: .normal)
         $0.setTitleColor(.rgb(red: 196, green: 196, blue: 196), for: .normal)
-        $0.dynamicFont(fontSize: 14, currentFontName: "seoulnamsancondensed-light")
+        $0.dynamicFont(fontSize: 14, currentFontName: "SeoulNamsanM")
     }
     
     lazy var loginBtn = UIButton().then {
         $0.setTitle("Log In", for: .normal)
         $0.setTitleColor(.white, for: .normal)
-        $0.dynamicFont(fontSize: 20, currentFontName: "seoulnamsancondensed-light")
+        $0.dynamicFont(fontSize: 20, currentFontName: "SeoulNamsanM")
         $0.backgroundColor = .rgb(red: 234, green: 135, blue: 135)
     }
     
     lazy var signupBtn = UIButton().then {
         $0.setTitle("Sign Up", for: .normal)
         $0.setTitleColor(.rgb(red: 153, green: 153, blue: 153), for: .normal)
-        $0.dynamicFont(fontSize: 20, currentFontName: "seoulnamsancondensed-light")
+        $0.dynamicFont(fontSize: 20, currentFontName: "SeoulNamsanM")
     }
     
     //MARK: - Lifecycle
@@ -103,7 +103,7 @@ class LoginViewController: UIViewController{
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(self.view.frame.height/1.71)
             make.height.equalToSuperview().dividedBy(58)
-            make.width.equalToSuperview().dividedBy(2)
+            make.width.equalToSuperview().dividedBy(2.5)
         }
         
         loginBtn.snp.makeConstraints { make in
@@ -116,7 +116,7 @@ class LoginViewController: UIViewController{
         signupBtn.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(loginBtn).offset(self.view.frame.height/15.92)
-            make.width.equalToSuperview().dividedBy(6.05)
+            make.width.equalToSuperview().dividedBy(5)
             make.height.equalToSuperview().dividedBy(40.6)
         }
     }
