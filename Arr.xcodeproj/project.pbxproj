@@ -15,6 +15,10 @@
 		AACCE62E26D5D97800C11A48 /* LoginTextFiledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACCE62D26D5D97800C11A48 /* LoginTextFiledView.swift */; };
 		AACCE63026D5DB9500C11A48 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACCE62F26D5DB9500C11A48 /* Extension.swift */; };
 		AACCE63426D759F200C11A48 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACCE63326D759F200C11A48 /* SignUpViewController.swift */; };
+		AACCE63926D7D34C00C11A48 /* SeoulNamsan-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AACCE63526D7D30400C11A48 /* SeoulNamsan-Bold.ttf */; };
+		AACCE63A26D7D34E00C11A48 /* SeoulNamsan-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AACCE63626D7D30400C11A48 /* SeoulNamsan-ExtraBold.ttf */; };
+		AACCE63B26D7D35100C11A48 /* SeoulNamsan-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AACCE63826D7D30400C11A48 /* SeoulNamsan-Light.ttf */; };
+		AACCE63C26D7D35400C11A48 /* SeoulNamsan-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AACCE63726D7D30400C11A48 /* SeoulNamsan-Medium.ttf */; };
 		B7F92EF9812130B947D87CC1 /* Pods_Arr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FB5C086654C1A5DB95CA2F /* Pods_Arr.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,8 +33,11 @@
 		AACCE62B26D50B9000C11A48 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AACCE62D26D5D97800C11A48 /* LoginTextFiledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFiledView.swift; sourceTree = "<group>"; };
 		AACCE62F26D5DB9500C11A48 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		AACCE63226D71AA200C11A48 /* seoulnamsancondensed-light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "seoulnamsancondensed-light.ttf"; sourceTree = "<group>"; };
 		AACCE63326D759F200C11A48 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		AACCE63526D7D30400C11A48 /* SeoulNamsan-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SeoulNamsan-Bold.ttf"; sourceTree = "<group>"; };
+		AACCE63626D7D30400C11A48 /* SeoulNamsan-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SeoulNamsan-ExtraBold.ttf"; sourceTree = "<group>"; };
+		AACCE63726D7D30400C11A48 /* SeoulNamsan-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SeoulNamsan-Medium.ttf"; sourceTree = "<group>"; };
+		AACCE63826D7D30400C11A48 /* SeoulNamsan-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SeoulNamsan-Light.ttf"; sourceTree = "<group>"; };
 		B1A085B9C8218BEC7FD7F315 /* Pods-Arr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Arr.release.xcconfig"; path = "Target Support Files/Pods-Arr/Pods-Arr.release.xcconfig"; sourceTree = "<group>"; };
 		D3FB5C086654C1A5DB95CA2F /* Pods_Arr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Arr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -150,7 +157,10 @@
 		AACCE63126D71A7600C11A48 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				AACCE63226D71AA200C11A48 /* seoulnamsancondensed-light.ttf */,
+				AACCE63526D7D30400C11A48 /* SeoulNamsan-Bold.ttf */,
+				AACCE63626D7D30400C11A48 /* SeoulNamsan-ExtraBold.ttf */,
+				AACCE63826D7D30400C11A48 /* SeoulNamsan-Light.ttf */,
+				AACCE63726D7D30400C11A48 /* SeoulNamsan-Medium.ttf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -215,7 +225,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AACCE61E26D4F18900C11A48 /* LaunchScreen.storyboard in Resources */,
+				AACCE63B26D7D35100C11A48 /* SeoulNamsan-Light.ttf in Resources */,
+				AACCE63C26D7D35400C11A48 /* SeoulNamsan-Medium.ttf in Resources */,
+				AACCE63A26D7D34E00C11A48 /* SeoulNamsan-ExtraBold.ttf in Resources */,
 				AACCE61B26D4F18900C11A48 /* Assets.xcassets in Resources */,
+				AACCE63926D7D34C00C11A48 /* SeoulNamsan-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
