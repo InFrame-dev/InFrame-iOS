@@ -17,6 +17,13 @@ class LoginViewController: UIViewController{
         $0.contentMode = .scaleAspectFit
     }
     
+    lazy var idContainer = LoginTextFieldView()
+    
+    lazy var pwContainer = LoginTextFieldView().then {
+        $0.tfTitle.text = "password"
+        $0.tf.placeholder = "password를 입력해주세요."
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +35,10 @@ class LoginViewController: UIViewController{
     //MARK: - Helpers
     func configureUI(){
         view.backgroundColor = .white
+        
+        idContainerViewSetting()
+        pwContainerViewSetting()
+        
         addView()
         cornerRadius()
         location()
@@ -35,6 +46,8 @@ class LoginViewController: UIViewController{
     
     func addView(){
         view.addSubview(logo)
+        view.addSubview(idContainer)
+        view.addSubview(pwContainer)
     }
     
     func cornerRadius(){
@@ -48,6 +61,36 @@ class LoginViewController: UIViewController{
             make.width.equalToSuperview().dividedBy(2.65)
             make.height.equalToSuperview().dividedBy(5.27)
         }
+        
+        idContainer.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.34)
+            make.height.equalToSuperview().dividedBy(18.46)
+        }
+        
+        pwContainer.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.34)
+            make.height.equalToSuperview().dividedBy(18.46)
+            make.top.equalToSuperview().offset(self.view.frame.height/11.94)
+        }
+        
+    }
+    
+    func idContainerViewSetting(){
+        idContainer.addSubview(idContainer.tfTitle)
+        idContainer.addSubview(idContainer.tf)
+        idContainer.addSubview(idContainer.divView)
+        
+        idContainer.loginTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
+    }
+    
+    func pwContainerViewSetting(){
+        pwContainer.addSubview(pwContainer.tfTitle)
+        pwContainer.addSubview(pwContainer.tf)
+        pwContainer.addSubview(pwContainer.divView)
+        
+        pwContainer.loginTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
     }
 }
 
