@@ -19,7 +19,7 @@ class SignUpViewController: UIViewController{
     lazy var titleLabel = UILabel().then {
         $0.text = "Sign Up"
         $0.textColor = .rgb(red: 255, green: 135, blue: 133)
-        $0.dynamicFont(fontSize: 25, currentFontName: "seoulnamsancondensed-light")
+        $0.dynamicFont(fontSize: 23, currentFontName: "SeoulNamsanM")
     }
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -56,7 +56,7 @@ class SignUpViewController: UIViewController{
         
         titleLabel.snp.makeConstraints { make in
             make.bottom.equalTo(titleLine).offset(-self.view.frame.height/406)
-            make.left.equalTo(titleLine).offset(self.view.frame.width/31.25)
+            make.right.equalTo(titleLine).offset(self.view.frame.width/46.88)
         }
     }
 }
