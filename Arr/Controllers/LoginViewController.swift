@@ -25,6 +25,25 @@ class LoginViewController: UIViewController{
         $0.tf.isSecureTextEntry = true
     }
     
+    lazy var forgotPwBtn = UIButton().then {
+        $0.setTitle("Forgot my password", for: .normal)
+        $0.setTitleColor(.rgb(red: 196, green: 196, blue: 196), for: .normal)
+        $0.dynamicFont(fontSize: 14, currentFontName: "seoulnamsancondensed-light")
+    }
+    
+    lazy var loginBtn = UIButton().then {
+        $0.setTitle("Log In", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.dynamicFont(fontSize: 20, currentFontName: "seoulnamsancondensed-light")
+        $0.backgroundColor = .rgb(red: 234, green: 135, blue: 135)
+    }
+    
+    lazy var signupBtn = UIButton().then {
+        $0.setTitle("Sign Up", for: .normal)
+        $0.setTitleColor(.rgb(red: 153, green: 153, blue: 153), for: .normal)
+        $0.dynamicFont(fontSize: 20, currentFontName: "seoulnamsancondensed-light")
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,10 +68,13 @@ class LoginViewController: UIViewController{
         view.addSubview(logo)
         view.addSubview(idContainer)
         view.addSubview(pwContainer)
+        view.addSubview(forgotPwBtn)
+        view.addSubview(loginBtn)
+        view.addSubview(signupBtn)
     }
     
     func cornerRadius(){
-        
+        loginBtn.layer.cornerRadius = 15
     }
     
     func location(){
@@ -76,6 +98,26 @@ class LoginViewController: UIViewController{
             make.top.equalToSuperview().offset(self.view.frame.height/11.94)
         }
         
+        forgotPwBtn.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(self.view.frame.height/1.71)
+            make.height.equalToSuperview().dividedBy(58)
+            make.width.equalToSuperview().dividedBy(2)
+        }
+        
+        loginBtn.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(forgotPwBtn).offset(self.view.frame.height/8.37)
+            make.width.equalToSuperview().dividedBy(1.19)
+            make.height.equalToSuperview().dividedBy(24.61)
+        }
+        
+        signupBtn.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(loginBtn).offset(self.view.frame.height/15.92)
+            make.width.equalToSuperview().dividedBy(6.05)
+            make.height.equalToSuperview().dividedBy(40.6)
+        }
     }
     
     func idContainerViewSetting(){
