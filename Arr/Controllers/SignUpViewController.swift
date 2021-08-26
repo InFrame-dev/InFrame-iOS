@@ -12,6 +12,15 @@ import Then
 class SignUpViewController: UIViewController{
     //MARK: - Properties
     
+    lazy var titleLine = UIView().then {
+        $0.backgroundColor = .rgb(red: 255, green: 214, blue: 214)
+    }
+    
+    lazy var titleLabel = UILabel().then {
+        $0.text = "Sign Up"
+        $0.textColor = .rgb(red: 255, green: 135, blue: 133)
+        $0.dynamicFont(fontSize: 25, currentFontName: "seoulnamsancondensed-light")
+    }
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +38,8 @@ class SignUpViewController: UIViewController{
     }
     
     func addView(){
-
+        view.addSubview(titleLine)
+        view.addSubview(titleLabel)
     }
     
     func cornerRadius(){
@@ -37,7 +47,17 @@ class SignUpViewController: UIViewController{
     }
     
     func location(){
+        titleLine.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(self.view.frame.height/14.76)
+            make.left.equalToSuperview().offset(self.view.frame.width/10.42)
+            make.width.equalToSuperview().dividedBy(4.52)
+            make.height.equalToSuperview().dividedBy(90.22)
+        }
         
+        titleLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(titleLine).offset(-self.view.frame.height/406)
+            make.left.equalTo(titleLine).offset(self.view.frame.width/31.25)
+        }
     }
 }
 
