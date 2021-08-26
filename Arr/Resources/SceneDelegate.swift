@@ -20,6 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = LoginViewController() // RootViewController를 연결
         window?.makeKeyAndVisible()
+        for fontFamily in UIFont.familyNames {
+            for fontName in UIFont.fontNames(forFamilyName: fontFamily) {
+                print(fontName)
+            }
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
