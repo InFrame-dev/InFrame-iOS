@@ -12,6 +12,8 @@
 		AACCE61B26D4F18900C11A48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AACCE61A26D4F18900C11A48 /* Assets.xcassets */; };
 		AACCE61E26D4F18900C11A48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AACCE61C26D4F18900C11A48 /* LaunchScreen.storyboard */; };
 		AACCE62C26D50B9000C11A48 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACCE62B26D50B9000C11A48 /* LoginViewController.swift */; };
+		AACCE62E26D5D97800C11A48 /* LoginTextFiledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACCE62D26D5D97800C11A48 /* LoginTextFiledView.swift */; };
+		AACCE63026D5DB9500C11A48 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACCE62F26D5DB9500C11A48 /* Extension.swift */; };
 		B7F92EF9812130B947D87CC1 /* Pods_Arr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FB5C086654C1A5DB95CA2F /* Pods_Arr.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +26,9 @@
 		AACCE61D26D4F18900C11A48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AACCE61F26D4F18900C11A48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AACCE62B26D50B9000C11A48 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		AACCE62D26D5D97800C11A48 /* LoginTextFiledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFiledView.swift; sourceTree = "<group>"; };
+		AACCE62F26D5DB9500C11A48 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		AACCE63226D71AA200C11A48 /* seoulnamsancondensed-light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "seoulnamsancondensed-light.ttf"; sourceTree = "<group>"; };
 		B1A085B9C8218BEC7FD7F315 /* Pods-Arr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Arr.release.xcconfig"; path = "Target Support Files/Pods-Arr/Pods-Arr.release.xcconfig"; sourceTree = "<group>"; };
 		D3FB5C086654C1A5DB95CA2F /* Pods_Arr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Arr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -78,6 +83,7 @@
 		AACCE61026D4F17C00C11A48 /* Arr */ = {
 			isa = PBXGroup;
 			children = (
+				AACCE63126D71A7600C11A48 /* Font */,
 				AACCE62A26D5020E00C11A48 /* Resources */,
 				AACCE62926D4F2B700C11A48 /* Utils */,
 				AACCE62826D4F2AA00C11A48 /* Controllers */,
@@ -93,6 +99,7 @@
 		AACCE62526D4F27700C11A48 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AACCE62D26D5D97800C11A48 /* LoginTextFiledView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -122,6 +129,7 @@
 		AACCE62926D4F2B700C11A48 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				AACCE62F26D5DB9500C11A48 /* Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -134,6 +142,14 @@
 				AACCE61326D4F17C00C11A48 /* SceneDelegate.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		AACCE63126D71A7600C11A48 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				AACCE63226D71AA200C11A48 /* seoulnamsancondensed-light.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +265,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AACCE63026D5DB9500C11A48 /* Extension.swift in Sources */,
+				AACCE62E26D5D97800C11A48 /* LoginTextFiledView.swift in Sources */,
 				AACCE62C26D50B9000C11A48 /* LoginViewController.swift in Sources */,
 				AACCE61226D4F17C00C11A48 /* AppDelegate.swift in Sources */,
 				AACCE61426D4F17C00C11A48 /* SceneDelegate.swift in Sources */,
