@@ -14,6 +14,7 @@
 		AACCE62C26D50B9000C11A48 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACCE62B26D50B9000C11A48 /* LoginViewController.swift */; };
 		AACCE62E26D5D97800C11A48 /* LoginTextFiledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACCE62D26D5D97800C11A48 /* LoginTextFiledView.swift */; };
 		AACCE63026D5DB9500C11A48 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACCE62F26D5DB9500C11A48 /* Extension.swift */; };
+		AACCE63426D759F200C11A48 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACCE63326D759F200C11A48 /* SignUpViewController.swift */; };
 		B7F92EF9812130B947D87CC1 /* Pods_Arr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FB5C086654C1A5DB95CA2F /* Pods_Arr.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		AACCE62D26D5D97800C11A48 /* LoginTextFiledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFiledView.swift; sourceTree = "<group>"; };
 		AACCE62F26D5DB9500C11A48 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		AACCE63226D71AA200C11A48 /* seoulnamsancondensed-light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "seoulnamsancondensed-light.ttf"; sourceTree = "<group>"; };
+		AACCE63326D759F200C11A48 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		B1A085B9C8218BEC7FD7F315 /* Pods-Arr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Arr.release.xcconfig"; path = "Target Support Files/Pods-Arr/Pods-Arr.release.xcconfig"; sourceTree = "<group>"; };
 		D3FB5C086654C1A5DB95CA2F /* Pods_Arr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Arr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				AACCE62B26D50B9000C11A48 /* LoginViewController.swift */,
+				AACCE63326D759F200C11A48 /* SignUpViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AACCE63426D759F200C11A48 /* SignUpViewController.swift in Sources */,
 				AACCE63026D5DB9500C11A48 /* Extension.swift in Sources */,
 				AACCE62E26D5D97800C11A48 /* LoginTextFiledView.swift in Sources */,
 				AACCE62C26D50B9000C11A48 /* LoginViewController.swift in Sources */,
