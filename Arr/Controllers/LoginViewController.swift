@@ -89,13 +89,14 @@ class LoginViewController: UIViewController{
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().dividedBy(1.34)
             make.height.equalToSuperview().dividedBy(18.46)
+            make.top.equalToSuperview().offset(self.view.frame.height/2.29)
         }
         
         pwContainer.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().dividedBy(1.34)
             make.height.equalToSuperview().dividedBy(18.46)
-            make.top.equalToSuperview().offset(self.view.frame.height/11.94)
+            make.top.equalTo(idContainer.divView).offset(self.view.frame.height/32.48)
         }
         
         forgotPwBtn.snp.makeConstraints { make in

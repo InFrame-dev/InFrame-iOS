@@ -19,6 +19,7 @@ class LoginTextFieldView: UIView {
         $0.placeholder = "ID를 입력해주세요."
         $0.dynamicFont(fontSize: 14, currentFontName: "seoulnamsancondensed-light")
         $0.textColor = .rgb(red: 196, green: 196, blue: 196)
+        $0.textColor = .black
     }
     lazy var divView = UIView().then {
         $0.backgroundColor = .rgb(red: 255, green: 109, blue: 107)
@@ -27,7 +28,7 @@ class LoginTextFieldView: UIView {
     func loginTfSetting(screenHeight: CGFloat, screenWidth: CGFloat){
         
         tfTitle.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(screenHeight/2.29)
+            make.top.equalToSuperview()
             make.left.equalToSuperview()
         }
         
