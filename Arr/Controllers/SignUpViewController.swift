@@ -21,6 +21,27 @@ class SignUpViewController: UIViewController{
         $0.textColor = .rgb(red: 255, green: 135, blue: 133)
         $0.dynamicFont(fontSize: 23, currentFontName: "SeoulNamsanM")
     }
+    
+    lazy var idContainer = SignUpTextFieldView()
+    
+    lazy var duplicateBtn = UIButton().then {
+        $0.setTitle("중복확인", for: .normal)
+        $0.dynamicFont(fontSize: 12, currentFontName: "SeoulNamsanM")
+        $0.setTitleColor(.rgb(red: 255, green: 109, blue: 107), for: .normal)
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.rgb(red: 255, green: 109, blue: 107).cgColor
+    }
+    
+    lazy var pwContainer = SignUpTextFieldView().then {
+        $0.tfTitle.text = "비밀번호"
+        $0.tf.placeholder = "비밀번호"
+    }
+    
+    lazy var rePwContainer = SignUpTextFieldView().then {
+        $0.tfTitle.text = "비밀번호 확인"
+        $0.tf.placeholder = "비밀번호 확인"
+    }
+
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +53,7 @@ class SignUpViewController: UIViewController{
     //MARK: - Helpers
     func configureUI(){
         view.backgroundColor = .white
+        textFieldContainerViewSetting()
         addView()
         cornerRadius()
         location()
@@ -40,10 +62,14 @@ class SignUpViewController: UIViewController{
     func addView(){
         view.addSubview(titleLine)
         view.addSubview(titleLabel)
+        view.addSubview(idContainer)
+        view.addSubview(duplicateBtn)
+        view.addSubview(pwContainer)
+        view.addSubview(rePwContainer)
     }
     
     func cornerRadius(){
-
+        duplicateBtn.layer.cornerRadius = self.view.frame.width/27.07
     }
     
     func location(){
@@ -58,7 +84,68 @@ class SignUpViewController: UIViewController{
             make.bottom.equalTo(titleLine).offset(-self.view.frame.height/406)
             make.right.equalTo(titleLine).offset(self.view.frame.width/46.88)
         }
+        
+        idContainer.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(self.view.frame.width/7.81)
+            make.width.equalToSuperview().dividedBy(1.88)
+            make.height.equalToSuperview().dividedBy(20.3)
+            make.top.equalToSuperview().offset(self.view.frame.height/8.37)
+        }
+        
+        idContainer.tf.snp.makeConstraints { make in
+            make.left.equalTo(idContainer)
+        }
+        
+        idContainer.divView.snp.makeConstraints { make in
+            make.left.equalTo(idContainer)
+        }
+        
+        duplicateBtn.snp.makeConstraints { make in
+            make.bottom.equalTo(idContainer)
+            make.left.equalTo(idContainer.snp.right)
+            make.width.equalToSuperview().dividedBy(4.69)
+            make.height.equalToSuperview().dividedBy(30.07)
+        }
+        
+        pwContainer.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.34)
+            make.height.equalToSuperview().dividedBy(20.3)
+            make.top.equalTo(idContainer.snp.bottom).offset(self.view.frame.height/27.07)
+        }
+        
+        rePwContainer.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.34)
+            make.height.equalToSuperview().dividedBy(20.3)
+            make.top.equalTo(pwContainer.snp.bottom).offset(self.view.frame.height/27.07)
+        }
     }
+    
+    func textFieldContainerViewSetting(){
+        // idContainer Settig
+        idContainer.addSubview(idContainer.tfTitle)
+        idContainer.addSubview(idContainer.tf)
+        idContainer.addSubview(idContainer.divView)
+        
+        idContainer.signUpTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
+        
+        // pwContainer Setting
+        pwContainer.addSubview(pwContainer.tfTitle)
+        pwContainer.addSubview(pwContainer.tf)
+        pwContainer.addSubview(pwContainer.divView)
+        
+        pwContainer.signUpTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
+        
+        // rePwContainer Setting
+        rePwContainer.addSubview(rePwContainer.tfTitle)
+        rePwContainer.addSubview(rePwContainer.tf)
+        rePwContainer.addSubview(rePwContainer.divView)
+        
+        rePwContainer.signUpTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
+
+    }
+
 }
 
 //MARK: - Preview
