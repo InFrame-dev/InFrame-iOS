@@ -78,6 +78,10 @@ class SignUpViewController: UIViewController{
         $0.layer.borderColor = UIColor.rgb(red: 255, green: 109, blue: 107).cgColor
     }
 
+    lazy var dateOfBirthContainer = SignUpTextFieldView().then {
+        $0.tfTitle.text = "생년월일"
+        $0.tf.placeholder = "8자리 입력"
+    }
 
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -109,6 +113,7 @@ class SignUpViewController: UIViewController{
         view.addSubview(certificationBtn)
         view.addSubview(certificationNumContainer)
         view.addSubview(certificationCheckBtn)
+        view.addSubview(dateOfBirthContainer)
     }
     
     func cornerRadius(){
@@ -223,6 +228,13 @@ class SignUpViewController: UIViewController{
             make.width.equalToSuperview().dividedBy(4.69)
             make.height.equalToSuperview().dividedBy(30.07)
         }
+        
+        dateOfBirthContainer.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.34)
+            make.height.equalToSuperview().dividedBy(20.3)
+            make.top.equalTo(certificationNumContainer.snp.bottom).offset(self.view.frame.height/27.07)
+        }
     }
     
     func textFieldContainerViewSetting(){
@@ -275,6 +287,12 @@ class SignUpViewController: UIViewController{
         
         certificationNumContainer.signUpTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
 
+        // dateOfBirthContainer Setting
+        dateOfBirthContainer.addSubview(dateOfBirthContainer.tfTitle)
+        dateOfBirthContainer.addSubview(dateOfBirthContainer.tf)
+        dateOfBirthContainer.addSubview(dateOfBirthContainer.divView)
+        
+        dateOfBirthContainer.signUpTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
     }
 
 }
