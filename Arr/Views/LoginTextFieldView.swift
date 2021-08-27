@@ -18,7 +18,6 @@ class LoginTextFieldView: UIView {
     lazy var tf = UITextField().then {
         $0.placeholder = "ID를 입력해주세요."
         $0.dynamicFont(fontSize: 14, currentFontName: "SeoulNamsanM")
-        $0.textColor = .rgb(red: 196, green: 196, blue: 196)
         $0.textColor = .black
     }
     lazy var divView = UIView().then {
