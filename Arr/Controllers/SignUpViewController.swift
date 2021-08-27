@@ -41,6 +41,11 @@ class SignUpViewController: UIViewController{
         $0.tfTitle.text = "비밀번호 확인"
         $0.tf.placeholder = "비밀번호 확인"
     }
+    
+    lazy var nameContainer = SignUpTextFieldView().then {
+        $0.tfTitle.text = "이름"
+        $0.tf.placeholder = "실명을 입력해주세요"
+    }
 
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -66,6 +71,7 @@ class SignUpViewController: UIViewController{
         view.addSubview(duplicateBtn)
         view.addSubview(pwContainer)
         view.addSubview(rePwContainer)
+        view.addSubview(nameContainer)
     }
     
     func cornerRadius(){
@@ -120,6 +126,13 @@ class SignUpViewController: UIViewController{
             make.height.equalToSuperview().dividedBy(20.3)
             make.top.equalTo(pwContainer.snp.bottom).offset(self.view.frame.height/27.07)
         }
+        
+        nameContainer.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.34)
+            make.height.equalToSuperview().dividedBy(20.3)
+            make.top.equalTo(rePwContainer.snp.bottom).offset(self.view.frame.height/27.07)
+        }
     }
     
     func textFieldContainerViewSetting(){
@@ -143,6 +156,13 @@ class SignUpViewController: UIViewController{
         rePwContainer.addSubview(rePwContainer.divView)
         
         rePwContainer.signUpTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
+        
+        // nameContainer Setting
+        nameContainer.addSubview(nameContainer.tfTitle)
+        nameContainer.addSubview(nameContainer.tf)
+        nameContainer.addSubview(nameContainer.divView)
+        
+        nameContainer.signUpTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
 
     }
 
