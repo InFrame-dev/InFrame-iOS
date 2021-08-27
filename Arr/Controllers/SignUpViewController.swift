@@ -51,6 +51,19 @@ class SignUpViewController: UIViewController{
         $0.tfTitle.text = "이메일"
         $0.tf.placeholder = "이메일을 입력해주세요"
     }
+    
+    lazy var phoneNumContainer = SignUpTextFieldView().then {
+        $0.tfTitle.text = "휴대폰 번호"
+        $0.tf.placeholder = "숫자만 입력해주세요"
+    }
+    
+    lazy var certificationBtn = UIButton().then {
+        $0.setTitle("인증번호 전송", for: .normal)
+        $0.dynamicFont(fontSize: 12, currentFontName: "SeoulNamsanM")
+        $0.setTitleColor(.rgb(red: 255, green: 109, blue: 107), for: .normal)
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.rgb(red: 255, green: 109, blue: 107).cgColor
+    }
 
 
     //MARK: - Lifecycle
@@ -79,10 +92,13 @@ class SignUpViewController: UIViewController{
         view.addSubview(rePwContainer)
         view.addSubview(nameContainer)
         view.addSubview(emailContainer)
+        view.addSubview(phoneNumContainer)
+        view.addSubview(certificationBtn)
     }
     
     func cornerRadius(){
         duplicateBtn.layer.cornerRadius = self.view.frame.width/27.07
+        certificationBtn.layer.cornerRadius = self.view.frame.width/27.07
     }
     
     func location(){
@@ -147,6 +163,28 @@ class SignUpViewController: UIViewController{
             make.height.equalToSuperview().dividedBy(20.3)
             make.top.equalTo(nameContainer.snp.bottom).offset(self.view.frame.height/27.07)
         }
+        
+        phoneNumContainer.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(self.view.frame.width/7.81)
+            make.width.equalToSuperview().dividedBy(1.88)
+            make.height.equalToSuperview().dividedBy(20.3)
+            make.top.equalTo(emailContainer.snp.bottom).offset(self.view.frame.height/27.07)
+        }
+        
+        phoneNumContainer.tf.snp.makeConstraints { make in
+            make.left.equalTo(phoneNumContainer)
+        }
+        
+        phoneNumContainer.divView.snp.makeConstraints { make in
+            make.left.equalTo(phoneNumContainer)
+        }
+        
+        certificationBtn.snp.makeConstraints { make in
+            make.bottom.equalTo(phoneNumContainer)
+            make.left.equalTo(phoneNumContainer.snp.right)
+            make.width.equalToSuperview().dividedBy(4.69)
+            make.height.equalToSuperview().dividedBy(30.07)
+        }
     }
     
     func textFieldContainerViewSetting(){
@@ -184,6 +222,13 @@ class SignUpViewController: UIViewController{
         emailContainer.addSubview(emailContainer.divView)
         
         emailContainer.signUpTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
+        
+        // phoneNumContainer Setting
+        phoneNumContainer.addSubview(phoneNumContainer.tfTitle)
+        phoneNumContainer.addSubview(phoneNumContainer.tf)
+        phoneNumContainer.addSubview(phoneNumContainer.divView)
+        
+        phoneNumContainer.signUpTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
 
     }
 
