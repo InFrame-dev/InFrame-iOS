@@ -64,6 +64,19 @@ class SignUpViewController: UIViewController{
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.rgb(red: 255, green: 109, blue: 107).cgColor
     }
+    
+    lazy var certificationNumContainer = SignUpTextFieldView().then {
+        $0.tfTitle.text = "인증 번호"
+        $0.tf.placeholder = "인증번호 입력"
+    }
+    
+    lazy var certificationCheckBtn = UIButton().then {
+        $0.setTitle("인증번호 확인", for: .normal)
+        $0.dynamicFont(fontSize: 12, currentFontName: "SeoulNamsanM")
+        $0.setTitleColor(.rgb(red: 255, green: 109, blue: 107), for: .normal)
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.rgb(red: 255, green: 109, blue: 107).cgColor
+    }
 
 
     //MARK: - Lifecycle
@@ -94,11 +107,14 @@ class SignUpViewController: UIViewController{
         view.addSubview(emailContainer)
         view.addSubview(phoneNumContainer)
         view.addSubview(certificationBtn)
+        view.addSubview(certificationNumContainer)
+        view.addSubview(certificationCheckBtn)
     }
     
     func cornerRadius(){
         duplicateBtn.layer.cornerRadius = self.view.frame.width/27.07
         certificationBtn.layer.cornerRadius = self.view.frame.width/27.07
+        certificationCheckBtn.layer.cornerRadius = self.view.frame.width/27.07
     }
     
     func location(){
@@ -185,6 +201,28 @@ class SignUpViewController: UIViewController{
             make.width.equalToSuperview().dividedBy(4.69)
             make.height.equalToSuperview().dividedBy(30.07)
         }
+        
+        certificationNumContainer.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(self.view.frame.width/7.81)
+            make.width.equalToSuperview().dividedBy(1.88)
+            make.height.equalToSuperview().dividedBy(20.3)
+            make.top.equalTo(phoneNumContainer.snp.bottom).offset(self.view.frame.height/27.07)
+        }
+        
+        certificationNumContainer.tf.snp.makeConstraints { make in
+            make.left.equalTo(certificationNumContainer)
+        }
+        
+        certificationNumContainer.divView.snp.makeConstraints { make in
+            make.left.equalTo(certificationNumContainer)
+        }
+        
+        certificationCheckBtn.snp.makeConstraints { make in
+            make.bottom.equalTo(certificationNumContainer)
+            make.left.equalTo(certificationNumContainer.snp.right)
+            make.width.equalToSuperview().dividedBy(4.69)
+            make.height.equalToSuperview().dividedBy(30.07)
+        }
     }
     
     func textFieldContainerViewSetting(){
@@ -229,6 +267,13 @@ class SignUpViewController: UIViewController{
         phoneNumContainer.addSubview(phoneNumContainer.divView)
         
         phoneNumContainer.signUpTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
+        
+        // phoneNumContainer Setting
+        certificationNumContainer.addSubview(certificationNumContainer.tfTitle)
+        certificationNumContainer.addSubview(certificationNumContainer.tf)
+        certificationNumContainer.addSubview(certificationNumContainer.divView)
+        
+        certificationNumContainer.signUpTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
 
     }
 
