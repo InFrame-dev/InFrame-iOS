@@ -117,6 +117,14 @@ class SignUpViewController: UIViewController{
     lazy var termInButton1 = TermInButtonView()
     lazy var termInButton2 = TermInButtonView()
     lazy var termInButton3 = TermInButtonView()
+    
+    lazy var signUpBtn = UIButton().then {
+        $0.setTitle("회원가입 하기", for: .normal)
+        $0.dynamicFont(fontSize: 12, currentFontName: "SeoulNamsanM")
+        $0.setTitleColor(.rgb(red: 255, green: 109, blue: 107), for: .normal)
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.rgb(red: 255, green: 109, blue: 107).cgColor
+    }
 
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -160,6 +168,7 @@ class SignUpViewController: UIViewController{
         view.addSubview(termInButton1)
         view.addSubview(termInButton2)
         view.addSubview(termInButton3)
+        view.addSubview(signUpBtn)
     }
     
     func cornerRadius(){
@@ -170,6 +179,7 @@ class SignUpViewController: UIViewController{
         termButton1.layer.cornerRadius = self.view.frame.width/53.57
         termButton2.layer.cornerRadius = self.view.frame.width/53.57
         termButton3.layer.cornerRadius = self.view.frame.width/53.57
+        signUpBtn.layer.cornerRadius = self.view.frame.width/27.07
     }
     
     func location(){
@@ -347,6 +357,13 @@ class SignUpViewController: UIViewController{
             make.centerY.equalTo(termLabel3)
             make.left.equalTo(termInButton1)
             make.width.height.equalTo(termInButton1)
+        }
+        
+        signUpBtn.snp.makeConstraints { make in
+            make.top.equalTo(termInButton3).offset(self.view.frame.height/28)
+            make.right.equalTo(termInButton3).offset(self.view.frame.width/41.67)
+            make.width.equalToSuperview().dividedBy(4.69)
+            make.height.equalToSuperview().dividedBy(30.07)
         }
     }
     
