@@ -18,7 +18,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = LoginViewController() // RootViewController를 연결
+        let mainViewController = LoginViewController()
+        let navigationController = UINavigationController(rootViewController: mainViewController)
+        navigationController.navigationBar.isHidden = true
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         for fontFamily in UIFont.familyNames {
             for fontName in UIFont.fontNames(forFamilyName: fontFamily) {
