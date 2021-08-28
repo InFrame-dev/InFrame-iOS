@@ -26,7 +26,7 @@ class SignUpViewController: UIViewController{
     
     lazy var duplicateBtn = UIButton().then {
         $0.setTitle("중복확인", for: .normal)
-        $0.dynamicFont(fontSize: 12, currentFontName: "SeoulNamsanM")
+        $0.dynamicFont(fontSize: 12, currentFontName: "SeoulNamsanL")
         $0.setTitleColor(.rgb(red: 255, green: 109, blue: 107), for: .normal)
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.rgb(red: 255, green: 109, blue: 107).cgColor
@@ -61,7 +61,7 @@ class SignUpViewController: UIViewController{
     
     lazy var certificationBtn = UIButton().then {
         $0.setTitle("인증번호 전송", for: .normal)
-        $0.dynamicFont(fontSize: 12, currentFontName: "SeoulNamsanM")
+        $0.dynamicFont(fontSize: 12, currentFontName: "SeoulNamsanL")
         $0.setTitleColor(.rgb(red: 255, green: 109, blue: 107), for: .normal)
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.rgb(red: 255, green: 109, blue: 107).cgColor
@@ -74,7 +74,7 @@ class SignUpViewController: UIViewController{
     
     lazy var certificationCheckBtn = UIButton().then {
         $0.setTitle("인증번호 확인", for: .normal)
-        $0.dynamicFont(fontSize: 12, currentFontName: "SeoulNamsanM")
+        $0.dynamicFont(fontSize: 12, currentFontName: "SeoulNamsanL")
         $0.setTitleColor(.rgb(red: 255, green: 109, blue: 107), for: .normal)
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.rgb(red: 255, green: 109, blue: 107).cgColor
@@ -120,7 +120,7 @@ class SignUpViewController: UIViewController{
     
     lazy var signUpBtn = UIButton().then {
         $0.setTitle("회원가입 하기", for: .normal)
-        $0.dynamicFont(fontSize: 12, currentFontName: "SeoulNamsanM")
+        $0.dynamicFont(fontSize: 12, currentFontName: "SeoulNamsanL")
         $0.setTitleColor(.rgb(red: 255, green: 109, blue: 107), for: .normal)
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.rgb(red: 255, green: 109, blue: 107).cgColor
