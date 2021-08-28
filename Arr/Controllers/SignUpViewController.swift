@@ -85,10 +85,18 @@ class SignUpViewController: UIViewController{
         $0.tf.placeholder = "8자리 입력"
     }
     
-    lazy var allButton = TermsCustomButtonView()
-    lazy var termButton1 = TermsCustomButtonView()
-    lazy var termButton2 = TermsCustomButtonView()
-    lazy var termButton3 = TermsCustomButtonView()
+    lazy var allButton = TermsCustomButtonView().then {
+        $0.addTarget(self, action: #selector(AonTapButton), for: .touchUpInside)
+    }
+    lazy var termButton1 = TermsCustomButtonView().then {
+        $0.addTarget(self, action: #selector(onTapButton1), for: .touchUpInside)
+    }
+    lazy var termButton2 = TermsCustomButtonView().then {
+        $0.addTarget(self, action: #selector(onTapButton2), for: .touchUpInside)
+    }
+    lazy var termButton3 = TermsCustomButtonView().then {
+        $0.addTarget(self, action: #selector(onTapButton3), for: .touchUpInside)
+    }
     
     lazy var allAgreeLabel = UILabel().then {
         $0.text = "모두 동의합니다"
@@ -138,6 +146,80 @@ class SignUpViewController: UIViewController{
     lazy var flag2 = false
     lazy var flag3 = false
     lazy var AllFlag = false
+    
+    @objc
+    func onTapButton1(){
+        if flag1 == false {
+            termButton1.bgColor = .rgb(red: 255, green: 135, blue: 133)
+            flag1 = true
+            if flag2 == true && flag3 == true {
+                allButton.bgColor = .rgb(red: 255, green: 135, blue: 133)
+                AllFlag = true
+            }
+        } else if flag1 == true {
+            termButton1.bgColor = .rgb(red: 255, green: 255, blue: 255)
+            allButton.bgColor = .rgb(red: 255, green: 255, blue: 255)
+            AllFlag = false
+            flag1 = false
+        }
+    }
+    
+    @objc
+    func onTapButton2(){
+        if flag2 == false {
+            termButton2.bgColor = .rgb(red: 255, green: 135, blue: 133)
+            flag2 = true
+            if flag1 == true && flag3 == true {
+                allButton.bgColor = .rgb(red: 255, green: 135, blue: 133)
+                AllFlag = true
+            }
+        } else if flag2 == true {
+            termButton2.bgColor = .rgb(red: 255, green: 255, blue: 255)
+            allButton.bgColor = .rgb(red: 255, green: 255, blue: 255)
+            AllFlag = false
+            flag2 = false
+        }
+    }
+        
+    @objc
+    func onTapButton3(){
+        if flag3 == false {
+            termButton3.bgColor = .rgb(red: 255, green: 135, blue: 133)
+            flag3 = true
+            if flag1 == true && flag2 == true {
+                allButton.bgColor = .rgb(red: 255, green: 135, blue: 133)
+                AllFlag = true
+            }
+        } else if flag3 == true {
+            termButton3.bgColor = .rgb(red: 255, green: 255, blue: 255)
+            allButton.bgColor = .rgb(red: 255, green: 255, blue: 255)
+            AllFlag = false
+            flag3 = false
+        }
+    }
+        
+    @objc
+    func AonTapButton(){
+        if AllFlag == false {
+            allButton.bgColor = .rgb(red: 255, green: 135, blue: 133)
+            termButton1.bgColor = .rgb(red: 255, green: 135, blue: 133)
+            termButton2.bgColor = .rgb(red: 255, green: 135, blue: 133)
+            termButton3.bgColor = .rgb(red: 255, green: 135, blue: 133)
+            flag1 = true
+            flag2 = true
+            flag3 = true
+            AllFlag = true
+        } else if AllFlag == true {
+            allButton.bgColor = .rgb(red: 255, green: 255, blue: 255)
+            termButton1.bgColor = .rgb(red: 255, green: 255, blue: 255)
+            termButton2.bgColor = .rgb(red: 255, green: 255, blue: 255)
+            termButton3.bgColor = .rgb(red: 255, green: 255, blue: 255)
+            flag1 = false
+            flag2 = false
+            flag3 = false
+            AllFlag = false
+        }
+    }
     
     //MARK: - Helpers
     func configureUI(){
