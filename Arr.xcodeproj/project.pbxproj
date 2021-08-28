@@ -20,6 +20,7 @@
 		AACCE63B26D7D35100C11A48 /* SeoulNamsan-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AACCE63826D7D30400C11A48 /* SeoulNamsan-Light.ttf */; };
 		AACCE63C26D7D35400C11A48 /* SeoulNamsan-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AACCE63726D7D30400C11A48 /* SeoulNamsan-Medium.ttf */; };
 		AACCE63E26D7D9DF00C11A48 /* SignUpTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACCE63D26D7D9DF00C11A48 /* SignUpTextFieldView.swift */; };
+		AACCE64026DA1C5500C11A48 /* TermsCustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACCE63F26DA1C5500C11A48 /* TermsCustomButtonView.swift */; };
 		B7F92EF9812130B947D87CC1 /* Pods_Arr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FB5C086654C1A5DB95CA2F /* Pods_Arr.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		AACCE63726D7D30400C11A48 /* SeoulNamsan-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SeoulNamsan-Medium.ttf"; sourceTree = "<group>"; };
 		AACCE63826D7D30400C11A48 /* SeoulNamsan-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SeoulNamsan-Light.ttf"; sourceTree = "<group>"; };
 		AACCE63D26D7D9DF00C11A48 /* SignUpTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTextFieldView.swift; sourceTree = "<group>"; };
+		AACCE63F26DA1C5500C11A48 /* TermsCustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsCustomButtonView.swift; sourceTree = "<group>"; };
 		B1A085B9C8218BEC7FD7F315 /* Pods-Arr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Arr.release.xcconfig"; path = "Target Support Files/Pods-Arr/Pods-Arr.release.xcconfig"; sourceTree = "<group>"; };
 		D3FB5C086654C1A5DB95CA2F /* Pods_Arr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Arr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -112,6 +114,7 @@
 			children = (
 				AACCE62D26D5D97800C11A48 /* LoginTextFieldView.swift */,
 				AACCE63D26D7D9DF00C11A48 /* SignUpTextFieldView.swift */,
+				AACCE63F26DA1C5500C11A48 /* TermsCustomButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				AACCE63426D759F200C11A48 /* SignUpViewController.swift in Sources */,
 				AACCE63026D5DB9500C11A48 /* Extension.swift in Sources */,
 				AACCE62E26D5D97800C11A48 /* LoginTextFieldView.swift in Sources */,
+				AACCE64026DA1C5500C11A48 /* TermsCustomButtonView.swift in Sources */,
 				AACCE62C26D50B9000C11A48 /* LoginViewController.swift in Sources */,
 				AACCE61226D4F17C00C11A48 /* AppDelegate.swift in Sources */,
 				AACCE61426D4F17C00C11A48 /* SceneDelegate.swift in Sources */,

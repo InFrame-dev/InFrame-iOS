@@ -82,6 +82,11 @@ class SignUpViewController: UIViewController{
         $0.tfTitle.text = "생년월일"
         $0.tf.placeholder = "8자리 입력"
     }
+    
+    lazy var allButton = TermsCustomButtonView()
+    lazy var termButton1 = TermsCustomButtonView()
+    lazy var termButton2 = TermsCustomButtonView()
+    lazy var termButton3 = TermsCustomButtonView()
 
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -94,7 +99,7 @@ class SignUpViewController: UIViewController{
     //MARK: - Helpers
     func configureUI(){
         view.backgroundColor = .white
-        textFieldContainerViewSetting()
+        textFieldContainerViewSetting()       
         addView()
         cornerRadius()
         location()
@@ -114,12 +119,20 @@ class SignUpViewController: UIViewController{
         view.addSubview(certificationNumContainer)
         view.addSubview(certificationCheckBtn)
         view.addSubview(dateOfBirthContainer)
+        view.addSubview(allButton)
+        view.addSubview(termButton1)
+        view.addSubview(termButton2)
+        view.addSubview(termButton3)
     }
     
     func cornerRadius(){
         duplicateBtn.layer.cornerRadius = self.view.frame.width/27.07
         certificationBtn.layer.cornerRadius = self.view.frame.width/27.07
         certificationCheckBtn.layer.cornerRadius = self.view.frame.width/27.07
+        allButton.layer.cornerRadius = self.view.frame.width/53.57
+        termButton1.layer.cornerRadius = self.view.frame.width/53.57
+        termButton2.layer.cornerRadius = self.view.frame.width/53.57
+        termButton3.layer.cornerRadius = self.view.frame.width/53.57
     }
     
     func location(){
@@ -234,6 +247,30 @@ class SignUpViewController: UIViewController{
             make.width.equalToSuperview().dividedBy(1.34)
             make.height.equalToSuperview().dividedBy(20.3)
             make.top.equalTo(certificationNumContainer.snp.bottom).offset(self.view.frame.height/27.07)
+        }
+        
+        allButton.snp.makeConstraints { make in
+            make.top.equalTo(dateOfBirthContainer.snp.bottom).offset(self.view.frame.height/26.2)
+            make.left.equalTo(dateOfBirthContainer)
+            make.width.height.equalTo(self.view.frame.width/26.78)
+        }
+        
+        termButton1.snp.makeConstraints { make in
+            make.top.equalTo(allButton.snp.bottom).offset(self.view.frame.height/135.33)
+            make.left.equalTo(dateOfBirthContainer)
+            make.width.height.equalTo(self.view.frame.width/26.78)
+        }
+        
+        termButton2.snp.makeConstraints { make in
+            make.top.equalTo(termButton1.snp.bottom).offset(self.view.frame.height/135.33)
+            make.left.equalTo(dateOfBirthContainer)
+            make.width.height.equalTo(self.view.frame.width/26.78)
+        }
+        
+        termButton3.snp.makeConstraints { make in
+            make.top.equalTo(termButton2.snp.bottom).offset(self.view.frame.height/135.33)
+            make.left.equalTo(dateOfBirthContainer)
+            make.width.height.equalTo(self.view.frame.width/26.78)
         }
     }
     
