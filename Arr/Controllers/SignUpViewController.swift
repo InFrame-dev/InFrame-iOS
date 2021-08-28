@@ -26,7 +26,7 @@ class SignUpViewController: UIViewController{
     
     lazy var duplicateBtn = UIButton().then {
         $0.setTitle("중복확인", for: .normal)
-        $0.dynamicFont(fontSize: 12, currentFontName: "SeoulNamsanM")
+        $0.dynamicFont(fontSize: 12, currentFontName: "SeoulNamsanL")
         $0.setTitleColor(.rgb(red: 255, green: 109, blue: 107), for: .normal)
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.rgb(red: 255, green: 109, blue: 107).cgColor
@@ -35,11 +35,13 @@ class SignUpViewController: UIViewController{
     lazy var pwContainer = SignUpTextFieldView().then {
         $0.tfTitle.text = "비밀번호"
         $0.tf.placeholder = "비밀번호"
+        $0.tf.isSecureTextEntry = true
     }
     
     lazy var rePwContainer = SignUpTextFieldView().then {
         $0.tfTitle.text = "비밀번호 확인"
         $0.tf.placeholder = "비밀번호 확인"
+        $0.tf.isSecureTextEntry = true
     }
     
     lazy var nameContainer = SignUpTextFieldView().then {
@@ -59,7 +61,7 @@ class SignUpViewController: UIViewController{
     
     lazy var certificationBtn = UIButton().then {
         $0.setTitle("인증번호 전송", for: .normal)
-        $0.dynamicFont(fontSize: 12, currentFontName: "SeoulNamsanM")
+        $0.dynamicFont(fontSize: 12, currentFontName: "SeoulNamsanL")
         $0.setTitleColor(.rgb(red: 255, green: 109, blue: 107), for: .normal)
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.rgb(red: 255, green: 109, blue: 107).cgColor
@@ -72,7 +74,7 @@ class SignUpViewController: UIViewController{
     
     lazy var certificationCheckBtn = UIButton().then {
         $0.setTitle("인증번호 확인", for: .normal)
-        $0.dynamicFont(fontSize: 12, currentFontName: "SeoulNamsanM")
+        $0.dynamicFont(fontSize: 12, currentFontName: "SeoulNamsanL")
         $0.setTitleColor(.rgb(red: 255, green: 109, blue: 107), for: .normal)
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.rgb(red: 255, green: 109, blue: 107).cgColor
@@ -87,6 +89,42 @@ class SignUpViewController: UIViewController{
     lazy var termButton1 = TermsCustomButtonView()
     lazy var termButton2 = TermsCustomButtonView()
     lazy var termButton3 = TermsCustomButtonView()
+    
+    lazy var allAgreeLabel = UILabel().then {
+        $0.text = "모두 동의합니다"
+        $0.textColor = .rgb(red: 255, green: 135, blue: 133)
+        $0.dynamicFont(fontSize: 15, currentFontName: "SeoulNamsanM")
+    }
+    
+    lazy var termLabel1 = UILabel().then {
+        $0.text = "이용약관 동의"
+        $0.textColor = .rgb(red: 196, green: 196, blue: 196)
+        $0.dynamicFont(fontSize: 15, currentFontName: "SeoulNamsanM")
+    }
+    
+    lazy var termLabel2 = UILabel().then {
+        $0.text = "개인정보 취급방침 동의"
+        $0.textColor = .rgb(red: 196, green: 196, blue: 196)
+        $0.dynamicFont(fontSize: 15, currentFontName: "SeoulNamsanM")
+    }
+    
+    lazy var termLabel3 = UILabel().then {
+        $0.text = "마케팅 정보 수신 동의"
+        $0.textColor = .rgb(red: 196, green: 196, blue: 196)
+        $0.dynamicFont(fontSize: 15, currentFontName: "SeoulNamsanM")
+    }
+    
+    lazy var termInButton1 = TermInButtonView()
+    lazy var termInButton2 = TermInButtonView()
+    lazy var termInButton3 = TermInButtonView()
+    
+    lazy var signUpBtn = UIButton().then {
+        $0.setTitle("회원가입 하기", for: .normal)
+        $0.dynamicFont(fontSize: 12, currentFontName: "SeoulNamsanL")
+        $0.setTitleColor(.rgb(red: 255, green: 109, blue: 107), for: .normal)
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.rgb(red: 255, green: 109, blue: 107).cgColor
+    }
 
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -123,6 +161,14 @@ class SignUpViewController: UIViewController{
         view.addSubview(termButton1)
         view.addSubview(termButton2)
         view.addSubview(termButton3)
+        view.addSubview(allAgreeLabel)
+        view.addSubview(termLabel1)
+        view.addSubview(termLabel2)
+        view.addSubview(termLabel3)
+        view.addSubview(termInButton1)
+        view.addSubview(termInButton2)
+        view.addSubview(termInButton3)
+        view.addSubview(signUpBtn)
     }
     
     func cornerRadius(){
@@ -133,6 +179,7 @@ class SignUpViewController: UIViewController{
         termButton1.layer.cornerRadius = self.view.frame.width/53.57
         termButton2.layer.cornerRadius = self.view.frame.width/53.57
         termButton3.layer.cornerRadius = self.view.frame.width/53.57
+        signUpBtn.layer.cornerRadius = self.view.frame.width/27.07
     }
     
     func location(){
@@ -271,6 +318,52 @@ class SignUpViewController: UIViewController{
             make.top.equalTo(termButton2.snp.bottom).offset(self.view.frame.height/135.33)
             make.left.equalTo(dateOfBirthContainer)
             make.width.height.equalTo(self.view.frame.width/26.78)
+        }
+        
+        allAgreeLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(allButton)
+            make.left.equalTo(allButton.snp.right).offset(self.view.frame.width/46.85)
+        }
+        
+        termLabel1.snp.makeConstraints { make in
+            make.centerY.equalTo(termButton1)
+            make.left.equalTo(termButton1.snp.right).offset(self.view.frame.width/46.85)
+        }
+        
+        termLabel2.snp.makeConstraints { make in
+            make.centerY.equalTo(termButton2)
+            make.left.equalTo(termButton2.snp.right).offset(self.view.frame.width/46.85)
+        }
+        
+        termLabel3.snp.makeConstraints { make in
+            make.centerY.equalTo(termButton3)
+            make.left.equalTo(termButton3.snp.right).offset(self.view.frame.width/46.85)
+        }
+        
+        termInButton1.snp.makeConstraints { make in
+            make.centerY.equalTo(termLabel1)
+            make.left.equalTo(termLabel1.snp.right).offset(self.view.frame.width/2.12)
+            make.width.equalToSuperview().dividedBy(75)
+            make.height.equalToSuperview().dividedBy(90.22)
+        }
+        
+        termInButton2.snp.makeConstraints { make in
+            make.centerY.equalTo(termLabel2)
+            make.left.equalTo(termInButton1)
+            make.width.height.equalTo(termInButton1)
+        }
+        
+        termInButton3.snp.makeConstraints { make in
+            make.centerY.equalTo(termLabel3)
+            make.left.equalTo(termInButton1)
+            make.width.height.equalTo(termInButton1)
+        }
+        
+        signUpBtn.snp.makeConstraints { make in
+            make.top.equalTo(termInButton3).offset(self.view.frame.height/28)
+            make.right.equalTo(termInButton3).offset(self.view.frame.width/41.67)
+            make.width.equalToSuperview().dividedBy(4.69)
+            make.height.equalToSuperview().dividedBy(30.07)
         }
     }
     
