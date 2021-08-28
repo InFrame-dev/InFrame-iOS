@@ -134,6 +134,11 @@ class SignUpViewController: UIViewController{
        
     //MARK: - Selectors
     
+    lazy var flag1 = false
+    lazy var flag2 = false
+    lazy var flag3 = false
+    lazy var AllFlag = false
+    
     //MARK: - Helpers
     func configureUI(){
         view.backgroundColor = .white
