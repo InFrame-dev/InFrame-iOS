@@ -20,13 +20,13 @@ class LoginViewController: UIViewController{
     lazy var idContainer = LoginTextFieldView()
     
     lazy var pwContainer = LoginTextFieldView().then {
-        $0.tfTitle.text = "password"
-        $0.tf.placeholder = "password를 입력해주세요."
+        $0.tfTitle.text = "비밀번호"
+        $0.tf.placeholder = "비밀번호를 입력해주세요."
         $0.tf.isSecureTextEntry = true
     }
     
     lazy var forgotPwBtn = UIButton().then {
-        $0.setTitle("Forgot my password", for: .normal)
+        $0.setTitle("비밀번호를 잊어버렸어요!", for: .normal)
         $0.setTitleColor(.rgb(red: 196, green: 196, blue: 196), for: .normal)
         $0.dynamicFont(fontSize: 14, currentFontName: "SeoulNamsanM")
     }
