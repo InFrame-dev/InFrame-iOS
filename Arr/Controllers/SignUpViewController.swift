@@ -150,15 +150,15 @@ class SignUpViewController: UIViewController{
     @objc
     func onTapButton1(){
         if flag1 == false {
-            termButton1.bgColor = .rgb(red: 255, green: 135, blue: 133)
+            termButton1.bgColor = .TERM_CHECKED
             flag1 = true
             if flag2 == true && flag3 == true {
-                allButton.bgColor = .rgb(red: 255, green: 135, blue: 133)
+                allButton.bgColor = .TERM_CHECKED
                 AllFlag = true
             }
         } else if flag1 == true {
-            termButton1.bgColor = .rgb(red: 255, green: 255, blue: 255)
-            allButton.bgColor = .rgb(red: 255, green: 255, blue: 255)
+            termButton1.bgColor = .TERM_UNCHECKED
+            allButton.bgColor = .TERM_UNCHECKED
             AllFlag = false
             flag1 = false
         }
@@ -167,15 +167,15 @@ class SignUpViewController: UIViewController{
     @objc
     func onTapButton2(){
         if flag2 == false {
-            termButton2.bgColor = .rgb(red: 255, green: 135, blue: 133)
+            termButton2.bgColor = .TERM_CHECKED
             flag2 = true
             if flag1 == true && flag3 == true {
-                allButton.bgColor = .rgb(red: 255, green: 135, blue: 133)
+                allButton.bgColor = .TERM_CHECKED
                 AllFlag = true
             }
         } else if flag2 == true {
-            termButton2.bgColor = .rgb(red: 255, green: 255, blue: 255)
-            allButton.bgColor = .rgb(red: 255, green: 255, blue: 255)
+            termButton2.bgColor = .TERM_UNCHECKED
+            allButton.bgColor = .TERM_UNCHECKED
             AllFlag = false
             flag2 = false
         }
@@ -184,15 +184,15 @@ class SignUpViewController: UIViewController{
     @objc
     func onTapButton3(){
         if flag3 == false {
-            termButton3.bgColor = .rgb(red: 255, green: 135, blue: 133)
+            termButton3.bgColor = .TERM_CHECKED
             flag3 = true
             if flag1 == true && flag2 == true {
-                allButton.bgColor = .rgb(red: 255, green: 135, blue: 133)
+                allButton.bgColor = .TERM_CHECKED
                 AllFlag = true
             }
         } else if flag3 == true {
-            termButton3.bgColor = .rgb(red: 255, green: 255, blue: 255)
-            allButton.bgColor = .rgb(red: 255, green: 255, blue: 255)
+            termButton3.bgColor = .TERM_UNCHECKED
+            allButton.bgColor = .TERM_UNCHECKED
             AllFlag = false
             flag3 = false
         }
@@ -201,19 +201,19 @@ class SignUpViewController: UIViewController{
     @objc
     func AonTapButton(){
         if AllFlag == false {
-            allButton.bgColor = .rgb(red: 255, green: 135, blue: 133)
-            termButton1.bgColor = .rgb(red: 255, green: 135, blue: 133)
-            termButton2.bgColor = .rgb(red: 255, green: 135, blue: 133)
-            termButton3.bgColor = .rgb(red: 255, green: 135, blue: 133)
+            allButton.bgColor = .TERM_CHECKED
+            termButton1.bgColor = .TERM_CHECKED
+            termButton2.bgColor = .TERM_CHECKED
+            termButton3.bgColor = .TERM_CHECKED
             flag1 = true
             flag2 = true
             flag3 = true
             AllFlag = true
         } else if AllFlag == true {
-            allButton.bgColor = .rgb(red: 255, green: 255, blue: 255)
-            termButton1.bgColor = .rgb(red: 255, green: 255, blue: 255)
-            termButton2.bgColor = .rgb(red: 255, green: 255, blue: 255)
-            termButton3.bgColor = .rgb(red: 255, green: 255, blue: 255)
+            allButton.bgColor = .TERM_UNCHECKED
+            termButton1.bgColor = .TERM_UNCHECKED
+            termButton2.bgColor = .TERM_UNCHECKED
+            termButton3.bgColor = .TERM_UNCHECKED
             flag1 = false
             flag2 = false
             flag3 = false
