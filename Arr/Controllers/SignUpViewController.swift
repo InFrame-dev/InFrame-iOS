@@ -87,6 +87,30 @@ class SignUpViewController: UIViewController{
     lazy var termButton1 = TermsCustomButtonView()
     lazy var termButton2 = TermsCustomButtonView()
     lazy var termButton3 = TermsCustomButtonView()
+    
+    lazy var allAgreeLabel = UILabel().then {
+        $0.text = "모두 동의합니다"
+        $0.textColor = .rgb(red: 255, green: 135, blue: 133)
+        $0.dynamicFont(fontSize: 15, currentFontName: "SeoulNamsanM")
+    }
+    
+    lazy var termLabel1 = UILabel().then {
+        $0.text = "이용약관 동의"
+        $0.textColor = .rgb(red: 196, green: 196, blue: 196)
+        $0.dynamicFont(fontSize: 15, currentFontName: "SeoulNamsanM")
+    }
+    
+    lazy var termLabel2 = UILabel().then {
+        $0.text = "개인정보 취급방침 동의"
+        $0.textColor = .rgb(red: 196, green: 196, blue: 196)
+        $0.dynamicFont(fontSize: 15, currentFontName: "SeoulNamsanM")
+    }
+    
+    lazy var termLabel3 = UILabel().then {
+        $0.text = "마케팅 정보 수신 동의"
+        $0.textColor = .rgb(red: 196, green: 196, blue: 196)
+        $0.dynamicFont(fontSize: 15, currentFontName: "SeoulNamsanM")
+    }
 
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -123,6 +147,10 @@ class SignUpViewController: UIViewController{
         view.addSubview(termButton1)
         view.addSubview(termButton2)
         view.addSubview(termButton3)
+        view.addSubview(allAgreeLabel)
+        view.addSubview(termLabel1)
+        view.addSubview(termLabel2)
+        view.addSubview(termLabel3)
     }
     
     func cornerRadius(){
@@ -271,6 +299,26 @@ class SignUpViewController: UIViewController{
             make.top.equalTo(termButton2.snp.bottom).offset(self.view.frame.height/135.33)
             make.left.equalTo(dateOfBirthContainer)
             make.width.height.equalTo(self.view.frame.width/26.78)
+        }
+        
+        allAgreeLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(allButton)
+            make.left.equalTo(allButton.snp.right).offset(self.view.frame.width/46.85)
+        }
+        
+        termLabel1.snp.makeConstraints { make in
+            make.centerY.equalTo(termButton1)
+            make.left.equalTo(termButton1.snp.right).offset(self.view.frame.width/46.85)
+        }
+        
+        termLabel2.snp.makeConstraints { make in
+            make.centerY.equalTo(termButton2)
+            make.left.equalTo(termButton2.snp.right).offset(self.view.frame.width/46.85)
+        }
+        
+        termLabel3.snp.makeConstraints { make in
+            make.centerY.equalTo(termButton3)
+            make.left.equalTo(termButton3.snp.right).offset(self.view.frame.width/46.85)
         }
     }
     
