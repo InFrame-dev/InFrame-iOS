@@ -38,10 +38,12 @@ class LoginViewController: UIViewController{
         $0.backgroundColor = .rgb(red: 234, green: 135, blue: 135)
     }
     
-    lazy var signupBtn = UIButton().then {
+    lazy var signUpBtn = UIButton().then {
+        $0.backgroundColor = .white
         $0.setTitle("Sign Up", for: .normal)
         $0.setTitleColor(.rgb(red: 153, green: 153, blue: 153), for: .normal)
         $0.dynamicFont(fontSize: 20, currentFontName: "SeoulNamsanM")
+        $0.addTarget(self, action: #selector(onTapSignUp), for: .touchUpInside)
     }
     
     //MARK: - Lifecycle
@@ -51,6 +53,11 @@ class LoginViewController: UIViewController{
     }
        
     //MARK: - Selectors
+    @objc
+    func onTapSignUp(){
+        let controller = SignUpViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
     
     //MARK: - Helpers
     func configureUI(){
@@ -70,7 +77,7 @@ class LoginViewController: UIViewController{
         view.addSubview(pwContainer)
         view.addSubview(forgotPwBtn)
         view.addSubview(loginBtn)
-        view.addSubview(signupBtn)
+        view.addSubview(signUpBtn)
     }
     
     func cornerRadius(){
@@ -113,7 +120,7 @@ class LoginViewController: UIViewController{
             make.height.equalToSuperview().dividedBy(24.61)
         }
         
-        signupBtn.snp.makeConstraints { make in
+        signUpBtn.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(loginBtn).offset(self.view.frame.height/15.92)
             make.width.equalToSuperview().dividedBy(5)
