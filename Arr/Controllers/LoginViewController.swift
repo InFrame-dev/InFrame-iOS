@@ -39,6 +39,7 @@ class LoginViewController: UIViewController{
     }
     
     lazy var signUpBtn = UIButton().then {
+        $0.backgroundColor = .white
         $0.setTitle("Sign Up", for: .normal)
         $0.setTitleColor(.rgb(red: 153, green: 153, blue: 153), for: .normal)
         $0.dynamicFont(fontSize: 20, currentFontName: "SeoulNamsanM")
