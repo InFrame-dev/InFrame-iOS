@@ -35,11 +35,13 @@ class SignUpViewController: UIViewController{
     lazy var pwContainer = SignUpTextFieldView().then {
         $0.tfTitle.text = "비밀번호"
         $0.tf.placeholder = "비밀번호"
+        $0.tf.isSecureTextEntry = true
     }
     
     lazy var rePwContainer = SignUpTextFieldView().then {
         $0.tfTitle.text = "비밀번호 확인"
         $0.tf.placeholder = "비밀번호 확인"
+        $0.tf.isSecureTextEntry = true
     }
     
     lazy var nameContainer = SignUpTextFieldView().then {
