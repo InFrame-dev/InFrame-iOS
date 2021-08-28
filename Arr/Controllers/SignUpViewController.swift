@@ -113,6 +113,10 @@ class SignUpViewController: UIViewController{
         $0.textColor = .rgb(red: 196, green: 196, blue: 196)
         $0.dynamicFont(fontSize: 15, currentFontName: "SeoulNamsanM")
     }
+    
+    lazy var termInButton1 = TermInButtonView()
+    lazy var termInButton2 = TermInButtonView()
+    lazy var termInButton3 = TermInButtonView()
 
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -153,6 +157,9 @@ class SignUpViewController: UIViewController{
         view.addSubview(termLabel1)
         view.addSubview(termLabel2)
         view.addSubview(termLabel3)
+        view.addSubview(termInButton1)
+        view.addSubview(termInButton2)
+        view.addSubview(termInButton3)
     }
     
     func cornerRadius(){
@@ -321,6 +328,25 @@ class SignUpViewController: UIViewController{
         termLabel3.snp.makeConstraints { make in
             make.centerY.equalTo(termButton3)
             make.left.equalTo(termButton3.snp.right).offset(self.view.frame.width/46.85)
+        }
+        
+        termInButton1.snp.makeConstraints { make in
+            make.centerY.equalTo(termLabel1)
+            make.left.equalTo(termLabel1.snp.right).offset(self.view.frame.width/2.12)
+            make.width.equalToSuperview().dividedBy(75)
+            make.height.equalToSuperview().dividedBy(90.22)
+        }
+        
+        termInButton2.snp.makeConstraints { make in
+            make.centerY.equalTo(termLabel2)
+            make.left.equalTo(termInButton1)
+            make.width.height.equalTo(termInButton1)
+        }
+        
+        termInButton3.snp.makeConstraints { make in
+            make.centerY.equalTo(termLabel3)
+            make.left.equalTo(termInButton1)
+            make.width.height.equalTo(termInButton1)
         }
     }
     
