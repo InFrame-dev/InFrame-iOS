@@ -11,12 +11,12 @@ import Then
 
 class LoginTextFieldView: UIView {
     lazy var tfTitle = UILabel().then {
-        $0.text = "ID"
+        $0.text = "아이디"
         $0.dynamicFont(fontSize: 15, currentFontName: "SeoulNamsanM")
         $0.textColor = .rgb(red: 255, green: 109, blue: 107)
     }
     lazy var tf = UITextField().then {
-        $0.placeholder = "ID를 입력해주세요."
+        $0.placeholder = "아이디를 입력해주세요."
         $0.dynamicFont(fontSize: 14, currentFontName: "SeoulNamsanM")
         $0.textColor = .black
     }
