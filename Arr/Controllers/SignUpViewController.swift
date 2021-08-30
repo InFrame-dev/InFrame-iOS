@@ -140,6 +140,7 @@ class SignUpViewController: UIViewController{
         $0.setTitleColor(.rgb(red: 255, green: 109, blue: 107), for: .normal)
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.rgb(red: 255, green: 109, blue: 107).cgColor
+        $0.addTarget(self, action: #selector(goBack), for: .touchUpInside)
     }
 
     //MARK: - Lifecycle
