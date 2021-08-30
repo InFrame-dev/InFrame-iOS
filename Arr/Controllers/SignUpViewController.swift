@@ -133,6 +133,15 @@ class SignUpViewController: UIViewController{
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.rgb(red: 255, green: 109, blue: 107).cgColor
     }
+    
+    lazy var backBtn = UIButton().then {
+        $0.setTitle("취소하기", for: .normal)
+        $0.dynamicFont(fontSize: 12, currentFontName: "SeoulNamsanL")
+        $0.setTitleColor(.rgb(red: 255, green: 109, blue: 107), for: .normal)
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.rgb(red: 255, green: 109, blue: 107).cgColor
+        $0.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+    }
 
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -221,6 +230,11 @@ class SignUpViewController: UIViewController{
         }
     }
     
+    @objc
+    func goBack(){
+        navigationController?.popViewController(animated: true )
+    }
+    
     //MARK: - Helpers
     func configureUI(){
         view.backgroundColor = .white
@@ -256,6 +270,7 @@ class SignUpViewController: UIViewController{
         view.addSubview(termInButton2)
         view.addSubview(termInButton3)
         view.addSubview(signUpBtn)
+        view.addSubview(backBtn)
     }
     
     func cornerRadius(){
@@ -267,6 +282,7 @@ class SignUpViewController: UIViewController{
         termButton2.layer.cornerRadius = self.view.frame.width/53.57
         termButton3.layer.cornerRadius = self.view.frame.width/53.57
         signUpBtn.layer.cornerRadius = self.view.frame.width/27.07
+        backBtn.layer.cornerRadius = self.view.frame.width/27.07
     }
     
     func location(){
@@ -449,6 +465,13 @@ class SignUpViewController: UIViewController{
         signUpBtn.snp.makeConstraints { make in
             make.top.equalTo(termInButton3).offset(self.view.frame.height/28)
             make.right.equalTo(termInButton3).offset(self.view.frame.width/41.67)
+            make.width.equalToSuperview().dividedBy(4.69)
+            make.height.equalToSuperview().dividedBy(30.07)
+        }
+        
+        backBtn.snp.makeConstraints { make in
+            make.top.equalTo(signUpBtn)
+            make.right.equalTo(signUpBtn.snp.left).offset(-self.view.frame.width/46.88)
             make.width.equalToSuperview().dividedBy(4.69)
             make.height.equalToSuperview().dividedBy(30.07)
         }
