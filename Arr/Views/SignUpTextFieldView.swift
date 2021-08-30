@@ -19,6 +19,7 @@ class SignUpTextFieldView: UIView {
         $0.placeholder = "아이디를 입력해주세요."
         $0.dynamicFont(fontSize: 14, currentFontName: "SeoulNamsanM")
         $0.textColor = .black
+        $0.setPlaceholderColor(.rgb(red: 196, green: 196, blue: 196))
     }
     lazy var divView = UIView().then {
         $0.backgroundColor = .rgb(red: 196, green: 196, blue: 196)
