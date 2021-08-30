@@ -229,7 +229,10 @@ class SignUpViewController: UIViewController{
         }
     }
     
-   
+    @objc
+    func goBack(){
+        navigationController?.popViewController(animated: true )
+    }
     
     //MARK: - Helpers
     func configureUI(){
