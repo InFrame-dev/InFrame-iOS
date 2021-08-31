@@ -143,6 +143,10 @@ class LoginViewController: UIViewController{
         
         pwContainer.loginTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
     }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+    }
 }
 
 //MARK: - Preview
