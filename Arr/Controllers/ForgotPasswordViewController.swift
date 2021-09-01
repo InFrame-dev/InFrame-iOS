@@ -70,14 +70,14 @@ class ForgotPasswordViewController: UIViewController{
     lazy var changePwBtn = UIButton().then {
         $0.setTitle("비밀번호 변경", for: .normal)
         $0.setTitleColor(.white, for: .normal)
-        $0.dynamicFont(fontSize: 20, currentFontName: "SeoulNamsanM")
+        $0.dynamicFont(fontSize: 20, currentFontName: "SeoulNamsanL")
         $0.backgroundColor = .rgb(red: 234, green: 135, blue: 135)
     }
     
     lazy var goLoginBtn = UIButton().then {
         $0.setTitle("로그인 하러 가기", for: .normal)
         $0.setTitleColor(.rgb(red: 153, green: 153, blue: 153), for: .normal)
-        $0.dynamicFont(fontSize: 14, currentFontName: "SeoulNamsanM")
+        $0.dynamicFont(fontSize: 14, currentFontName: "SeoulNamsanL")
         $0.addTarget(self, action: #selector(goBack), for: .touchUpInside)
     }
     
