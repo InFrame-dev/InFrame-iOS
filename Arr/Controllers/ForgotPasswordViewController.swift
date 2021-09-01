@@ -41,6 +41,12 @@ class ForgotPasswordViewController: UIViewController{
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.rgb(red: 255, green: 109, blue: 107).cgColor
     }
+    
+    lazy var certificationNumContainer = SignUpTextFieldView().then {
+        $0.tfTitle.text = "인증 번호"
+        $0.tf.placeholder = "인증번호 입력"
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +73,7 @@ class ForgotPasswordViewController: UIViewController{
         view.addSubview(nameContainer)
         view.addSubview(phoneNumContainer)
         view.addSubview(certificationBtn)
+        view.addSubview(certificationNumContainer)
     }
     
     func cornerRadius(){
@@ -121,6 +128,21 @@ class ForgotPasswordViewController: UIViewController{
             make.width.equalToSuperview().dividedBy(4.69)
             make.height.equalToSuperview().dividedBy(30.07)
         }
+        
+        certificationNumContainer.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(self.view.frame.width/7.81)
+            make.width.equalToSuperview().dividedBy(1.88)
+            make.height.equalToSuperview().dividedBy(20.3)
+            make.top.equalTo(phoneNumContainer.snp.bottom).offset(self.view.frame.height/33.83)
+        }
+        
+        certificationNumContainer.tf.snp.makeConstraints { make in
+            make.left.equalTo(certificationNumContainer)
+        }
+        
+        certificationNumContainer.divView.snp.makeConstraints { make in
+            make.left.equalTo(certificationNumContainer)
+        }
     }
     
     func textFieldContainerViewSetting(){
@@ -144,6 +166,13 @@ class ForgotPasswordViewController: UIViewController{
         phoneNumContainer.addSubview(phoneNumContainer.divView)
         
         phoneNumContainer.signUpTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
+    
+        // certificationNumContainer Setting
+        certificationNumContainer.addSubview(certificationNumContainer.tfTitle)
+        certificationNumContainer.addSubview(certificationNumContainer.tf)
+        certificationNumContainer.addSubview(certificationNumContainer.divView)
+        
+        certificationNumContainer.signUpTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
