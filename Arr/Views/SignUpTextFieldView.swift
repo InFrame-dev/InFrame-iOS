@@ -12,12 +12,12 @@ import Then
 class SignUpTextFieldView: UIView {
     lazy var tfTitle = UILabel().then {
         $0.text = "아이디"
-        $0.dynamicFont(fontSize: 15, currentFontName: "SeoulNamsanM")
+        $0.dynamicFont(fontSize: 15, currentFontName: "SeoulNamsanL")
         $0.textColor = .rgb(red: 255, green: 109, blue: 107)
     }
     lazy var tf = UITextField().then {
         $0.placeholder = "아이디"
-        $0.dynamicFont(fontSize: 14, currentFontName: "SeoulNamsanM")
+        $0.dynamicFont(fontSize: 14, currentFontName: "SeoulNamsanL")
         $0.textColor = .black
         $0.setPlaceholderColor(.rgb(red: 196, green: 196, blue: 196))
     }
