@@ -29,6 +29,11 @@ class ForgotPasswordViewController: UIViewController{
         $0.tf.placeholder = "실명을 입력해주세요"
     }
     
+    lazy var phoneNumContainer = SignUpTextFieldView().then {
+        $0.tfTitle.text = "휴대폰 번호"
+        $0.tf.placeholder = "숫자만 입력해주세요"
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +58,7 @@ class ForgotPasswordViewController: UIViewController{
         view.addSubview(titleLabel)
         view.addSubview(idContainer)
         view.addSubview(nameContainer)
+        view.addSubview(phoneNumContainer)
     }
     
     func cornerRadius(){
@@ -85,6 +91,21 @@ class ForgotPasswordViewController: UIViewController{
             make.height.equalToSuperview().dividedBy(20.3)
             make.top.equalTo(idContainer.snp.bottom).offset(self.view.frame.height/33.83)
         }
+        
+        phoneNumContainer.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(self.view.frame.width/7.81)
+            make.width.equalToSuperview().dividedBy(1.88)
+            make.height.equalToSuperview().dividedBy(20.3)
+            make.top.equalTo(nameContainer.snp.bottom).offset(self.view.frame.height/33.83)
+        }
+        
+        phoneNumContainer.tf.snp.makeConstraints { make in
+            make.left.equalTo(phoneNumContainer)
+        }
+        
+        phoneNumContainer.divView.snp.makeConstraints { make in
+            make.left.equalTo(phoneNumContainer)
+        }
     }
     
     func textFieldContainerViewSetting(){
@@ -101,6 +122,13 @@ class ForgotPasswordViewController: UIViewController{
         nameContainer.addSubview(nameContainer.divView)
         
         nameContainer.signUpTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
+    
+        // phoneNumContainer Setting
+        phoneNumContainer.addSubview(phoneNumContainer.tfTitle)
+        phoneNumContainer.addSubview(phoneNumContainer.tf)
+        phoneNumContainer.addSubview(phoneNumContainer.divView)
+        
+        phoneNumContainer.signUpTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
