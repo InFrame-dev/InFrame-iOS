@@ -520,7 +520,7 @@ class SignUpViewController: UIViewController{
         
         phoneNumContainer.signUpTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
         
-        // phoneNumContainer Setting
+        // certificationNumContainer Setting
         certificationNumContainer.addSubview(certificationNumContainer.tfTitle)
         certificationNumContainer.addSubview(certificationNumContainer.tf)
         certificationNumContainer.addSubview(certificationNumContainer.divView)
