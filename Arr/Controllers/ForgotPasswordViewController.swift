@@ -54,6 +54,14 @@ class ForgotPasswordViewController: UIViewController{
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.rgb(red: 255, green: 109, blue: 107).cgColor
     }
+    
+    lazy var newPwContainer = SignUpTextFieldView().then {
+        $0.tfTitle.text = "새로운 비밀번호"
+        $0.tf.placeholder = "새로운 비밀번호"
+        $0.tf.isSecureTextEntry = true
+    }
+    
+
 
     
     //MARK: - Lifecycle
@@ -84,6 +92,7 @@ class ForgotPasswordViewController: UIViewController{
         view.addSubview(certificationBtn)
         view.addSubview(certificationNumContainer)
         view.addSubview(certificationCheckBtn)
+        view.addSubview(newPwContainer)
     }
     
     func cornerRadius(){
@@ -161,6 +170,13 @@ class ForgotPasswordViewController: UIViewController{
             make.width.equalToSuperview().dividedBy(4.69)
             make.height.equalToSuperview().dividedBy(30.07)
         }
+        
+        newPwContainer.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.34)
+            make.height.equalToSuperview().dividedBy(20.3)
+            make.top.equalTo(certificationNumContainer.snp.bottom).offset(self.view.frame.height/33.83)
+        }
     }
     
     func textFieldContainerViewSetting(){
@@ -191,6 +207,13 @@ class ForgotPasswordViewController: UIViewController{
         certificationNumContainer.addSubview(certificationNumContainer.divView)
         
         certificationNumContainer.signUpTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
+        
+        // newPwContainer Setting
+        newPwContainer.addSubview(newPwContainer.tfTitle)
+        newPwContainer.addSubview(newPwContainer.tf)
+        newPwContainer.addSubview(newPwContainer.divView)
+        
+        newPwContainer.signUpTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
