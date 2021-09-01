@@ -11,7 +11,16 @@ import Then
 
 class ForgotPasswordViewController: UIViewController{
     //MARK: - Properties
-
+    
+    lazy var titleLine = UIView().then {
+        $0.backgroundColor = .rgb(red: 255, green: 214, blue: 214)
+    }
+    
+    lazy var titleLabel = UILabel().then {
+        $0.text = "비밀번호 변경하기"
+        $0.textColor = .rgb(red: 255, green: 135, blue: 133)
+        $0.dynamicFont(fontSize: 23, currentFontName: "SeoulNamsanM")
+    }
 
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -33,7 +42,8 @@ class ForgotPasswordViewController: UIViewController{
     }
     
     func addView(){
-        
+        view.addSubview(titleLine)
+        view.addSubview(titleLabel)
     }
     
     func cornerRadius(){
@@ -41,7 +51,17 @@ class ForgotPasswordViewController: UIViewController{
     }
     
     func location(){
+        titleLine.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(self.view.frame.height/13.76)
+            make.left.equalToSuperview().offset(self.view.frame.width/10.42)
+            make.width.equalToSuperview().dividedBy(2.15)
+            make.height.equalToSuperview().dividedBy(90.22)
+        }
         
+        titleLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(titleLine).offset(-self.view.frame.height/406)
+            make.left.equalToSuperview().offset(self.view.frame.width/7.98)
+        }
     }
     
     
