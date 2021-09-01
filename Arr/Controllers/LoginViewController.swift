@@ -29,6 +29,7 @@ class LoginViewController: UIViewController{
         $0.setTitle("비밀번호를 잊어버렸어요!", for: .normal)
         $0.setTitleColor(.rgb(red: 153, green: 153, blue: 153), for: .normal)
         $0.dynamicFont(fontSize: 14, currentFontName: "SeoulNamsanM")
+        $0.addTarget(self, action: #selector(onTapForgotPw), for: .touchUpInside)
     }
     
     lazy var loginBtn = UIButton().then {
@@ -56,6 +57,12 @@ class LoginViewController: UIViewController{
     @objc
     func onTapSignUp(){
         let controller = SignUpViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc
+    func onTapForgotPw(){
+        let controller = ForgotPasswordViewController()
         navigationController?.pushViewController(controller, animated: true)
     }
     

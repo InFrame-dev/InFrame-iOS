@@ -78,6 +78,7 @@ class ForgotPasswordViewController: UIViewController{
         $0.setTitle("로그인 하러 가기", for: .normal)
         $0.setTitleColor(.rgb(red: 153, green: 153, blue: 153), for: .normal)
         $0.dynamicFont(fontSize: 14, currentFontName: "SeoulNamsanM")
+        $0.addTarget(self, action: #selector(goBack), for: .touchUpInside)
     }
     
     //MARK: - Lifecycle
@@ -88,7 +89,10 @@ class ForgotPasswordViewController: UIViewController{
        
     //MARK: - Selectors
     
-    
+    @objc
+    func goBack(){
+        navigationController?.popViewController(animated: true )
+    }
     
     //MARK: - Helpers
     func configureUI(){
