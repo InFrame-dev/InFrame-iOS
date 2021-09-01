@@ -76,7 +76,7 @@ class ForgotPasswordViewController: UIViewController{
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().dividedBy(1.34)
             make.height.equalToSuperview().dividedBy(20.3)
-            make.top.equalTo(titleLine).offset(self.view.frame.height/19.33)
+            make.top.equalTo(titleLine.snp.bottom).offset(self.view.frame.height/19.33)
         }
         
         nameContainer.snp.makeConstraints { make in
