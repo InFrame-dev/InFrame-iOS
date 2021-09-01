@@ -88,6 +88,7 @@ class ForgotPasswordViewController: UIViewController{
     
     func cornerRadius(){
         certificationBtn.layer.cornerRadius = self.view.frame.width/27.07
+        certificationCheckBtn.layer.cornerRadius = self.view.frame.width/27.07
     }
     
     func location(){
