@@ -61,7 +61,11 @@ class ForgotPasswordViewController: UIViewController{
         $0.tf.isSecureTextEntry = true
     }
     
-
+    lazy var newRePwContainer = SignUpTextFieldView().then {
+        $0.tfTitle.text = "비밀번호 확인"
+        $0.tf.placeholder = "비밀번호 확인"
+        $0.tf.isSecureTextEntry = true
+    }
 
     
     //MARK: - Lifecycle
@@ -93,6 +97,7 @@ class ForgotPasswordViewController: UIViewController{
         view.addSubview(certificationNumContainer)
         view.addSubview(certificationCheckBtn)
         view.addSubview(newPwContainer)
+        view.addSubview(newRePwContainer)
     }
     
     func cornerRadius(){
@@ -177,6 +182,13 @@ class ForgotPasswordViewController: UIViewController{
             make.height.equalToSuperview().dividedBy(20.3)
             make.top.equalTo(certificationNumContainer.snp.bottom).offset(self.view.frame.height/33.83)
         }
+        
+        newRePwContainer.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.34)
+            make.height.equalToSuperview().dividedBy(20.3)
+            make.top.equalTo(newPwContainer.snp.bottom).offset(self.view.frame.height/33.83)
+        }
     }
     
     func textFieldContainerViewSetting(){
@@ -214,6 +226,13 @@ class ForgotPasswordViewController: UIViewController{
         newPwContainer.addSubview(newPwContainer.divView)
         
         newPwContainer.signUpTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
+        
+        // newRePwContainer Setting
+        newRePwContainer.addSubview(newRePwContainer.tfTitle)
+        newRePwContainer.addSubview(newRePwContainer.tf)
+        newRePwContainer.addSubview(newRePwContainer.divView)
+        
+        newRePwContainer.signUpTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
