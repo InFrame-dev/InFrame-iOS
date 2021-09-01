@@ -28,14 +28,14 @@ class LoginViewController: UIViewController{
     lazy var forgotPwBtn = UIButton().then {
         $0.setTitle("비밀번호를 잊어버렸어요!", for: .normal)
         $0.setTitleColor(.rgb(red: 153, green: 153, blue: 153), for: .normal)
-        $0.dynamicFont(fontSize: 14, currentFontName: "SeoulNamsanM")
+        $0.dynamicFont(fontSize: 14, currentFontName: "SeoulNamsanL")
         $0.addTarget(self, action: #selector(onTapForgotPw), for: .touchUpInside)
     }
     
     lazy var loginBtn = UIButton().then {
         $0.setTitle("Log In", for: .normal)
         $0.setTitleColor(.white, for: .normal)
-        $0.dynamicFont(fontSize: 20, currentFontName: "SeoulNamsanM")
+        $0.dynamicFont(fontSize: 20, currentFontName: "SeoulNamsanL")
         $0.backgroundColor = .rgb(red: 234, green: 135, blue: 135)
     }
     
@@ -43,7 +43,7 @@ class LoginViewController: UIViewController{
         $0.backgroundColor = .white
         $0.setTitle("Sign Up", for: .normal)
         $0.setTitleColor(.rgb(red: 153, green: 153, blue: 153), for: .normal)
-        $0.dynamicFont(fontSize: 20, currentFontName: "SeoulNamsanM")
+        $0.dynamicFont(fontSize: 20, currentFontName: "SeoulNamsanL")
         $0.addTarget(self, action: #selector(onTapSignUp), for: .touchUpInside)
     }
     
