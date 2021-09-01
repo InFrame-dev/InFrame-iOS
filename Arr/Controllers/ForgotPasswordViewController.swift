@@ -24,6 +24,11 @@ class ForgotPasswordViewController: UIViewController{
 
     lazy var idContainer = SignUpTextFieldView()
     
+    lazy var nameContainer = SignUpTextFieldView().then {
+        $0.tfTitle.text = "이름"
+        $0.tf.placeholder = "실명을 입력해주세요"
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +52,7 @@ class ForgotPasswordViewController: UIViewController{
         view.addSubview(titleLine)
         view.addSubview(titleLabel)
         view.addSubview(idContainer)
+        view.addSubview(nameContainer)
     }
     
     func cornerRadius(){
@@ -73,12 +79,11 @@ class ForgotPasswordViewController: UIViewController{
             make.top.equalTo(titleLine).offset(self.view.frame.height/19.33)
         }
         
-        idContainer.tf.snp.makeConstraints { make in
-            make.left.equalTo(idContainer)
-        }
-        
-        idContainer.divView.snp.makeConstraints { make in
-            make.left.equalTo(idContainer)
+        nameContainer.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.34)
+            make.height.equalToSuperview().dividedBy(20.3)
+            make.top.equalTo(idContainer.snp.bottom).offset(self.view.frame.height/33.83)
         }
     }
     
@@ -89,6 +94,13 @@ class ForgotPasswordViewController: UIViewController{
         idContainer.addSubview(idContainer.divView)
         
         idContainer.signUpTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
+        
+        // nameContainer Settig
+        nameContainer.addSubview(nameContainer.tfTitle)
+        nameContainer.addSubview(nameContainer.tf)
+        nameContainer.addSubview(nameContainer.divView)
+        
+        nameContainer.signUpTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
