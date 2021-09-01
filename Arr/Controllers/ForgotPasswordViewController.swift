@@ -88,7 +88,10 @@ class ForgotPasswordViewController: UIViewController{
        
     //MARK: - Selectors
     
-    
+    @objc
+    func goBack(){
+        navigationController?.popViewController(animated: true )
+    }
     
     //MARK: - Helpers
     func configureUI(){
