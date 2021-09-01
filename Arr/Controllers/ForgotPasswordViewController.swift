@@ -74,6 +74,12 @@ class ForgotPasswordViewController: UIViewController{
         $0.backgroundColor = .rgb(red: 234, green: 135, blue: 135)
     }
     
+    lazy var goLoginBtn = UIButton().then {
+        $0.setTitle("로그인 하러 가기", for: .normal)
+        $0.setTitleColor(.rgb(red: 153, green: 153, blue: 153), for: .normal)
+        $0.dynamicFont(fontSize: 14, currentFontName: "SeoulNamsanM")
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,6 +111,7 @@ class ForgotPasswordViewController: UIViewController{
         view.addSubview(newPwContainer)
         view.addSubview(newRePwContainer)
         view.addSubview(changePwBtn)
+        view.addSubview(goLoginBtn)
     }
     
     func cornerRadius(){
@@ -203,6 +210,13 @@ class ForgotPasswordViewController: UIViewController{
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().dividedBy(1.34)
             make.height.equalToSuperview().dividedBy(24.61)
+        }
+        
+        goLoginBtn.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(changePwBtn.snp.bottom).offset(self.view.frame.height/4.69)
+            make.height.equalToSuperview().dividedBy(58)
+            make.width.equalToSuperview().dividedBy(3.5)
         }
     }
     
