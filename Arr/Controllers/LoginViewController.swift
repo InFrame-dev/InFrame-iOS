@@ -59,6 +59,12 @@ class LoginViewController: UIViewController{
         navigationController?.pushViewController(controller, animated: true)
     }
     
+    @objc
+    func onTapForgotPw(){
+        let controller = ForgotPasswordViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
     //MARK: - Helpers
     func configureUI(){
         view.backgroundColor = .white
