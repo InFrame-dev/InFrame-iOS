@@ -67,6 +67,12 @@ class ForgotPasswordViewController: UIViewController{
         $0.tf.isSecureTextEntry = true
     }
 
+    lazy var changePwBtn = UIButton().then {
+        $0.setTitle("비밀번호 변경", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.dynamicFont(fontSize: 20, currentFontName: "SeoulNamsanM")
+        $0.backgroundColor = .rgb(red: 234, green: 135, blue: 135)
+    }
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -98,11 +104,13 @@ class ForgotPasswordViewController: UIViewController{
         view.addSubview(certificationCheckBtn)
         view.addSubview(newPwContainer)
         view.addSubview(newRePwContainer)
+        view.addSubview(changePwBtn)
     }
     
     func cornerRadius(){
         certificationBtn.layer.cornerRadius = self.view.frame.width/27.07
         certificationCheckBtn.layer.cornerRadius = self.view.frame.width/27.07
+        changePwBtn.layer.cornerRadius = self.view.frame.width/25
     }
     
     func location(){
@@ -188,6 +196,13 @@ class ForgotPasswordViewController: UIViewController{
             make.width.equalToSuperview().dividedBy(1.34)
             make.height.equalToSuperview().dividedBy(20.3)
             make.top.equalTo(newPwContainer.snp.bottom).offset(self.view.frame.height/33.83)
+        }
+        
+        changePwBtn.snp.makeConstraints { make in
+            make.top.equalTo(newRePwContainer.snp.bottom).offset(self.view.frame.height/12.28)
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.34)
+            make.height.equalToSuperview().dividedBy(24.61)
         }
     }
     
