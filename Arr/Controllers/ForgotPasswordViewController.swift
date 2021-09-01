@@ -22,6 +22,8 @@ class ForgotPasswordViewController: UIViewController{
         $0.dynamicFont(fontSize: 23, currentFontName: "SeoulNamsanM")
     }
 
+    lazy var idContainer = SignUpTextFieldView()
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +37,7 @@ class ForgotPasswordViewController: UIViewController{
     //MARK: - Helpers
     func configureUI(){
         view.backgroundColor = .white
-
+        textFieldContainerViewSetting()
         addView()
         cornerRadius()
         location()
@@ -44,6 +46,7 @@ class ForgotPasswordViewController: UIViewController{
     func addView(){
         view.addSubview(titleLine)
         view.addSubview(titleLabel)
+        view.addSubview(idContainer)
     }
     
     func cornerRadius(){
@@ -62,8 +65,31 @@ class ForgotPasswordViewController: UIViewController{
             make.bottom.equalTo(titleLine).offset(-self.view.frame.height/406)
             make.left.equalToSuperview().offset(self.view.frame.width/7.98)
         }
+        
+        idContainer.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.34)
+            make.height.equalToSuperview().dividedBy(20.3)
+            make.top.equalTo(titleLine).offset(self.view.frame.height/19.33)
+        }
+        
+        idContainer.tf.snp.makeConstraints { make in
+            make.left.equalTo(idContainer)
+        }
+        
+        idContainer.divView.snp.makeConstraints { make in
+            make.left.equalTo(idContainer)
+        }
     }
     
+    func textFieldContainerViewSetting(){
+        // idContainer Settig
+        idContainer.addSubview(idContainer.tfTitle)
+        idContainer.addSubview(idContainer.tf)
+        idContainer.addSubview(idContainer.divView)
+        
+        idContainer.signUpTfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
