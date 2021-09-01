@@ -47,6 +47,15 @@ class ForgotPasswordViewController: UIViewController{
         $0.tf.placeholder = "인증번호 입력"
     }
     
+    lazy var certificationCheckBtn = UIButton().then {
+        $0.setTitle("인증번호 확인", for: .normal)
+        $0.dynamicFont(fontSize: 12, currentFontName: "SeoulNamsanL")
+        $0.setTitleColor(.rgb(red: 255, green: 109, blue: 107), for: .normal)
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.rgb(red: 255, green: 109, blue: 107).cgColor
+    }
+
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +83,7 @@ class ForgotPasswordViewController: UIViewController{
         view.addSubview(phoneNumContainer)
         view.addSubview(certificationBtn)
         view.addSubview(certificationNumContainer)
+        view.addSubview(certificationCheckBtn)
     }
     
     func cornerRadius(){
@@ -142,6 +152,13 @@ class ForgotPasswordViewController: UIViewController{
         
         certificationNumContainer.divView.snp.makeConstraints { make in
             make.left.equalTo(certificationNumContainer)
+        }
+        
+        certificationCheckBtn.snp.makeConstraints { make in
+            make.bottom.equalTo(certificationNumContainer)
+            make.left.equalTo(certificationNumContainer.snp.right)
+            make.width.equalToSuperview().dividedBy(4.69)
+            make.height.equalToSuperview().dividedBy(30.07)
         }
     }
     
