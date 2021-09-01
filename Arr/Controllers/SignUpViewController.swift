@@ -101,25 +101,25 @@ class SignUpViewController: UIViewController{
     lazy var allAgreeLabel = UILabel().then {
         $0.text = "모두 동의합니다"
         $0.textColor = .rgb(red: 255, green: 135, blue: 133)
-        $0.dynamicFont(fontSize: 15, currentFontName: "SeoulNamsanM")
+        $0.dynamicFont(fontSize: 15, currentFontName: "SeoulNamsanL")
     }
     
     lazy var termLabel1 = UILabel().then {
         $0.text = "이용약관 동의"
         $0.textColor = .rgb(red: 196, green: 196, blue: 196)
-        $0.dynamicFont(fontSize: 15, currentFontName: "SeoulNamsanM")
+        $0.dynamicFont(fontSize: 15, currentFontName: "SeoulNamsanL")
     }
     
     lazy var termLabel2 = UILabel().then {
         $0.text = "개인정보 취급방침 동의"
         $0.textColor = .rgb(red: 196, green: 196, blue: 196)
-        $0.dynamicFont(fontSize: 15, currentFontName: "SeoulNamsanM")
+        $0.dynamicFont(fontSize: 15, currentFontName: "SeoulNamsanL")
     }
     
     lazy var termLabel3 = UILabel().then {
         $0.text = "마케팅 정보 수신 동의"
         $0.textColor = .rgb(red: 196, green: 196, blue: 196)
-        $0.dynamicFont(fontSize: 15, currentFontName: "SeoulNamsanM")
+        $0.dynamicFont(fontSize: 15, currentFontName: "SeoulNamsanL")
     }
     
     lazy var termInButton1 = TermInButtonView()
