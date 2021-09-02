@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AA2D93B926DF0E62006FDE74 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2D93B826DF0E62006FDE74 /* ForgotPasswordViewController.swift */; };
+		AAABA7EE26E0BF49004E53AD /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAABA7ED26E0BF49004E53AD /* SettingViewController.swift */; };
 		AACCE61226D4F17C00C11A48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACCE61126D4F17C00C11A48 /* AppDelegate.swift */; };
 		AACCE61426D4F17C00C11A48 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACCE61326D4F17C00C11A48 /* SceneDelegate.swift */; };
 		AACCE61B26D4F18900C11A48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AACCE61A26D4F18900C11A48 /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		6736A0E7056C0B7D361B33CD /* Pods-Arr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Arr.debug.xcconfig"; path = "Target Support Files/Pods-Arr/Pods-Arr.debug.xcconfig"; sourceTree = "<group>"; };
 		AA2D93B826DF0E62006FDE74 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		AAABA7ED26E0BF49004E53AD /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		AACCE60E26D4F17C00C11A48 /* Arr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Arr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AACCE61126D4F17C00C11A48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AACCE61326D4F17C00C11A48 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				AACCE62B26D50B9000C11A48 /* LoginViewController.swift */,
 				AACCE63326D759F200C11A48 /* SignUpViewController.swift */,
 				AA2D93B826DF0E62006FDE74 /* ForgotPasswordViewController.swift */,
+				AAABA7ED26E0BF49004E53AD /* SettingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AACCE63E26D7D9DF00C11A48 /* SignUpTextFieldView.swift in Sources */,
+				AAABA7EE26E0BF49004E53AD /* SettingViewController.swift in Sources */,
 				AACCE63426D759F200C11A48 /* SignUpViewController.swift in Sources */,
 				AACCE63026D5DB9500C11A48 /* Extension.swift in Sources */,
 				AACCE62E26D5D97800C11A48 /* LoginTextFieldView.swift in Sources */,
