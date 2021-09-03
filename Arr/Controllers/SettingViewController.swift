@@ -12,6 +12,10 @@ import Then
 class SettingViewController:UIViewController {
     //MARK: - Properties
     
+    lazy var backBtn = UIButton().then {
+        $0.setImage(UIImage(named: "Arr-SettingBackBtn"), for: .normal)
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +34,7 @@ class SettingViewController:UIViewController {
     }
     
     func addView(){
-        
+        view.addSubview(backBtn)
     }
     
     func cornerRadius(){
@@ -38,7 +42,12 @@ class SettingViewController:UIViewController {
     }
     
     func location(){
-        
+        backBtn.snp.makeConstraints { make in
+            make.width.equalToSuperview().dividedBy(17.05)
+            make.height.equalToSuperview().dividedBy(47.76)
+            make.top.equalToSuperview().offset(self.view.frame.height/26.19)
+            make.left.equalToSuperview().offset(self.view.frame.width/11.36)
+        }
     }
 }
 
