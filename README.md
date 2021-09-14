@@ -1,3 +1,3 @@
-## <p align="center"> <img src="READMEData/FORES-Logo.svg" width="130px"> </p>
+## <p align="center"> <img src="READMEData/InFrame-Logo.svg" width="130px"> </p>
 
-> Arr. iOS Development 👩‍💻
+> InFrame iOS Development 👩‍💻
