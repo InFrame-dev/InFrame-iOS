@@ -1,4 +1,4 @@
-## <p align="center"> <img src="READMEData/InFrame-Logo.svg" width="130px"> </p>
+## <p align="center"> <img src="READMEData/InFrame-LogoImage.svg" width="130px"> </p>
 
 > InFrame, Your picture in frame
 
