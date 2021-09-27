@@ -161,6 +161,11 @@ class LoginViewController: UIViewController {
             make.width.equalToSuperview().dividedBy(25)
             make.height.equalToSuperview().dividedBy(90.22)
         }
+        
+        forgetLabel.snp.makeConstraints{ make in
+            make.left.equalTo(passwardLineView)
+            make.top.equalTo(passwardLineView.snp.bottom).offset(self.view.frame.height/100.75)
+        }
     }
     
     //MARK: - addView
@@ -174,6 +179,7 @@ class LoginViewController: UIViewController {
         self.view.addSubview(passwardTextField)
         self.view.addSubview(passwardLineView)
         self.view.addSubview(passwardShowButton)
+        self.view.addSubview(forgetLabel)
     }
     
     //MARK: - Selecters
