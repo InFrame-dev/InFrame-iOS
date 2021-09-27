@@ -35,6 +35,12 @@ class TermsOfServiceViewController: UIViewController {
         $0.layer.cornerRadius = 5
     }
     
+    private let allAgreeLabel = UILabel().then{
+        $0.text = "모두 확인, 동의합니다."
+        $0.textColor = UIColor.rgb(red: 155, green: 155, blue: 155)
+        $0.dynamicFont(fontSize: 11, currentFontName: "AppleSDGothicNeo-Medium")
+    }
+    
     private let useAgreeLabel = UILabel().then{
         $0.text = "이용약관 동의 (필수)"
         $0.textColor = UIColor.rgb(red: 155, green: 155, blue: 155)
@@ -106,6 +112,10 @@ class TermsOfServiceViewController: UIViewController {
         $0.spacing = self.view.frame.height/81
     }
     
+    private let allAgreeArrowButton = UIButton().then{
+        $0.setImage(UIImage(named: "InFrame_Arrow"), for: .normal)
+    }
+    
     private let useAgreeArrowButton = UIButton().then{
         $0.setImage(UIImage(named: "InFrame_Arrow"), for: .normal)
     }
@@ -130,6 +140,23 @@ class TermsOfServiceViewController: UIViewController {
     
     private let termsOfServiceTitleLabelColorArray = [UIColor.rgb(red: 126, green: 152, blue: 212), UIColor.rgb(red: 251, green: 186, blue: 200)]
     
+    lazy var completeButton = UIButton().then{
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width/1.4, height: self.view.frame.height/19.80))
+        let gradient = CAGradientLayer()
+
+        gradient.frame = view.bounds
+        gradient.colors = [UIColor(red: 126/255, green: 152/255, blue: 212/255, alpha: 1).cgColor,UIColor(red: 250/255, green: 186/255, blue: 200/255, alpha: 1).cgColor]
+        gradient.locations = [0.0 , 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+
+        $0.layer.insertSublayer(gradient, at: 0)
+        $0.clipsToBounds = true
+        $0.layer.cornerRadius = 10
+        $0.setTitle("완료", for: .normal)
+        $0.dynamicFont(fontSize: 13, currentFontName: "AppleSDGothicNeo-Bold")
+    }
+    
     //MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -151,6 +178,10 @@ class TermsOfServiceViewController: UIViewController {
         self.view.addSubview(agreeLabel)
         self.view.addSubview(allAgreeBackgroundView)
         self.view.addSubview(otherAgreeBackgroundView)
+        self.view.addSubview(completeButton)
+        allAgreeBackgroundView.addSubview(allAgreeButton)
+        allAgreeBackgroundView.addSubview(allAgreeLabel)
+        allAgreeBackgroundView.addSubview(allAgreeArrowButton)
         otherAgreeBackgroundView.addSubview(agreeButtonStackView)
         otherAgreeBackgroundView.addSubview(agreeLabelStackView)
         otherAgreeBackgroundView.addSubview(agreeArrowButtonStackView)
@@ -160,7 +191,7 @@ class TermsOfServiceViewController: UIViewController {
     func addLayout(){
         termsOfServiceTitleLabel.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(self.view.frame.width/5.75)
-            make.top.equalToSuperview().offset(self.view.frame.height/5.68)
+            make.top.equalToSuperview().offset(self.view.frame.height/4.6)
         }
         
         agreeLabel.snp.makeConstraints { make in
@@ -201,6 +232,32 @@ class TermsOfServiceViewController: UIViewController {
             make.height.equalToSuperview().dividedBy(1.2)
             make.width.equalToSuperview().dividedBy(13.57)
             make.centerY.equalToSuperview()
+        }
+        
+        allAgreeButton.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(self.view.frame.width/26.78)
+            make.width.equalToSuperview().dividedBy(13.57)
+            make.height.equalTo(allAgreeButton.snp.width)
+        }
+        
+        allAgreeLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.equalTo(agreeButtonStackView.snp.right).offset(self.view.frame.width/50)
+        }
+        
+        allAgreeArrowButton.snp.makeConstraints { make in
+            make.right.equalToSuperview().offset(-self.view.frame.width/26.78)
+            make.width.equalToSuperview().dividedBy(13.57)
+            make.height.equalTo(allAgreeArrowButton.snp.width)
+            make.centerY.equalToSuperview()
+        }
+        
+        completeButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.left.equalTo(otherAgreeBackgroundView)
+            make.top.equalTo(otherAgreeBackgroundView.snp.bottom).offset(self.view.frame.height/15)
+            make.height.equalToSuperview().dividedBy(19.80)
         }
     }
 }
