@@ -94,12 +94,14 @@ class LoginViewController: UIViewController {
         $0.layer.cornerRadius = 10
         $0.setTitle("로그인", for: .normal)
         $0.dynamicFont(fontSize: 13, currentFontName: "AppleSDGothicNeo-Bold")
+        $0.addTarget(self, action: #selector(logInButtonClicked(sender:)), for: .touchUpInside)
     }
     
     lazy var noAccountButton = UIButton().then{
         $0.setTitle("계정이 없으신가요?", for: .normal)
         $0.dynamicFont(fontSize: 11, currentFontName: "AppleSDGothicNeo-Bold")
         $0.setTitleColor(UIColor.rgb(red: 178, green: 178, blue: 178), for: .normal)
+        $0.addTarget(self, action: #selector(noAccountButtonClicked(sender:)), for: .touchUpInside)
     }
     
     var logInTitleLabelColorArray = [UIColor.rgb(red: 126, green: 152, blue: 212), UIColor.rgb(red: 251, green: 186, blue: 200)]
@@ -215,5 +217,15 @@ class LoginViewController: UIViewController {
             passwardShowButton.setImage(UIImage(named: "InFrame_Eye"), for: .normal)
             passwardTextField.isSecureTextEntry = false
         }
+    }
+    
+    @objc func logInButtonClicked(sender:UIButton){
+//        let nextVC = 메인화면()
+//        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    @objc func noAccountButtonClicked(sender:UIButton){
+        let nextVC = SignUpViewController()
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
