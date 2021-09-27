@@ -76,6 +76,7 @@ class LoginViewController: UIViewController {
     
     lazy var passwardShowButton = UIButton().then{
         $0.setImage(UIImage(named: "InFrame_Eye"), for: .normal)
+        $0.addTarget(self, action: #selector(passwardShowButtonClicked(sender:)), for: .touchUpInside)
     }
     
     lazy var logInButton = UIButton().then{
@@ -143,7 +144,7 @@ class LoginViewController: UIViewController {
         passwardTextField.snp.makeConstraints { make in
             make.left.equalTo(emailTextField)
             make.height.equalToSuperview().dividedBy(35.3)
-            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.66)
             make.top.equalTo(passwardTitleLabel.snp.bottom).offset(self.view.frame.width/172.5)
         }
         
@@ -152,6 +153,13 @@ class LoginViewController: UIViewController {
             make.left.equalTo(passwardTitleLabel)
             make.centerX.equalToSuperview()
             make.top.equalTo(passwardTextField.snp.bottom).offset(self.view.frame.width/172.5)
+        }
+
+        passwardShowButton.snp.makeConstraints { make in
+            make.right.equalTo(passwardLineView).offset(-self.view.frame.width/100)
+            make.centerY.equalTo(passwardTextField)
+            make.width.equalToSuperview().dividedBy(25)
+            make.height.equalToSuperview().dividedBy(90.22)
         }
     }
     
@@ -165,6 +173,17 @@ class LoginViewController: UIViewController {
         self.view.addSubview(passwardTitleLabel)
         self.view.addSubview(passwardTextField)
         self.view.addSubview(passwardLineView)
-        
+        self.view.addSubview(passwardShowButton)
+    }
+    
+    //MARK: - Selecters
+    @objc func passwardShowButtonClicked(sender:UIButton){
+        if passwardShowButton.imageView?.image == UIImage(named: "InFrame_Eye"){
+            passwardShowButton.setImage(UIImage(named: "InFrame_EyeNo"), for: .normal)
+            passwardTextField.isSecureTextEntry = true
+        }else{
+            passwardShowButton.setImage(UIImage(named: "InFrame_Eye"), for: .normal)
+            passwardTextField.isSecureTextEntry = false
+        }
     }
 }
