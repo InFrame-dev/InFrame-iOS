@@ -25,7 +25,8 @@ class LoginViewController: UIViewController {
     
     lazy var emailTextField = UITextField().then{
         $0.placeholder = "이메일을 입력해주세요."
-        $0.dynamicFont(fontSize: 11, currentFontName: "AppleSDGothicNeo-Thin")
+        $0.dynamicFont(fontSize: 12, currentFontName: "AppleSDGothicNeo-Medium")
+        $0.textColor = UIColor.rgb(red: 123, green: 123, blue: 123)
     }
     
     lazy var emailLineView = UIView().then{
@@ -99,6 +100,13 @@ class LoginViewController: UIViewController {
             make.left.equalTo(logInTitleLabel)
             make.top.equalTo(logInTitleLabel.snp.bottom).offset(self.view.frame.height/15.03)
         }
+        
+        emailTextField.snp.makeConstraints { make in
+            make.left.equalTo(emailTitleLabel).offset(self.view.frame.width/172.5)
+            make.height.equalToSuperview().dividedBy(35.3)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(emailTitleLabel.snp.bottom).offset(self.view.frame.width/172.5)
+        }
     }
     
     //MARK: - addView
@@ -106,5 +114,7 @@ class LoginViewController: UIViewController {
         self.view.backgroundColor = .white
         self.view.addSubview(logInTitleLabel)
         self.view.addSubview(emailTitleLabel)
+        self.view.addSubview(emailTextField)
+        
     }
 }
