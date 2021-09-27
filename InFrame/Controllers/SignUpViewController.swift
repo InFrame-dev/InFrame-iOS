@@ -124,12 +124,14 @@ class SignUpViewController: UIViewController {
         $0.layer.cornerRadius = 10
         $0.setTitle("회원가입", for: .normal)
         $0.dynamicFont(fontSize: 13, currentFontName: "AppleSDGothicNeo-Bold")
+        $0.addTarget(self, action: #selector(signUpButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private let haveAccountButton = UIButton().then{
         $0.setTitle("이미 계정이 있으신가요?", for: .normal)
         $0.dynamicFont(fontSize: 11, currentFontName: "AppleSDGothicNeo-Bold")
         $0.setTitleColor(UIColor.rgb(red: 178, green: 178, blue: 178), for: .normal)
+        $0.addTarget(self, action: #selector(haveAccountButtonClicked(sender:)), for: .touchUpInside)
     }
     
     var signUpTitleLabelColorArray = [UIColor.rgb(red: 126, green: 152, blue: 212), UIColor.rgb(red: 251, green: 186, blue: 200)]
@@ -283,5 +285,14 @@ class SignUpViewController: UIViewController {
             passwardCheckShowButton.setImage(UIImage(named: "InFrame_Eye"), for: .normal)
             passwardCheckTextField.isSecureTextEntry = false
         }
+    }
+    
+    @objc func signUpButtonClicked(sender:UIButton){
+        let nextVC = TermsOfServiceViewController()
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    @objc func haveAccountButtonClicked(sender:UIButton){
+        self.navigationController?.popViewController(animated: true)
     }
 }
