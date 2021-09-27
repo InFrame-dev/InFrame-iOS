@@ -75,6 +75,7 @@ class SignUpViewController: UIViewController {
     
     private let passwardConditionLabel = UILabel().then{
         $0.text = "비밀번호는 5~20자의 영문 소문자와 1개 이상의 숫자로 구성해주세요!"
+        $0.textColor = UIColor.rgb(red: 178, green: 178, blue: 178)
         $0.dynamicFont(fontSize: 8, currentFontName: "AppleSDGothicNeo-Medium")
     }
     
@@ -123,6 +124,12 @@ class SignUpViewController: UIViewController {
         $0.dynamicFont(fontSize: 13, currentFontName: "AppleSDGothicNeo-Bold")
     }
     
+    private let haveAccountButton = UIButton().then{
+        $0.setTitle("이미 계정이 있으신가요?", for: .normal)
+        $0.dynamicFont(fontSize: 11, currentFontName: "AppleSDGothicNeo-Bold")
+        $0.setTitleColor(UIColor.rgb(red: 178, green: 178, blue: 178), for: .normal)
+    }
+    
     var signUpTitleLabelColorArray = [UIColor.rgb(red: 126, green: 152, blue: 212), UIColor.rgb(red: 251, green: 186, blue: 200)]
     
     //MARK: - LifeCycles
@@ -144,6 +151,19 @@ class SignUpViewController: UIViewController {
         self.view.backgroundColor = .white
         self.view.addSubview(signUpTitleLabel)
         self.view.addSubview(emailTitleLabel)
+        self.view.addSubview(emailTextField)
+        self.view.addSubview(emailLineView)
+        self.view.addSubview(passwardTitleLabel)
+        self.view.addSubview(passwardTextField)
+        self.view.addSubview(passwardLineView)
+        self.view.addSubview(passwardShowButton)
+        self.view.addSubview(passwardConditionLabel)
+        self.view.addSubview(passwardCheckTitleLabel)
+        self.view.addSubview(passwardCheckTextField)
+        self.view.addSubview(passwardCheckLineView)
+        self.view.addSubview(passwardCheckShowButton)
+        self.view.addSubview(signUpButton)
+        self.view.addSubview(haveAccountButton)
     }
     
     //MARK: - addLayout
@@ -156,6 +176,89 @@ class SignUpViewController: UIViewController {
         emailTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(signUpTitleLabel.snp.bottom).offset(self.view.frame.height/15.03)
             make.left.equalTo(signUpTitleLabel)
+        }
+        
+        emailTextField.snp.makeConstraints { make in
+            make.left.equalTo(emailTitleLabel).offset(self.view.frame.width/172.5)
+            make.height.equalToSuperview().dividedBy(35.3)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(emailTitleLabel.snp.bottom).offset(self.view.frame.width/172.5)
+        }
+        
+        emailLineView.snp.makeConstraints { make in
+            make.height.equalTo(1)
+            make.left.equalTo(emailTitleLabel)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(emailTextField.snp.bottom).offset(self.view.frame.width/172.5)
+        }
+        
+        passwardTitleLabel.snp.makeConstraints { make in
+            make.left.equalTo(emailLineView)
+            make.top.equalTo(emailLineView).offset(self.view.frame.height/35.3)
+        }
+        
+        passwardTextField.snp.makeConstraints { make in
+            make.left.equalTo(emailTextField)
+            make.height.equalToSuperview().dividedBy(35.3)
+            make.width.equalToSuperview().dividedBy(1.66)
+            make.top.equalTo(passwardTitleLabel.snp.bottom).offset(self.view.frame.width/172.5)
+        }
+        
+        passwardLineView.snp.makeConstraints { make in
+            make.height.equalTo(1)
+            make.left.equalTo(passwardTitleLabel)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(passwardTextField.snp.bottom).offset(self.view.frame.width/172.5)
+        }
+        
+        passwardShowButton.snp.makeConstraints { make in
+            make.right.equalTo(passwardLineView).offset(-self.view.frame.width/100)
+            make.centerY.equalTo(passwardTextField)
+            make.width.equalToSuperview().dividedBy(25)
+            make.height.equalToSuperview().dividedBy(90.22)
+        }
+        
+        passwardConditionLabel.snp.makeConstraints { make in
+            make.left.equalTo(passwardLineView)
+            make.top.equalTo(passwardLineView.snp.bottom).offset(self.view.frame.height/203)
+        }
+        
+        passwardCheckTitleLabel.snp.makeConstraints { make in
+            make.left.equalTo(passwardConditionLabel)
+            make.top.equalTo(passwardConditionLabel).offset(self.view.frame.height/35.3)
+        }
+        
+        passwardCheckTextField.snp.makeConstraints { make in
+            make.left.equalTo(emailTextField)
+            make.height.equalToSuperview().dividedBy(35.3)
+            make.width.equalToSuperview().dividedBy(1.66)
+            make.top.equalTo(passwardCheckTitleLabel.snp.bottom).offset(self.view.frame.width/172.5)
+        }
+        
+        passwardCheckLineView.snp.makeConstraints { make in
+            make.height.equalTo(1)
+            make.left.equalTo(passwardCheckTitleLabel)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(passwardCheckTextField.snp.bottom).offset(self.view.frame.width/172.5)
+        }
+        
+        passwardCheckShowButton.snp.makeConstraints { make in
+            make.right.equalTo(passwardCheckLineView).offset(-self.view.frame.width/100)
+            make.centerY.equalTo(passwardCheckTextField)
+            make.width.equalToSuperview().dividedBy(25)
+            make.height.equalToSuperview().dividedBy(90.22)
+        }
+        
+        signUpButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.left.equalTo(passwardCheckLineView)
+            make.top.equalTo(passwardCheckLineView).offset(self.view.frame.height/13.76)
+            make.height.equalToSuperview().dividedBy(19.80)
+        }
+        
+        haveAccountButton.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-self.view.frame.height/11.94)
+            make.centerX.equalToSuperview()
         }
     }
     
