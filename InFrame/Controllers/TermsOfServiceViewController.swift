@@ -22,9 +22,9 @@ class TermsOfServiceViewController: UIViewController {
     }
     
     private let allAgreeBackgroundView = UIView().then{
-        $0.backgroundColor = UIColor.rgb(red: 254, green: 254, blue: 254)
+        $0.backgroundColor = UIColor.rgb(red: 252, green: 252, blue: 252)
         $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.rgb(red: 167, green: 167, blue: 167).cgColor
+        $0.layer.borderColor = UIColor.rgb(red: 212, green: 212, blue: 212).cgColor
         $0.layer.cornerRadius = 5
     }
     
@@ -49,6 +49,7 @@ class TermsOfServiceViewController: UIViewController {
         self.view.backgroundColor = .white
         self.view.addSubview(termsOfServiceTitleLabel)
         self.view.addSubview(agreeLabel)
+        self.view.addSubview(allAgreeBackgroundView)
     }
     
     //MARK: - addLayout
@@ -61,6 +62,13 @@ class TermsOfServiceViewController: UIViewController {
         agreeLabel.snp.makeConstraints { make in
             make.left.equalTo(termsOfServiceTitleLabel)
             make.top.equalTo(termsOfServiceTitleLabel.snp.bottom)
+        }
+        
+        allAgreeBackgroundView.snp.makeConstraints { make in
+            make.left.equalTo(agreeLabel)
+            make.top.equalTo(agreeLabel.snp.bottom).offset(self.view.frame.height/25.37)
+            make.centerX.equalToSuperview()
+            make.height.equalToSuperview().dividedBy(19.8)
         }
     }
 }
