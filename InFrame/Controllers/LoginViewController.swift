@@ -124,6 +124,11 @@ class LoginViewController: UIViewController {
             make.centerX.equalToSuperview()
             make.top.equalTo(emailTextField.snp.bottom).offset(self.view.frame.width/172.5)
         }
+        
+        passwardTitleLabel.snp.makeConstraints { make in
+            make.left.equalTo(emailLineView)
+            make.top.equalTo(emailLineView).offset(self.view.frame.height/35.3)
+        }
     }
     
     //MARK: - addView
@@ -133,5 +138,6 @@ class LoginViewController: UIViewController {
         self.view.addSubview(emailTitleLabel)
         self.view.addSubview(emailTextField)
         self.view.addSubview(emailLineView)
+        self.view.addSubview(passwardTitleLabel)
     }
 }
