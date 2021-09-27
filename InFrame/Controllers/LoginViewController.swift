@@ -51,11 +51,21 @@ class LoginViewController: UIViewController {
     
     lazy var passwardTextField = UITextField().then{
         $0.placeholder = "비밀번호를 입력해주세요."
-        $0.dynamicFont(fontSize: 11, currentFontName: "AppleSDGothicNeo-Thin")
+        $0.dynamicFont(fontSize: 11, currentFontName: "AppleSDGothicNeo-Medium")
     }
     
     lazy var passwardLineView = UIView().then{
-        $0.applyGradient(colors: lineViewColorArray)
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width/1.4, height: 1))
+        let gradient = CAGradientLayer()
+
+        gradient.frame = view.bounds
+        gradient.colors = [UIColor(red: 104/255, green: 134/255, blue: 197/255, alpha: 1).cgColor,UIColor(red: 255/255, green: 173/255, blue: 172/255, alpha: 1).cgColor]
+        gradient.locations = [0.0 , 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+
+        $0.layer.insertSublayer(gradient, at: 0)
+        $0.clipsToBounds = true
     }
     
     lazy var forgetLabel = UILabel().then{
@@ -129,6 +139,13 @@ class LoginViewController: UIViewController {
             make.left.equalTo(emailLineView)
             make.top.equalTo(emailLineView).offset(self.view.frame.height/35.3)
         }
+        
+        passwardTextField.snp.makeConstraints { make in
+            make.left.equalTo(emailTextField)
+            make.height.equalToSuperview().dividedBy(35.3)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(passwardTitleLabel.snp.bottom).offset(self.view.frame.width/172.5)
+        }
     }
     
     //MARK: - addView
@@ -139,5 +156,7 @@ class LoginViewController: UIViewController {
         self.view.addSubview(emailTextField)
         self.view.addSubview(emailLineView)
         self.view.addSubview(passwardTitleLabel)
+        self.view.addSubview(passwardTextField)
+        
     }
 }
