@@ -155,6 +155,7 @@ class TermsOfServiceViewController: UIViewController {
         $0.layer.cornerRadius = 10
         $0.setTitle("완료", for: .normal)
         $0.dynamicFont(fontSize: 13, currentFontName: "AppleSDGothicNeo-Bold")
+        $0.addTarget(self, action: #selector(completeButtonClicked(sender:)), for: .touchUpInside)
     }
     
     //MARK: - LifeCycles
@@ -259,6 +260,12 @@ class TermsOfServiceViewController: UIViewController {
             make.top.equalTo(otherAgreeBackgroundView.snp.bottom).offset(self.view.frame.height/15)
             make.height.equalToSuperview().dividedBy(19.80)
         }
+    }
+    
+    //MARK: - Selectores
+    @objc func completeButtonClicked(sender:UIButton){
+//        let nextVC = 메인화면()
+//        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 
