@@ -74,20 +74,31 @@ class LoginViewController: UIViewController {
     
     var lineViewColorArray = [UIColor.rgb(red: 128, green: 153, blue: 212), UIColor.rgb(red: 249, green: 186, blue: 201)]
     
+    //MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        layoutSetting()
+        configureUI()
     }
     
-    func layoutSetting(){
-        self.view.backgroundColor = .white
+    //MARK: - Helpers
+    func configureUI(){
+        addView()
         
-        self.view.addSubview(logInTitleLabel)
-        
+        addLayout()
+    }
+    
+    //MARK: - addLayout
+    func addLayout(){
         logInTitleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(self.view.frame.height/4.65)
             make.left.equalToSuperview().offset(self.view.frame.width/5.75)
         }
+    }
+    
+    //MARK: - addView
+    func addView(){
+        self.view.backgroundColor = .white
+        self.view.addSubview(logInTitleLabel)
     }
 }
