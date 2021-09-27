@@ -13,13 +13,13 @@ class LoginViewController: UIViewController {
     //MARK: - Properties
     lazy var logInTitleLabel = UILabel().then{
         $0.text = "LogIn"
-        $0.dynamicFont(fontSize: 30, currentFontName: "Charter-Black")
+        $0.dynamicFont(fontSize: 30, currentFontName: "CarterOne")
         $0.updateGradientTextColor_horizontal(gradientColors: logInTitleLabelColorArray)
     }
     
     lazy var emailTitleLabel = UILabel().then{
         $0.text = "Email"
-        $0.dynamicFont(fontSize: 13, currentFontName: "Charter-Black")
+        $0.dynamicFont(fontSize: 13, currentFontName: "CarterOne")
         $0.updateGradientTextColor_horizontal(gradientColors: logInTitleLabelColorArray)
     }
     
@@ -45,7 +45,7 @@ class LoginViewController: UIViewController {
     
     lazy var passwardTitleLabel = UILabel().then{
         $0.text = "Passward"
-        $0.dynamicFont(fontSize: 13, currentFontName: "Charter-Black")
+        $0.dynamicFont(fontSize: 13, currentFontName: "CarterOne")
         $0.updateGradientTextColor_horizontal(gradientColors: logInTitleLabelColorArray)
     }
     
@@ -98,7 +98,7 @@ class LoginViewController: UIViewController {
     
     lazy var haveAccountButton = UIButton().then{
         $0.setTitle("이미 계정이 있으신가요?", for: .normal)
-        $0.dynamicFont(fontSize: 12, currentFontName: "AppleSDGothicNeo-Bold")
+        $0.dynamicFont(fontSize: 11, currentFontName: "AppleSDGothicNeo-Bold")
         $0.setTitleColor(UIColor.rgb(red: 178, green: 178, blue: 178), for: .normal)
     }
     
@@ -183,6 +183,11 @@ class LoginViewController: UIViewController {
             make.top.equalTo(forgetLabel).offset(self.view.frame.height/13.76)
             make.height.equalToSuperview().dividedBy(19.80)
         }
+        
+        haveAccountButton.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-self.view.frame.height/11.94)
+            make.centerX.equalToSuperview()
+        }
     }
     
     //MARK: - addView
@@ -198,6 +203,7 @@ class LoginViewController: UIViewController {
         self.view.addSubview(passwardShowButton)
         self.view.addSubview(forgetLabel)
         self.view.addSubview(logInButton)
+        self.view.addSubview(haveAccountButton)
     }
     
     //MARK: - Selecters
