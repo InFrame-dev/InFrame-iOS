@@ -96,8 +96,8 @@ class LoginViewController: UIViewController {
         $0.dynamicFont(fontSize: 13, currentFontName: "AppleSDGothicNeo-Bold")
     }
     
-    lazy var haveAccountButton = UIButton().then{
-        $0.setTitle("이미 계정이 있으신가요?", for: .normal)
+    lazy var noAccountButton = UIButton().then{
+        $0.setTitle("계정이 없으신가요?", for: .normal)
         $0.dynamicFont(fontSize: 11, currentFontName: "AppleSDGothicNeo-Bold")
         $0.setTitleColor(UIColor.rgb(red: 178, green: 178, blue: 178), for: .normal)
     }
@@ -184,7 +184,7 @@ class LoginViewController: UIViewController {
             make.height.equalToSuperview().dividedBy(19.80)
         }
         
-        haveAccountButton.snp.makeConstraints { make in
+        noAccountButton.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-self.view.frame.height/11.94)
             make.centerX.equalToSuperview()
         }
@@ -203,7 +203,7 @@ class LoginViewController: UIViewController {
         self.view.addSubview(passwardShowButton)
         self.view.addSubview(forgetLabel)
         self.view.addSubview(logInButton)
-        self.view.addSubview(haveAccountButton)
+        self.view.addSubview(noAccountButton)
     }
     
     //MARK: - Selecters
