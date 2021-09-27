@@ -80,7 +80,17 @@ class LoginViewController: UIViewController {
     }
     
     lazy var logInButton = UIButton().then{
-        $0.applyGradient(colors: lineViewColorArray)
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width/1.4, height: self.view.frame.height/19.80))
+        let gradient = CAGradientLayer()
+
+        gradient.frame = view.bounds
+        gradient.colors = [UIColor(red: 126/255, green: 152/255, blue: 212/255, alpha: 1).cgColor,UIColor(red: 250/255, green: 186/255, blue: 200/255, alpha: 1).cgColor]
+        gradient.locations = [0.0 , 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+
+        $0.layer.insertSublayer(gradient, at: 0)
+        $0.clipsToBounds = true
         $0.layer.cornerRadius = 10
         $0.setTitle("로그인", for: .normal)
         $0.dynamicFont(fontSize: 13, currentFontName: "AppleSDGothicNeo-Bold")
@@ -166,6 +176,13 @@ class LoginViewController: UIViewController {
             make.left.equalTo(passwardLineView)
             make.top.equalTo(passwardLineView.snp.bottom).offset(self.view.frame.height/100.75)
         }
+        
+        logInButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.left.equalTo(forgetLabel)
+            make.top.equalTo(forgetLabel).offset(self.view.frame.height/13.76)
+            make.height.equalToSuperview().dividedBy(19.80)
+        }
     }
     
     //MARK: - addView
@@ -180,6 +197,7 @@ class LoginViewController: UIViewController {
         self.view.addSubview(passwardLineView)
         self.view.addSubview(passwardShowButton)
         self.view.addSubview(forgetLabel)
+        self.view.addSubview(logInButton)
     }
     
     //MARK: - Selecters
