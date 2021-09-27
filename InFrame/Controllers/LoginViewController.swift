@@ -94,11 +94,17 @@ class LoginViewController: UIViewController {
             make.top.equalToSuperview().offset(self.view.frame.height/4.65)
             make.left.equalToSuperview().offset(self.view.frame.width/5.75)
         }
+        
+        emailTitleLabel.snp.makeConstraints { make in
+            make.left.equalTo(logInTitleLabel)
+            make.top.equalTo(logInTitleLabel.snp.bottom).offset(self.view.frame.height/15.03)
+        }
     }
     
     //MARK: - addView
     func addView(){
         self.view.backgroundColor = .white
         self.view.addSubview(logInTitleLabel)
+        self.view.addSubview(emailTitleLabel)
     }
 }
