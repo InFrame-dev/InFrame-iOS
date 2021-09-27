@@ -70,6 +70,7 @@ class SignUpViewController: UIViewController {
     }
     
     private let passwardShowButton = UIButton().then{
+        $0.addTarget(self, action: #selector(passwardShowButtonClicked(sender:)), for: .touchUpInside)
         $0.setImage(UIImage(named: "InFrame_Eye"), for: .normal)
     }
     
@@ -105,6 +106,7 @@ class SignUpViewController: UIViewController {
     
     private let passwardCheckShowButton = UIButton().then{
         $0.setImage(UIImage(named: "InFrame_Eye"), for: .normal)
+        $0.addTarget(self, action: #selector(passwardCheckShowButtonClicked(sender:)), for: .touchUpInside)
     }
     
     lazy var signUpButton = UIButton().then{
@@ -263,4 +265,23 @@ class SignUpViewController: UIViewController {
     }
     
     //MARK: - Selectors
+    @objc func passwardShowButtonClicked(sender:UIButton){
+        if passwardShowButton.imageView?.image == UIImage(named: "InFrame_Eye"){
+            passwardShowButton.setImage(UIImage(named: "InFrame_EyeNo"), for: .normal)
+            passwardTextField.isSecureTextEntry = true
+        }else{
+            passwardShowButton.setImage(UIImage(named: "InFrame_Eye"), for: .normal)
+            passwardTextField.isSecureTextEntry = false
+        }
+    }
+    
+    @objc func passwardCheckShowButtonClicked(sender:UIButton){
+        if passwardCheckShowButton.imageView?.image == UIImage(named: "InFrame_Eye"){
+            passwardCheckShowButton.setImage(UIImage(named: "InFrame_EyeNo"), for: .normal)
+            passwardCheckTextField.isSecureTextEntry = true
+        }else{
+            passwardCheckShowButton.setImage(UIImage(named: "InFrame_Eye"), for: .normal)
+            passwardCheckTextField.isSecureTextEntry = false
+        }
+    }
 }
