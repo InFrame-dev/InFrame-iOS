@@ -30,7 +30,17 @@ class LoginViewController: UIViewController {
     }
     
     lazy var emailLineView = UIView().then{
-        $0.applyGradient(colors: lineViewColorArray)
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width/1.4, height: 1))
+        let gradient = CAGradientLayer()
+
+        gradient.frame = view.bounds
+        gradient.colors = [UIColor(red: 104/255, green: 134/255, blue: 197/255, alpha: 1).cgColor,UIColor(red: 255/255, green: 173/255, blue: 172/255, alpha: 1).cgColor]
+        gradient.locations = [0.0 , 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+
+        $0.layer.insertSublayer(gradient, at: 0)
+        $0.clipsToBounds = true
     }
     
     lazy var passwardTitleLabel = UILabel().then{
@@ -107,6 +117,13 @@ class LoginViewController: UIViewController {
             make.centerX.equalToSuperview()
             make.top.equalTo(emailTitleLabel.snp.bottom).offset(self.view.frame.width/172.5)
         }
+        
+        emailLineView.snp.makeConstraints { make in
+            make.height.equalTo(1)
+            make.left.equalTo(emailTitleLabel)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(emailTextField.snp.bottom).offset(self.view.frame.width/172.5)
+        }
     }
     
     //MARK: - addView
@@ -115,6 +132,6 @@ class LoginViewController: UIViewController {
         self.view.addSubview(logInTitleLabel)
         self.view.addSubview(emailTitleLabel)
         self.view.addSubview(emailTextField)
-        
+        self.view.addSubview(emailLineView)
     }
 }
