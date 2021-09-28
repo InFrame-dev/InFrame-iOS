@@ -43,7 +43,12 @@ class MainViewController: UIViewController {
     func addLayout(){
         inFrameTitleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(self.view.frame.height/9.02)
-            make.left.equalToSuperview().offset(self.view.frame.width/5.75)
+            make.left.equalToSuperview().offset(self.view.frame.width/7.81)
+        }
+        
+        saveLabel.snp.makeConstraints { make in
+            make.left.equalTo(inFrameTitleLabel)
+            make.top.equalTo(inFrameTitleLabel.snp.bottom)
         }
     }
     
