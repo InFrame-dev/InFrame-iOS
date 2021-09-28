@@ -68,7 +68,9 @@ class MainViewController: UIViewController {
         self.view.addSubview(takePictureButton)
         takePictureButton.addSubview(takePictureLabel)
         takePictureButton.addSubview(takePictureImageView)
-        
+        self.view.addSubview(choosePictureButton)
+        choosePictureButton.addSubview(choosePictureLabel)
+        choosePictureButton.addSubview(choosePictureImageView)
     }
     
     func addLayout(){
@@ -85,7 +87,7 @@ class MainViewController: UIViewController {
         takePictureButton.snp.makeConstraints { make in
             make.left.equalTo(inFrameTitleLabel)
             make.top.equalTo(saveLabel.snp.bottom).offset(self.view.frame.height/27.06)
-            make.width.equalToSuperview().dividedBy(2.88)
+            make.width.equalToSuperview().dividedBy(3)
             make.height.equalToSuperview().dividedBy(5.92)
         }
         
@@ -99,6 +101,25 @@ class MainViewController: UIViewController {
             make.width.equalToSuperview().dividedBy(1.5)
             make.height.equalToSuperview().dividedBy(2.4)
             make.top.equalToSuperview().offset(self.view.frame.height/30)
+        }
+        
+        choosePictureButton.snp.makeConstraints { make in
+            make.right.equalToSuperview().offset(-self.view.frame.width/7.81)
+            make.top.equalTo(saveLabel.snp.bottom).offset(self.view.frame.height/27.06)
+            make.width.equalToSuperview().dividedBy(3)
+            make.height.equalToSuperview().dividedBy(5.92)
+        }
+        
+        choosePictureLabel.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-self.view.frame.height/47.76)
+            make.centerX.equalToSuperview()
+        }
+        
+        choosePictureImageView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.8)
+            make.height.equalToSuperview().dividedBy(2)
+            make.top.equalToSuperview().offset(self.view.frame.height/50)
         }
     }
     
