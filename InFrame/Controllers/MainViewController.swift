@@ -34,7 +34,7 @@ class MainViewController: UIViewController {
     }
     
     private let choosePictureButton = MainButton().then{
-        $0.addTarget(self, action: #selector(takePictureButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(choosePictureButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private let choosePictureLabel = UILabel().then{
@@ -125,6 +125,12 @@ class MainViewController: UIViewController {
     
     // MARK: - Selectors
     @objc func takePictureButtonClicked(sender:UIButton){
-        
+//        let nextVC = 사진 찍는 페이지()
+//        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    @objc func choosePictureButtonClicked(sender:UIButton){
+//        let nextVC = 사진 선택 페이지()
+//        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
