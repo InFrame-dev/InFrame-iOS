@@ -9,6 +9,10 @@ import UIKit
 
 class FindPasswardEmailViewController: UIViewController {
     // MARK: - Properties
+    private let backButton = UIButton().then{
+        $0.setImage(UIImage(named: "InFrame_BackButtonImage"), for: .normal)
+    }
+    
     private let findPasswardTitleLabel = UILabel().then{
         $0.text = "Find Passward"
         $0.dynamicFont(fontSize: 30, currentFontName: "CarterOne")
@@ -52,7 +56,7 @@ class FindPasswardEmailViewController: UIViewController {
         $0.dynamicFont(fontSize: 6.5, currentFontName: "AppleSDGothicNeo-Bold")
     }
     
-    lazy var nextButton = UIButton().then{
+    private lazy var nextButton = UIButton().then{
         let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width/1.4, height: self.view.frame.height/19.80))
         let gradient = CAGradientLayer()
 
@@ -70,11 +74,16 @@ class FindPasswardEmailViewController: UIViewController {
         $0.addTarget(self, action: #selector(nextButtonClicked(sender:)), for: .touchUpInside)
     }
     
+    
     // MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configure()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     // MARK: - Helpers
@@ -87,6 +96,7 @@ class FindPasswardEmailViewController: UIViewController {
     // MARK: - addView
     func addView(){
         self.view.backgroundColor = .white
+        self.view.addSubview(backButton)
         self.view.addSubview(findPasswardTitleLabel)
         self.view.addSubview(writeEmailLabel)
         self.view.addSubview(emailTitleLabel)
@@ -98,7 +108,55 @@ class FindPasswardEmailViewController: UIViewController {
     
     // MARK: - addLayout
     func addLayout(){
+        backButton.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(self.view.frame.width/6.04)
+            make.top.equalToSuperview().offset(self.view.frame.height/8.63)
+        }
         
+        findPasswardTitleLabel.snp.makeConstraints { make in
+            make.left.equalTo(backButton)
+            make.top.equalTo(backButton.snp.bottom).offset(self.view.frame.height/10.54)
+        }
+        
+        writeEmailLabel.snp.makeConstraints { make in
+            make.left.equalTo(findPasswardTitleLabel)
+            make.top.equalTo(findPasswardTitleLabel.snp.bottom)
+        }
+        
+        emailTitleLabel.snp.makeConstraints { make in
+            make.left.equalTo(writeEmailLabel)
+            make.top.equalTo(writeEmailLabel.snp.bottom).offset(self.view.frame.height/15.03)
+        }
+        
+        emailCheckButton.snp.makeConstraints { make in
+            make.centerY.equalTo(emailTitleLabel)
+            make.right.equalTo(emailLineView)
+            make.height.equalToSuperview().dividedBy(50.75)
+            make.width.equalToSuperview().dividedBy(7.5)
+            
+            emailCheckButton.layer.cornerRadius = self.view.frame.height/50.75/2
+        }
+        
+        emailTextField.snp.makeConstraints { make in
+            make.left.equalTo(emailTitleLabel).offset(self.view.frame.width/172.5)
+            make.height.equalToSuperview().dividedBy(35.3)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(emailTitleLabel.snp.bottom).offset(self.view.frame.width/172.5)
+        }
+        
+        emailLineView.snp.makeConstraints { make in
+            make.height.equalTo(1)
+            make.left.equalTo(emailTitleLabel)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(emailTextField.snp.bottom).offset(self.view.frame.width/172.5)
+        }
+        
+        nextButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.left.equalTo(emailLineView)
+            make.top.equalTo(emailLineView).offset(self.view.frame.height/13.76)
+            make.height.equalToSuperview().dividedBy(19.80)
+        }
     }
     
 
@@ -106,4 +164,6 @@ class FindPasswardEmailViewController: UIViewController {
     @objc func nextButtonClicked(sender:UIButton){
         
     }
+    
+    
 }
