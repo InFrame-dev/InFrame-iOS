@@ -61,6 +61,8 @@ class MainViewController: UIViewController {
         addLayout()
     }
     
+    
+    // MARK: - addView
     func addView(){
         self.view.backgroundColor = .white
         self.view.addSubview(inFrameTitleLabel)
@@ -73,6 +75,7 @@ class MainViewController: UIViewController {
         choosePictureButton.addSubview(choosePictureImageView)
     }
     
+    // MARK: - addLayout
     func addLayout(){
         inFrameTitleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(self.view.frame.height/9.02)
