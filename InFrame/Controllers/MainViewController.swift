@@ -24,6 +24,29 @@ class MainViewController: UIViewController {
         $0.addTarget(self, action: #selector(takePictureButtonClicked(sender:)), for: .touchUpInside)
     }
     
+    private let takePictureLabel = UILabel().then{
+        $0.text = "사진 찍기"
+        $0.dynamicFont(fontSize: 12, currentFontName: "AppleSDGothicNeo-Thin")
+    }
+    
+    private let takePictureImageView = UIImageView().then{
+        $0.image = UIImage(named: "InFrame_TakePicture")
+    }
+    
+    private let choosePictureButton = MainButton().then{
+        $0.addTarget(self, action: #selector(takePictureButtonClicked(sender:)), for: .touchUpInside)
+    }
+    
+    private let choosePictureLabel = UILabel().then{
+        $0.text = "사진 선택하기"
+        $0.dynamicFont(fontSize: 12, currentFontName: "AppleSDGothicNeo-Thin")
+    }
+    
+    private let choosePictureImageView = UIImageView().then{
+        $0.image = UIImage(named: "InFrame_ChoosePicture")
+    }
+    
+    
     // MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +66,9 @@ class MainViewController: UIViewController {
         self.view.addSubview(inFrameTitleLabel)
         self.view.addSubview(saveLabel)
         self.view.addSubview(takePictureButton)
+        takePictureButton.addSubview(takePictureLabel)
+        takePictureButton.addSubview(takePictureImageView)
+        
     }
     
     func addLayout(){
@@ -61,6 +87,18 @@ class MainViewController: UIViewController {
             make.top.equalTo(saveLabel.snp.bottom).offset(self.view.frame.height/27.06)
             make.width.equalToSuperview().dividedBy(2.88)
             make.height.equalToSuperview().dividedBy(5.92)
+        }
+        
+        takePictureLabel.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-self.view.frame.height/47.76)
+            make.centerX.equalToSuperview()
+        }
+        
+        takePictureImageView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.5)
+            make.height.equalToSuperview().dividedBy(2.4)
+            make.top.equalToSuperview().offset(self.view.frame.height/30)
         }
     }
     
