@@ -9,6 +9,8 @@ import UIKit
 
 class TermsOfServiceViewController: UIViewController {
     //MARK: - Properties
+    private let bound = UIScreen.main.bounds
+    
     private lazy var termsOfServiceTitleLabel = UILabel().then{
         $0.text = "Terms of service"
         $0.dynamicFont(fontSize: 30, currentFontName: "CarterOne")
@@ -76,6 +78,7 @@ class TermsOfServiceViewController: UIViewController {
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.rgb(red: 225, green: 225, blue: 225).cgColor
         $0.layer.cornerRadius = 5
+        $0.addTarget(self, action: #selector(allAgreeButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private let useAgreeButton = UIButton().then{
@@ -83,6 +86,8 @@ class TermsOfServiceViewController: UIViewController {
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.rgb(red: 225, green: 225, blue: 225).cgColor
         $0.layer.cornerRadius = 5
+        $0.addTarget(self, action: #selector(useAgreeButtonClicked(sender:)), for: .touchUpInside)
+        
     }
     
     private let personalAgreeButton = UIButton().then{
@@ -90,6 +95,7 @@ class TermsOfServiceViewController: UIViewController {
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.rgb(red: 225, green: 225, blue: 225).cgColor
         $0.layer.cornerRadius = 5
+        $0.addTarget(self, action: #selector(personalAgreeButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private let marketingAgreeButton = UIButton().then{
@@ -97,6 +103,7 @@ class TermsOfServiceViewController: UIViewController {
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.rgb(red: 225, green: 225, blue: 225).cgColor
         $0.layer.cornerRadius = 5
+        $0.addTarget(self, action: #selector(marketingAgreeButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private let locationAgreeButton = UIButton().then{
@@ -104,13 +111,17 @@ class TermsOfServiceViewController: UIViewController {
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.rgb(red: 225, green: 225, blue: 225).cgColor
         $0.layer.cornerRadius = 5
+        $0.addTarget(self, action: #selector(locationAgreeButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private lazy var agreeButtonStackView = UIStackView(arrangedSubviews: [useAgreeButton, personalAgreeButton, marketingAgreeButton,locationAgreeButton]).then{
         $0.axis = .vertical
         $0.distribution = .fillEqually
         $0.spacing = self.view.frame.height/81
+        $0.isUserInteractionEnabled = true
     }
+    
+    private lazy var otherAgreeButtonArray = [useAgreeButton, personalAgreeButton, marketingAgreeButton, locationAgreeButton]
     
     private let allAgreeArrowButton = UIButton().then{
         $0.setImage(UIImage(named: "InFrame_Arrow"), for: .normal)
@@ -266,6 +277,94 @@ class TermsOfServiceViewController: UIViewController {
     @objc func completeButtonClicked(sender:UIButton){
 //        let nextVC = 메인화면()
 //        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    @objc func allAgreeButtonClicked(sender:UIButton){
+        if allAgreeButton.isSelected == true{
+            agreeButtonUnSelected(button: allAgreeButton)
+            agreeButtonUnSelected(button: useAgreeButton)
+            agreeButtonUnSelected(button: personalAgreeButton)
+            agreeButtonUnSelected(button: marketingAgreeButton)
+            agreeButtonUnSelected(button: locationAgreeButton)
+        }else{
+            agreeButtonSelected(button: allAgreeButton)
+            for i in 0...3{
+                if otherAgreeButtonArray[i].isSelected == false{
+                    agreeButtonSelected(button: otherAgreeButtonArray[i])
+                }
+            }
+        }
+    }
+    
+    @objc func useAgreeButtonClicked(sender:UIButton){
+        if useAgreeButton.isSelected == true{
+            agreeButtonUnSelected(button: useAgreeButton)
+            if allAgreeButton.isSelected == true{agreeButtonUnSelected(button: allAgreeButton)}
+        }else{
+            if personalAgreeButton.isSelected == true && marketingAgreeButton.isSelected == true && locationAgreeButton.isSelected == true{
+                agreeButtonSelected(button: allAgreeButton)
+            }
+            agreeButtonSelected(button: useAgreeButton)
+        }
+    }
+    
+    @objc func personalAgreeButtonClicked(sender:UIButton){
+        if personalAgreeButton.isSelected == true{
+            agreeButtonUnSelected(button: personalAgreeButton)
+            if allAgreeButton.isSelected == true{agreeButtonUnSelected(button: allAgreeButton)}
+        }else{
+            if useAgreeButton.isSelected == true && marketingAgreeButton.isSelected == true && locationAgreeButton.isSelected == true{
+                agreeButtonSelected(button: allAgreeButton)
+            }
+            agreeButtonSelected(button: personalAgreeButton)
+        }
+    }
+    
+    @objc func marketingAgreeButtonClicked(sender:UIButton){
+        if marketingAgreeButton.isSelected == true{
+            agreeButtonUnSelected(button: marketingAgreeButton)
+            if allAgreeButton.isSelected == true{agreeButtonUnSelected(button: allAgreeButton)}
+        }else{
+            if personalAgreeButton.isSelected == true && useAgreeButton.isSelected == true && locationAgreeButton.isSelected == true{
+                agreeButtonSelected(button: allAgreeButton)
+            }
+            agreeButtonSelected(button: marketingAgreeButton)
+        }
+    }
+    
+    @objc func locationAgreeButtonClicked(sender:UIButton){
+        if locationAgreeButton.isSelected == true{
+            agreeButtonUnSelected(button: locationAgreeButton)
+            if allAgreeButton.isSelected == true{agreeButtonUnSelected(button: allAgreeButton)}
+        }else{
+            if personalAgreeButton.isSelected == true && marketingAgreeButton.isSelected == true && useAgreeButton.isSelected == true{
+                agreeButtonSelected(button: allAgreeButton)
+            }
+            agreeButtonSelected(button: locationAgreeButton)
+        }
+    }
+    
+    func agreeButtonUnSelected(button:UIButton){
+        button.layer.sublayers?.remove(at: 0)
+        button.backgroundColor = .white
+        button.layer.borderWidth = 1
+        button.isSelected = false
+    }
+    
+    func agreeButtonSelected(button:UIButton){
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width/16, height: self.view.frame.width/16))
+        let gradient = CAGradientLayer()
+
+        gradient.frame = view.bounds
+        gradient.colors = [UIColor(red: 126/255, green: 152/255, blue: 212/255, alpha: 1).cgColor,UIColor(red: 250/255, green: 186/255, blue: 200/255, alpha: 1).cgColor]
+        gradient.locations = [0.0 , 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+
+        button.layer.insertSublayer(gradient, at: 0)
+        button.layer.borderWidth = 0
+        button.clipsToBounds = true
+        button.isSelected = true
     }
 }
 
