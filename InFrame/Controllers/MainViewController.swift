@@ -9,6 +9,16 @@ import UIKit
 
 class MainViewController: UIViewController {
     // MARK: - Properties
+    private let inFrameTitleLabel = UILabel().then{
+        $0.text = "InFrame"
+        $0.dynamicFont(fontSize: 30, currentFontName: "CarterOne")
+        $0.updateGradientTextColor_horizontal(gradientColors: [UIColor.rgb(red: 126, green: 152, blue: 212), UIColor.rgb(red: 251, green: 186, blue: 200)])
+    }
+
+    private let saveLabel = UILabel().then{
+        $0.text = "여러분의 순간을 특별하게 저장해보세요!"
+        $0.dynamicFont(fontSize: 16, currentFontName: "AppleSDGothicNeo-Thin")
+    }
     
     // MARK: - LifeCycles
     override func viewDidLoad() {
@@ -26,10 +36,15 @@ class MainViewController: UIViewController {
     
     func addView(){
         self.view.backgroundColor = .white
+        self.view.addSubview(inFrameTitleLabel)
+        self.view.addSubview(saveLabel)
     }
     
     func addLayout(){
-        
+        inFrameTitleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(self.view.frame.height/9.02)
+            make.left.equalToSuperview().offset(self.view.frame.width/5.75)
+        }
     }
     
     // MARK: - Selectors
