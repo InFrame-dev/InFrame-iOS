@@ -87,6 +87,13 @@ class FindPasswardEmailViewController: UIViewController {
     // MARK: - addView
     func addView(){
         self.view.backgroundColor = .white
+        self.view.addSubview(findPasswardTitleLabel)
+        self.view.addSubview(writeEmailLabel)
+        self.view.addSubview(emailTitleLabel)
+        self.view.addSubview(emailTextField)
+        self.view.addSubview(emailLineView)
+        self.view.addSubview(emailCheckButton)
+        self.view.addSubview(nextButton)
     }
     
     // MARK: - addLayout
