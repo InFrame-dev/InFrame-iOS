@@ -20,6 +20,10 @@ class MainViewController: UIViewController {
         $0.dynamicFont(fontSize: 16, currentFontName: "AppleSDGothicNeo-Thin")
     }
     
+    private let takePictureButton = MainButton().then{
+        $0.addTarget(self, action: #selector(takePictureButtonClicked(sender:)), for: .touchUpInside)
+    }
+    
     // MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +42,7 @@ class MainViewController: UIViewController {
         self.view.backgroundColor = .white
         self.view.addSubview(inFrameTitleLabel)
         self.view.addSubview(saveLabel)
+        self.view.addSubview(takePictureButton)
     }
     
     func addLayout(){
@@ -50,8 +55,17 @@ class MainViewController: UIViewController {
             make.left.equalTo(inFrameTitleLabel)
             make.top.equalTo(inFrameTitleLabel.snp.bottom)
         }
+        
+        takePictureButton.snp.makeConstraints { make in
+            make.left.equalTo(inFrameTitleLabel)
+            make.top.equalTo(saveLabel.snp.bottom).offset(self.view.frame.height/27.06)
+            make.width.equalToSuperview().dividedBy(2.88)
+            make.height.equalToSuperview().dividedBy(5.92)
+        }
     }
     
     // MARK: - Selectors
-    
+    @objc func takePictureButtonClicked(sender:UIButton){
+        
+    }
 }

@@ -11,6 +11,7 @@
 		6AA8FB552701C2C600E8B198 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8FB542701C2C600E8B198 /* SignUpViewController.swift */; };
 		6AA8FB572701DCD400E8B198 /* TermsOfServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8FB562701DCD400E8B198 /* TermsOfServiceViewController.swift */; };
 		6AA8FB5B2702AB5600E8B198 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8FB5A2702AB5600E8B198 /* MainViewController.swift */; };
+		6AA8FB5D2702AD2000E8B198 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8FB5C2702AD2000E8B198 /* MainButton.swift */; };
 		AA478B8626F08164009C628B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA478B8526F08164009C628B /* AppDelegate.swift */; };
 		AA478B8826F08164009C628B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA478B8726F08164009C628B /* SceneDelegate.swift */; };
 		AA478B8F26F08166009C628B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA478B8E26F08166009C628B /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 		6AA8FB542701C2C600E8B198 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		6AA8FB562701DCD400E8B198 /* TermsOfServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceViewController.swift; sourceTree = "<group>"; };
 		6AA8FB5A2702AB5600E8B198 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		6AA8FB5C2702AD2000E8B198 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainButton.swift; path = InFrame/Controllers/MainButton.swift; sourceTree = SOURCE_ROOT; };
 		758DC5BD41ABACBF875E7BCD /* Pods-InFrame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InFrame.debug.xcconfig"; path = "Target Support Files/Pods-InFrame/Pods-InFrame.debug.xcconfig"; sourceTree = "<group>"; };
 		AA478B8226F08164009C628B /* InFrame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InFrame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA478B8526F08164009C628B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		AA478B9D26F08508009C628B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6AA8FB5C2702AD2000E8B198 /* MainButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				AA478B9A26F083FE009C628B /* LoginViewController.swift in Sources */,
 				6AA8FB572701DCD400E8B198 /* TermsOfServiceViewController.swift in Sources */,
 				AA478B8626F08164009C628B /* AppDelegate.swift in Sources */,
+				6AA8FB5D2702AD2000E8B198 /* MainButton.swift in Sources */,
 				AA478B8826F08164009C628B /* SceneDelegate.swift in Sources */,
 				AA478BA526F08CAD009C628B /* Extension.swift in Sources */,
 				6AA8FB552701C2C600E8B198 /* SignUpViewController.swift in Sources */,
