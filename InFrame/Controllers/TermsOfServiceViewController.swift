@@ -288,7 +288,7 @@ class TermsOfServiceViewController: UIViewController {
             agreeButtonUnSelected(button: locationAgreeButton)
         }else{
             agreeButtonSelected(button: allAgreeButton)
-            for i in 0...3{
+            for i in 0...otherAgreeButtonArray.count-1{
                 if otherAgreeButtonArray[i].isSelected == false{
                     agreeButtonSelected(button: otherAgreeButtonArray[i])
                 }
