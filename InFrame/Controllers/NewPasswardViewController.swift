@@ -1,5 +1,5 @@
 //
-//  FindPasswardEmailViewController.swift
+//  NewPasswardViewController.swift
 //  InFrame
 //
 //  Created by 김유진 on 2021/09/28.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FindPasswardEmailViewController: UIViewController {
+class NewPasswardViewController: UIViewController {
     // MARK: - Properties
     private let backButton = UIButton().then{
         $0.setImage(UIImage(named: "InFrame_BackButtonImage"), for: .normal)
@@ -20,24 +20,24 @@ class FindPasswardEmailViewController: UIViewController {
         $0.updateGradientTextColor_horizontal(gradientColors: [UIColor.rgb(red: 126, green: 152, blue: 212), UIColor.rgb(red: 251, green: 186, blue: 200)])
     }
     
-    private let writeEmailLabel = UILabel().then{
-        $0.text = "이메일을 입력해주세요!"
+    private let writePasswardLabel = UILabel().then{
+        $0.text = "비밀번호를 입력해주세요!"
         $0.dynamicFont(fontSize: 16, currentFontName: "AppleSDGothicNeo-Thin")
     }
     
-    private lazy var emailTitleLabel = UILabel().then{
-        $0.text = "Email"
+    private lazy var passwardTitleLabel = UILabel().then{
+        $0.text = "NewPassward"
         $0.dynamicFont(fontSize: 13, currentFontName: "CarterOne")
         $0.updateGradientTextColor_horizontal(gradientColors: [UIColor.rgb(red: 126, green: 152, blue: 212), UIColor.rgb(red: 251, green: 186, blue: 200)])
     }
     
-    private let emailTextField = UITextField().then{
-        $0.placeholder = "이메일을 입력해주세요."
+    private let passwardTextField = UITextField().then{
+        $0.placeholder = "비밀번호를 입력해주세요."
         $0.dynamicFont(fontSize: 12, currentFontName: "AppleSDGothicNeo-Medium")
         $0.textColor = UIColor.rgb(red: 123, green: 123, blue: 123)
     }
     
-    private lazy var emailLineView = UIView().then{
+    private lazy var passwardLineView = UIView().then{
         let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width/1.4, height: 1))
         let gradient = CAGradientLayer()
 
@@ -49,12 +49,6 @@ class FindPasswardEmailViewController: UIViewController {
 
         $0.layer.insertSublayer(gradient, at: 0)
         $0.clipsToBounds = true
-    }
-    
-    private let emailCheckButton = UIButton().then{
-        $0.backgroundColor = UIColor.rgb(red: 222, green: 222, blue: 222)
-        $0.setTitle("이메일 인증", for: .normal)
-        $0.dynamicFont(fontSize: 6.5, currentFontName: "AppleSDGothicNeo-Bold")
     }
     
     private lazy var nextButton = UIButton().then{
@@ -99,11 +93,10 @@ class FindPasswardEmailViewController: UIViewController {
         self.view.backgroundColor = .white
         self.view.addSubview(backButton)
         self.view.addSubview(findPasswardTitleLabel)
-        self.view.addSubview(writeEmailLabel)
-        self.view.addSubview(emailTitleLabel)
-        self.view.addSubview(emailTextField)
-        self.view.addSubview(emailLineView)
-        self.view.addSubview(emailCheckButton)
+        self.view.addSubview(writePasswardLabel)
+        self.view.addSubview(passwardTitleLabel)
+        self.view.addSubview(passwardTextField)
+        self.view.addSubview(passwardLineView)
         self.view.addSubview(nextButton)
     }
     
@@ -119,43 +112,34 @@ class FindPasswardEmailViewController: UIViewController {
             make.top.equalTo(backButton.snp.bottom).offset(self.view.frame.height/10.54)
         }
         
-        writeEmailLabel.snp.makeConstraints { make in
+        writePasswardLabel.snp.makeConstraints { make in
             make.left.equalTo(findPasswardTitleLabel)
             make.top.equalTo(findPasswardTitleLabel.snp.bottom)
         }
         
-        emailTitleLabel.snp.makeConstraints { make in
-            make.left.equalTo(writeEmailLabel)
-            make.top.equalTo(writeEmailLabel.snp.bottom).offset(self.view.frame.height/15.03)
+        passwardTitleLabel.snp.makeConstraints { make in
+            make.left.equalTo(writePasswardLabel)
+            make.top.equalTo((writePasswardLabel).snp.bottom).offset(self.view.frame.height/15.03)
         }
         
-        emailCheckButton.snp.makeConstraints { make in
-            make.centerY.equalTo(emailTitleLabel)
-            make.right.equalTo(emailLineView)
-            make.height.equalToSuperview().dividedBy(50.75)
-            make.width.equalToSuperview().dividedBy(7.5)
-            
-            emailCheckButton.layer.cornerRadius = self.view.frame.height/50.75/2
-        }
-        
-        emailTextField.snp.makeConstraints { make in
-            make.left.equalTo(emailTitleLabel).offset(self.view.frame.width/172.5)
+        passwardTextField.snp.makeConstraints { make in
+            make.left.equalTo(passwardTitleLabel).offset(self.view.frame.width/172.5)
             make.height.equalToSuperview().dividedBy(35.3)
             make.centerX.equalToSuperview()
-            make.top.equalTo(emailTitleLabel.snp.bottom).offset(self.view.frame.width/172.5)
+            make.top.equalTo(passwardTitleLabel.snp.bottom).offset(self.view.frame.width/172.5)
         }
         
-        emailLineView.snp.makeConstraints { make in
+        passwardLineView.snp.makeConstraints { make in
             make.height.equalTo(1)
-            make.left.equalTo(emailTitleLabel)
+            make.left.equalTo(passwardTitleLabel)
             make.centerX.equalToSuperview()
-            make.top.equalTo(emailTextField.snp.bottom).offset(self.view.frame.width/172.5)
+            make.top.equalTo(passwardTextField.snp.bottom).offset(self.view.frame.width/172.5)
         }
         
         nextButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.left.equalTo(emailLineView)
-            make.top.equalTo(emailLineView).offset(self.view.frame.height/13.76)
+            make.left.equalTo(passwardLineView)
+            make.top.equalTo(passwardLineView).offset(self.view.frame.height/13.76)
             make.height.equalToSuperview().dividedBy(19.80)
         }
     }
@@ -163,8 +147,9 @@ class FindPasswardEmailViewController: UIViewController {
 
     // MARK: - Selectors
     @objc func nextButtonClicked(sender:UIButton){
-        let nextVC = NewPasswardViewController()
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        let vc = LoginViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
     }
     
     @objc func backButtonClicked(sender:UIButton){
