@@ -275,8 +275,9 @@ class TermsOfServiceViewController: UIViewController {
     
     //MARK: - Selectores
     @objc func completeButtonClicked(sender:UIButton){
-//        let nextVC = 메인화면()
-//        self.navigationController?.pushViewController(nextVC, animated: true)
+        let nextVC = MainViewController()
+        nextVC.modalPresentationStyle = .fullScreen
+        present(nextVC, animated: true, completion: nil)
     }
     
     @objc func allAgreeButtonClicked(sender:UIButton){

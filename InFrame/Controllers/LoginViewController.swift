@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Then
+import Alamofire
 
 class LoginViewController: UIViewController {
     //MARK: - Properties
@@ -68,10 +69,11 @@ class LoginViewController: UIViewController {
         $0.clipsToBounds = true
     }
     
-    lazy var forgetLabel = UILabel().then{
-        $0.text = "비밀번호를 잊으셨나요?"
+    lazy var forgetButton = UIButton().then{
+        $0.setTitle("비밀번호를 잊으셨나요?", for: .normal)
         $0.dynamicFont(fontSize: 10, currentFontName: "AppleSDGothicNeo-Medium")
-        $0.textColor = UIColor.rgb(red: 178, green: 178, blue: 178)
+        $0.setTitleColor(UIColor.rgb(red: 178, green: 178, blue: 178), for: .normal)
+        $0.addTarget(self, action: #selector(forgetButtonClicked(sender:)), for: .touchUpInside)
     }
     
     lazy var passwardShowButton = UIButton().then{
@@ -178,15 +180,17 @@ class LoginViewController: UIViewController {
             make.height.equalToSuperview().dividedBy(90.22)
         }
         
-        forgetLabel.snp.makeConstraints{ make in
+        forgetButton.snp.makeConstraints{ make in
             make.left.equalTo(passwardLineView)
             make.top.equalTo(passwardLineView.snp.bottom).offset(self.view.frame.height/100.75)
+            make.width.equalToSuperview().dividedBy(3.7)
+            make.height.equalToSuperview().dividedBy(67.66)
         }
         
         logInButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.left.equalTo(forgetLabel)
-            make.top.equalTo(forgetLabel).offset(self.view.frame.height/13.76)
+            make.left.equalTo(forgetButton)
+            make.top.equalTo(forgetButton).offset(self.view.frame.height/13.76)
             make.height.equalToSuperview().dividedBy(19.80)
         }
         
@@ -207,7 +211,7 @@ class LoginViewController: UIViewController {
         self.view.addSubview(passwardTextField)
         self.view.addSubview(passwardLineView)
         self.view.addSubview(passwardShowButton)
-        self.view.addSubview(forgetLabel)
+        self.view.addSubview(forgetButton)
         self.view.addSubview(logInButton)
         self.view.addSubview(noAccountButton)
     }
@@ -224,12 +228,18 @@ class LoginViewController: UIViewController {
     }
     
     @objc func logInButtonClicked(sender:UIButton){
-//        let nextVC = 메인화면()
-//        self.navigationController?.pushViewController(nextVC, animated: true)
+        let nextVC = MainViewController()
+        nextVC.modalPresentationStyle = .fullScreen
+        present(nextVC, animated: true, completion: nil)
     }
     
     @objc func noAccountButtonClicked(sender:UIButton){
         let nextVC = SignUpViewController()
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    @objc func forgetButtonClicked(sender:UIButton){
+        let nextVC = FindPasswardEmailViewController()
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
