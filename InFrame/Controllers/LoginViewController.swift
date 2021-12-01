@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
     }
     
     private let idInputView = InputView().then{
-        $0.dataSetting(titleText: "id", placeholderText: "아이디를 입력해주세요.")
+        $0.dataSetting(titleText: "iD", placeholderText: "아이디를 입력해주세요.")
     }
 
     private let passwordInputview = InputView().then{
@@ -30,10 +30,12 @@ class LoginViewController: UIViewController {
         $0.setTitle("비밀번호를 잊으셨나요?", for: .normal)
         $0.setTitleColor(UIColor(red: 178/255, green: 178/255, blue: 178/255, alpha: 1), for: .normal)
         $0.dynamicFont(fontSize: 10, currentFontName: "AppleSDGothicNeo-Medium")
+        $0.addTarget(self, action: #selector(forgetButtonClicked(sender:)), for: .touchUpInside)
     }
     
-    private lazy var logInButton = GradientButton().then{
+    private let logInButton = GradientButton().then{
         $0.dataSetting(buttonText: "로그인하기")
+        $0.addTarget(self, action: #selector(logInButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private let noAccountButton = UIButton().then{
