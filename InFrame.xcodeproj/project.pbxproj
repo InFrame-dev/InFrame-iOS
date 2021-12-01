@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2EAADAF8B5F2EE0F61DB533B /* Pods_InFrame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABB722AD0F623D03DEA37D0 /* Pods_InFrame.framework */; };
+		6A89DA0B2757B3AA00AE4190 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A89DA0A2757B3AA00AE4190 /* InputView.swift */; };
+		6A89DA0F2757B97B00AE4190 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A89DA0E2757B97B00AE4190 /* GradientButton.swift */; };
 		6AA8FB552701C2C600E8B198 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8FB542701C2C600E8B198 /* SignUpViewController.swift */; };
 		6AA8FB572701DCD400E8B198 /* TermsOfServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8FB562701DCD400E8B198 /* TermsOfServiceViewController.swift */; };
 		6AA8FB5B2702AB5600E8B198 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8FB5A2702AB5600E8B198 /* MainViewController.swift */; };
@@ -25,6 +27,8 @@
 
 /* Begin PBXFileReference section */
 		40A87FE2A3E5A0F1F709AC28 /* Pods-InFrame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InFrame.release.xcconfig"; path = "Target Support Files/Pods-InFrame/Pods-InFrame.release.xcconfig"; sourceTree = "<group>"; };
+		6A89DA0A2757B3AA00AE4190 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		6A89DA0E2757B97B00AE4190 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		6AA8FB542701C2C600E8B198 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		6AA8FB562701DCD400E8B198 /* TermsOfServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceViewController.swift; sourceTree = "<group>"; };
 		6AA8FB5A2702AB5600E8B198 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 				6AA8FB5A2702AB5600E8B198 /* MainViewController.swift */,
 				6AA8FB5E2702D4D000E8B198 /* FindPasswardEmailViewController.swift */,
 				6AA8FB602702DA2000E8B198 /* NewPasswardViewController.swift */,
+				6A89DA0A2757B3AA00AE4190 /* InputView.swift */,
+				6A89DA0E2757B97B00AE4190 /* GradientButton.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -275,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AA8FB5B2702AB5600E8B198 /* MainViewController.swift in Sources */,
+				6A89DA0F2757B97B00AE4190 /* GradientButton.swift in Sources */,
 				AA478B9A26F083FE009C628B /* LoginViewController.swift in Sources */,
 				6AA8FB572701DCD400E8B198 /* TermsOfServiceViewController.swift in Sources */,
 				AA478B8626F08164009C628B /* AppDelegate.swift in Sources */,
@@ -282,6 +289,7 @@
 				6AA8FB5D2702AD2000E8B198 /* MainButton.swift in Sources */,
 				AA478B8826F08164009C628B /* SceneDelegate.swift in Sources */,
 				AA478BA526F08CAD009C628B /* Extension.swift in Sources */,
+				6A89DA0B2757B3AA00AE4190 /* InputView.swift in Sources */,
 				6AA8FB552701C2C600E8B198 /* SignUpViewController.swift in Sources */,
 				6AA8FB5F2702D4D000E8B198 /* FindPasswardEmailViewController.swift in Sources */,
 			);
