@@ -35,7 +35,7 @@ class GradientButton: UIButton{
         let gradient = CAGradientLayer()
 
         gradient.frame = view.bounds
-        gradient.colors = [UIColor(red: 126/255, green: 152/255, blue: 212/255, alpha: 1).cgColor,UIColor(red: 250/255, green: 186/255, blue: 200/255, alpha: 1).cgColor]
+        gradient.colors = [UIColor.rgb(red: 126, green: 152, blue: 212).cgColor, UIColor.rgb(red: 250, green: 186, blue: 200).cgColor]
         gradient.locations = [0.0 , 1.0]
         gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
         gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
