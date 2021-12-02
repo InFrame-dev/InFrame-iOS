@@ -25,7 +25,7 @@ class FindPasswardEmailViewController: UIViewController {
         $0.dynamicFont(fontSize: 16, currentFontName: "AppleSDGothicNeo-Thin")
     }
     
-    private let emailInputview = InputView().then{
+    private let emailInputView = InputView().then{
         $0.dataSetting(titleText: "Email", placeholderText: "이메일을 입력해주세요")
     }
     
@@ -56,7 +56,7 @@ class FindPasswardEmailViewController: UIViewController {
     
     // MARK: - addView
     private func addView(){
-        [backButton, findPasswardTitleLabel, writeEmailLabel, emailInputview, nextButton].forEach { view.addSubview($0) }
+        [backButton, findPasswardTitleLabel, writeEmailLabel, emailInputView, nextButton].forEach { view.addSubview($0) }
     }
     
     // MARK: - location
@@ -73,27 +73,40 @@ class FindPasswardEmailViewController: UIViewController {
             make.left.equalTo(findPasswardTitleLabel)
             make.top.equalTo(findPasswardTitleLabel.snp.bottom)
         }
-        emailInputview.snp.makeConstraints { make in
+        emailInputView.snp.makeConstraints { make in
             make.width.equalToSuperview()
             make.top.equalTo(writeEmailLabel.snp.bottom).offset(self.view.frame.height/15.03)
             make.height.equalToSuperview().dividedBy(16)
             make.centerX.equalToSuperview()
         }
         nextButton.snp.makeConstraints { make in
-            make.left.equalTo(emailInputview).offset(self.view.frame.width/6.46)
+            make.left.equalTo(emailInputView).offset(self.view.frame.width/6.46)
             make.centerX.equalToSuperview()
             make.height.equalToSuperview().dividedBy(19.8)
-            make.top.equalTo(emailInputview.snp.bottom).offset(self.view.frame.height/19.8)
+            make.top.equalTo(emailInputView.snp.bottom).offset(self.view.frame.height/19.8)
         }
     }
     
     // MARK: - Selectors
     @objc private func nextButtonClicked(sender:UIButton){
-        let nextVC = NewPasswordEmailCheckViewController()
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        if isValidEmail(email: emailInputView.getInfo()) == true{
+            
+            let nextVC = NewPasswordEmailCheckViewController()
+            self.navigationController?.pushViewController(nextVC, animated: true)
+                
+        }else{ emailInputView.shakeView(emailInputView) }
     }
     
     @objc private func backButtonClicked(sender:UIButton){
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - isValidEmail
+    private func isValidEmail(email: String?) -> Bool {
+        guard email != nil else { return false }
+        
+        let idRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let pred = NSPredicate(format:"SELF MATCHES %@", idRegEx)
+        return pred.evaluate(with: email)
     }
 }
