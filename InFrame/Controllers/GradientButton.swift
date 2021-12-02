@@ -43,7 +43,7 @@ class GradientButton: UIButton{
         self.layer.insertSublayer(gradient, at: 0)
         self.clipsToBounds = true
         self.layer.cornerRadius = 10
-        self.dynamicFont(fontSize: 13, currentFontName: "AppleSDGothicNeo-Bold")
+        self.dynamicFont(fontSize: 12, currentFontName: "AppleSDGothicNeo-Bold")
     }
     
     // MARK: - dataSetting
