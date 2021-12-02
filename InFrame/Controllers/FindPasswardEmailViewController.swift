@@ -90,7 +90,7 @@ class FindPasswardEmailViewController: UIViewController {
 
     // MARK: - Selectors
     @objc func nextButtonClicked(sender:UIButton){
-        let nextVC = NewPasswordViewController()
+        let nextVC = NewPasswordEmailCheckViewController()
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
