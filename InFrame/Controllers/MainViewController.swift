@@ -55,84 +55,70 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Helpers
-    func configureUI(){
+    private func configureUI(){
         addView()
-        
-        addLayout()
+        location()
     }
     
-    
     // MARK: - addView
-    func addView(){
+    private func addView(){
         self.view.backgroundColor = .white
-        self.view.addSubview(inFrameTitleLabel)
-        self.view.addSubview(saveLabel)
-        self.view.addSubview(takePictureButton)
-        takePictureButton.addSubview(takePictureLabel)
-        takePictureButton.addSubview(takePictureImageView)
-        self.view.addSubview(choosePictureButton)
-        choosePictureButton.addSubview(choosePictureLabel)
-        choosePictureButton.addSubview(choosePictureImageView)
+        [inFrameTitleLabel, saveLabel, takePictureButton,choosePictureButton].forEach { view.addSubview($0) }
+        [takePictureLabel, takePictureImageView].forEach { takePictureButton.addSubview($0) }
+        [choosePictureLabel, choosePictureImageView].forEach { choosePictureButton.addSubview($0) }
     }
     
     // MARK: - addLayout
-    func addLayout(){
+    private func location(){
         inFrameTitleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(self.view.frame.height/9.02)
+            make.top.equalToSuperview().offset(self.view.frame.height/7)
             make.left.equalToSuperview().offset(self.view.frame.width/7.81)
         }
-        
         saveLabel.snp.makeConstraints { make in
             make.left.equalTo(inFrameTitleLabel)
             make.top.equalTo(inFrameTitleLabel.snp.bottom)
         }
-        
         takePictureButton.snp.makeConstraints { make in
             make.left.equalTo(inFrameTitleLabel)
-            make.top.equalTo(saveLabel.snp.bottom).offset(self.view.frame.height/27.06)
-            make.width.equalToSuperview().dividedBy(3)
-            make.height.equalToSuperview().dividedBy(5.92)
+            make.top.equalTo(saveLabel.snp.bottom).offset(self.view.frame.height/18)
+            make.centerX.equalToSuperview()
+            make.height.equalToSuperview().dividedBy(4.64)
         }
-        
         takePictureLabel.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-self.view.frame.height/47.76)
             make.centerX.equalToSuperview()
         }
-        
         takePictureImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.width.equalToSuperview().dividedBy(1.5)
+            make.width.equalToSuperview().dividedBy(2.8)
             make.height.equalToSuperview().dividedBy(2.4)
             make.top.equalToSuperview().offset(self.view.frame.height/30)
         }
-        
         choosePictureButton.snp.makeConstraints { make in
-            make.right.equalToSuperview().offset(-self.view.frame.width/7.81)
-            make.top.equalTo(saveLabel.snp.bottom).offset(self.view.frame.height/27.06)
-            make.width.equalToSuperview().dividedBy(3)
-            make.height.equalToSuperview().dividedBy(5.92)
+            make.left.equalTo(takePictureButton)
+            make.top.equalTo(takePictureButton.snp.bottom).offset(self.view.frame.height/27.06)
+            make.centerX.equalToSuperview()
+            make.height.equalToSuperview().dividedBy(4.64)
         }
-        
         choosePictureLabel.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-self.view.frame.height/47.76)
             make.centerX.equalToSuperview()
         }
-        
         choosePictureImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.width.equalToSuperview().dividedBy(1.8)
+            make.width.equalToSuperview().dividedBy(3)
             make.height.equalToSuperview().dividedBy(2)
             make.top.equalToSuperview().offset(self.view.frame.height/50)
         }
     }
     
     // MARK: - Selectors
-    @objc func takePictureButtonClicked(sender:UIButton){
+    @objc private func takePictureButtonClicked(sender:UIButton){
 //        let nextVC = 사진 찍는 페이지()
 //        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
-    @objc func choosePictureButtonClicked(sender:UIButton){
+    @objc private func choosePictureButtonClicked(sender:UIButton){
 //        let nextVC = 사진 선택 페이지()
 //        self.navigationController?.pushViewController(nextVC, animated: true)
     }
