@@ -109,8 +109,7 @@ class LoginViewController: UIViewController {
     // MARK: - Selecters
     @objc func logInButtonClicked(sender:UIButton){
         let nextVC = MainViewController()
-        nextVC.modalPresentationStyle = .fullScreen
-        present(nextVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     @objc func noAccountButtonClicked(sender:UIButton){
