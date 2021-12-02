@@ -121,4 +121,13 @@ class LoginViewController: UIViewController {
         let nextVC = FindPasswardEmailViewController()
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
+    
+    // MARK: - isValidEmail
+    private func isValidEmail(email: String?) -> Bool {
+        guard email != nil else { return false }
+        
+        let idRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let pred = NSPredicate(format:"SELF MATCHES %@", idRegEx)
+        return pred.evaluate(with: email)
+    }
 }
