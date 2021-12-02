@@ -106,8 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				AA478B9026F08166009C628B /* LaunchScreen.storyboard */,
-				AA478B8726F08164009C628B /* SceneDelegate.swift */,
 				AA478B8526F08164009C628B /* AppDelegate.swift */,
+				AA478B8726F08164009C628B /* SceneDelegate.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
