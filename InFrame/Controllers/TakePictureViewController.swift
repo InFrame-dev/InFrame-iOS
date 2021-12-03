@@ -69,8 +69,7 @@ class TakePictureViewController: UIViewController {
     // MARK: - Add View
     
     private func addView(){
-        [backButton, returnButton, takeValueLabel, takeImageView, takeButton].forEach { view.addSubview($0)
-        }
+        [backButton, returnButton, takeValueLabel, takeImageView, takeButton].forEach { view.addSubview($0) }
     }
     
     // MARK: - Location
