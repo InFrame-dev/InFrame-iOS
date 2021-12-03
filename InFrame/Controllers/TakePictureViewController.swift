@@ -26,6 +26,10 @@ class TakePictureViewController: UIViewController {
         $0.textColor = .rgb(red: 196, green: 196, blue: 196)
     }
     
+    private let takeImageView = UIImageView().then {
+        $0.backgroundColor = .gray
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +49,7 @@ class TakePictureViewController: UIViewController {
     // MARK: - Add View
     
     private func addView(){
-        [backButton, returnButton, takeValueLabel].forEach { view.addSubview($0)
+        [backButton, returnButton, takeValueLabel, takeImageView].forEach { view.addSubview($0)
         }
     }
     
@@ -75,6 +79,13 @@ class TakePictureViewController: UIViewController {
         takeValueLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(self.view.frame.height/5.38)
+        }
+        
+        takeImageView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(takeValueLabel.snp.bottom).offset(self.view.frame.height/16.57)
+            make.width.equalToSuperview()
+            make.height.equalToSuperview().dividedBy(3.14)
         }
     }
     
