@@ -11,12 +11,19 @@ import SnapKit
 
 class TakePictureViewController: UIViewController {
     //MARK: - Properties
+    
     private let backButton = UIButton().then {
         $0.setBackgroundImage(UIImage(named: "InFrame_BackButtonImage"), for: .normal)
     }
     
     private let returnButton = UIButton().then {
         $0.setBackgroundImage(UIImage(named: "InFrame_Return"), for: .normal)
+    }
+    
+    private let takeValueLabel = UILabel().then {
+        $0.text = "3/6"
+        $0.dynamicFont(fontSize: 14, currentFontName: "CarterOne")
+        $0.textColor = .rgb(red: 196, green: 196, blue: 196)
     }
     
     //MARK: - Lifecycle
@@ -38,7 +45,7 @@ class TakePictureViewController: UIViewController {
     // MARK: - Add View
     
     private func addView(){
-        [backButton, returnButton].forEach { view.addSubview($0)
+        [backButton, returnButton, takeValueLabel].forEach { view.addSubview($0)
         }
     }
     
@@ -63,6 +70,11 @@ class TakePictureViewController: UIViewController {
             make.centerY.equalTo(backButton)
             make.width.equalToSuperview().dividedBy(19.74)
             make.height.equalToSuperview().dividedBy(42.74)
+        }
+        
+        takeValueLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(self.view.frame.height/5.38)
         }
     }
     
