@@ -21,6 +21,10 @@ class ChoicePictureViewController: UIViewController {
     private let downloadButton = UIButton().then {
         $0.setImage(UIImage(named: "InFrame_Download"), for: .normal)
     }
+    
+    private let goChoiceFilterButton = ChoiceGradientButton().then {
+        $0.dataSetting(buttonText: "필터 선택하러 가기")
+    }
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +44,7 @@ class ChoicePictureViewController: UIViewController {
     // MARK: - Add View
     
     private func addView(){
-        [choiceValueLabel, downloadButton].forEach{ view.addSubview($0) }
+        [choiceValueLabel, downloadButton, goChoiceFilterButton].forEach{ view.addSubview($0) }
     }
     
     // MARK: - Corner Radius
@@ -62,6 +66,13 @@ class ChoicePictureViewController: UIViewController {
             make.top.equalTo(choiceValueLabel.snp.bottom).offset(self.view.frame.height/15.92)
             make.width.equalToSuperview().dividedBy(22.06)
             make.height.equalTo(downloadButton.snp.width)
+        }
+        
+        goChoiceFilterButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(self.view.frame.height/12.5)
+            make.height.equalToSuperview().dividedBy(19.80)
+            make.left.equalToSuperview().offset(self.view.frame.width/8.52)
         }
     }
     
