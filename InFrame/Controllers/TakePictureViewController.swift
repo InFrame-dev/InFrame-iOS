@@ -30,6 +30,10 @@ class TakePictureViewController: UIViewController {
         $0.backgroundColor = .gray
     }
     
+    private let takeButton = UIButton().then {
+        $0.setBackgroundImage(UIImage(named: "InFrame_TakeButton"), for: .normal)
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,21 +46,14 @@ class TakePictureViewController: UIViewController {
     private func configureUI(){
         view.backgroundColor = .white
         addView()
-        cornerRadius()
         location()
     }
     
     // MARK: - Add View
     
     private func addView(){
-        [backButton, returnButton, takeValueLabel, takeImageView].forEach { view.addSubview($0)
+        [backButton, returnButton, takeValueLabel, takeImageView, takeButton].forEach { view.addSubview($0)
         }
-    }
-    
-    // MARK: - Corner Radius
-    
-    private func cornerRadius(){
-        
     }
     
     // MARK: - Location
@@ -73,7 +70,7 @@ class TakePictureViewController: UIViewController {
             make.right.equalToSuperview().inset(self.view.frame.width/12.93)
             make.centerY.equalTo(backButton)
             make.width.equalToSuperview().dividedBy(19.74)
-            make.height.equalToSuperview().dividedBy(42.74)
+            make.height.equalTo(returnButton.snp.width)
         }
         
         takeValueLabel.snp.makeConstraints { make in
@@ -86,6 +83,13 @@ class TakePictureViewController: UIViewController {
             make.top.equalTo(takeValueLabel.snp.bottom).offset(self.view.frame.height/16.57)
             make.width.equalToSuperview()
             make.height.equalToSuperview().dividedBy(3.14)
+        }
+        
+        takeButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(self.view.frame.height/14)
+            make.width.equalToSuperview().dividedBy(6.25)
+            make.height.equalTo(takeButton.snp.width)
         }
     }
     
