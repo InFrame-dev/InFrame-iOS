@@ -124,12 +124,9 @@
 				6AA8FB562701DCD400E8B198 /* TermsOfServiceViewController.swift */,
 				6AA8FB5A2702AB5600E8B198 /* MainViewController.swift */,
 				6AA8FB5E2702D4D000E8B198 /* FindPasswardEmailViewController.swift */,
-				6AA8FB602702DA2000E8B198 /* NewPasswardViewController.swift */,
-				AAA1D06F2753CEED00BD446A /* TakePictureViewController.swift */,
 				6AA8FB602702DA2000E8B198 /* NewPasswordViewController.swift */,
 				6A89DA10275851E900AE4190 /* NewPasswordEmailCheckViewController.swift */,
-				6A89DA0A2757B3AA00AE4190 /* InputView.swift */,
-				6A89DA0E2757B97B00AE4190 /* GradientButton.swift */,
+				AAA1D06F2753CEED00BD446A /* TakePictureViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -137,6 +134,8 @@
 		AA478B9D26F08508009C628B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6A89DA0E2757B97B00AE4190 /* GradientButton.swift */,
+				6A89DA0A2757B3AA00AE4190 /* InputView.swift */,
 				6AA8FB5C2702AD2000E8B198 /* MainButton.swift */,
 			);
 			path = Views;
