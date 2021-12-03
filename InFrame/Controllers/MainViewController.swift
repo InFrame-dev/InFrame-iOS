@@ -114,8 +114,8 @@ class MainViewController: UIViewController {
     
     // MARK: - Selectors
     @objc private func takePictureButtonClicked(sender:UIButton){
-//        let nextVC = 사진 찍는 페이지()
-//        self.navigationController?.pushViewController(nextVC, animated: true)
+        let nextVC = TakePictureViewController()
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     @objc private func choosePictureButtonClicked(sender:UIButton){
