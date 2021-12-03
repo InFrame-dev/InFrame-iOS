@@ -12,6 +12,11 @@ import Then
 class ViewController: UIViewController {
     //MARK: - Properties
     
+    private let choiceValueLabel = UILabel().then {
+        $0.text = "3/4"
+        $0.dynamicFont(fontSize: 14, currentFontName: "CarterOne")
+        $0.textColor = .rgb(red: 196, green: 196, blue: 196)
+    }
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +36,7 @@ class ViewController: UIViewController {
     // MARK: - Add View
     
     private func addView(){
-        
+        [choiceValueLabel].forEach{ view.addSubview($0) }
     }
     
     // MARK: - Corner Radius
@@ -43,7 +48,10 @@ class ViewController: UIViewController {
     // MARK: - Location
     
     private func location(){
-        
+        choiceValueLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(self.view.frame.height/9.23)
+        }
     }
     
 }
