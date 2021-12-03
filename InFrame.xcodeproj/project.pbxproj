@@ -24,6 +24,7 @@
 		AA478B9A26F083FE009C628B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA478B9926F083FE009C628B /* LoginViewController.swift */; };
 		AA478BA326F08BF6009C628B /* CarterOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA478BA226F08BDB009C628B /* CarterOne-Regular.ttf */; };
 		AA478BA526F08CAD009C628B /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA478BA426F08CAD009C628B /* Extension.swift */; };
+		AAA1D0702753CEED00BD446A /* TakePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D06F2753CEED00BD446A /* TakePictureViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		AA478B9926F083FE009C628B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AA478BA226F08BDB009C628B /* CarterOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CarterOne-Regular.ttf"; sourceTree = "<group>"; };
 		AA478BA426F08CAD009C628B /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		AAA1D06F2753CEED00BD446A /* TakePictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePictureViewController.swift; sourceTree = "<group>"; };
 		BABB722AD0F623D03DEA37D0 /* Pods_InFrame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InFrame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -124,8 +126,7 @@
 				6AA8FB5E2702D4D000E8B198 /* FindPasswardEmailViewController.swift */,
 				6AA8FB602702DA2000E8B198 /* NewPasswordViewController.swift */,
 				6A89DA10275851E900AE4190 /* NewPasswordEmailCheckViewController.swift */,
-				6A89DA0A2757B3AA00AE4190 /* InputView.swift */,
-				6A89DA0E2757B97B00AE4190 /* GradientButton.swift */,
+				AAA1D06F2753CEED00BD446A /* TakePictureViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -133,6 +134,8 @@
 		AA478B9D26F08508009C628B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6A89DA0E2757B97B00AE4190 /* GradientButton.swift */,
+				6A89DA0A2757B3AA00AE4190 /* InputView.swift */,
 				6AA8FB5C2702AD2000E8B198 /* MainButton.swift */,
 			);
 			path = Views;
@@ -287,6 +290,7 @@
 				6A89DA0F2757B97B00AE4190 /* GradientButton.swift in Sources */,
 				AA478B9A26F083FE009C628B /* LoginViewController.swift in Sources */,
 				6AA8FB572701DCD400E8B198 /* TermsOfServiceViewController.swift in Sources */,
+				AAA1D0702753CEED00BD446A /* TakePictureViewController.swift in Sources */,
 				AA478B8626F08164009C628B /* AppDelegate.swift in Sources */,
 				6AA8FB612702DA2000E8B198 /* NewPasswordViewController.swift in Sources */,
 				6AA8FB5D2702AD2000E8B198 /* MainButton.swift in Sources */,
