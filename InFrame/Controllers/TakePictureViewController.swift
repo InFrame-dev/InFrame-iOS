@@ -13,11 +13,13 @@ class TakePictureViewController: UIViewController {
     //MARK: - Properties
     
     private let backButton = UIButton().then {
-        $0.setBackgroundImage(UIImage(named: "InFrame_BackButtonImage"), for: .normal)
+        $0.setImage(UIImage(named: "InFrame_BackButtonImage"), for: .normal)
+        $0.addTarget(self, action: #selector(backButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private let returnButton = UIButton().then {
-        $0.setBackgroundImage(UIImage(named: "InFrame_Return"), for: .normal)
+        $0.setImage(UIImage(named: "InFrame_Return"), for: .normal)
+        $0.addTarget(self, action: #selector(returnButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private let takeValueLabel = UILabel().then {
@@ -31,7 +33,8 @@ class TakePictureViewController: UIViewController {
     }
     
     private let takeButton = UIButton().then {
-        $0.setBackgroundImage(UIImage(named: "InFrame_TakeButton"), for: .normal)
+        $0.setImage(UIImage(named: "InFrame_TakeButton"), for: .normal)
+        $0.addTarget(self, action: #selector(takeButtonClicked(sender:)), for: .touchUpInside)
     }
     
     //MARK: - Lifecycle
@@ -41,6 +44,20 @@ class TakePictureViewController: UIViewController {
     }
     
     //MARK: - Selectors
+    
+    @objc private func backButtonClicked(sender:UIButton){
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func returnButtonClicked(sender:UIButton){
+        print("return")
+        // 카메라 전환 기능 코드
+    }
+    
+    @objc private func takeButtonClicked(sender:UIButton){
+        print("take")
+        // 카메라 촬영 기능 코드
+    }
     
     //MARK: - Helpers
     private func configureUI(){
@@ -94,30 +111,3 @@ class TakePictureViewController: UIViewController {
     }
     
 }
-
-//MARK: - Preview
-#if DEBUG
-import SwiftUI
-struct TakePictureViewControllerRepresentable: UIViewControllerRepresentable {
-    
-func updateUIViewController(_ uiView: UIViewController,context: Context) {
-        // leave this empty
-}
-    @available(iOS 13.0.0, *)
-    func makeUIViewController(context: Context) -> UIViewController{
-        TakePictureViewController()
-    }
-}
-@available(iOS 13.0, *)
-struct TakePictureViewControllerRepresentable_PreviewProvider: PreviewProvider {
-    static var previews: some View {
-        Group {
-            TakePictureViewControllerRepresentable()
-                .ignoresSafeArea()
-                .previewDisplayName(/*@START_MENU_TOKEN@*/"Preview"/*@END_MENU_TOKEN@*/)
-                .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
-        }
-        
-    }
-} #endif
-
