@@ -11,6 +11,13 @@ import SnapKit
 
 class TakePictureViewController: UIViewController {
     //MARK: - Properties
+    private let backButton = UIButton().then {
+        $0.setBackgroundImage(UIImage(named: "InFrame_BackButtonImage"), for: .normal)
+    }
+    
+    private let returnButton = UIButton().then {
+        $0.setBackgroundImage(UIImage(named: "InFrame_Return"), for: .normal)
+    }
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -31,7 +38,8 @@ class TakePictureViewController: UIViewController {
     // MARK: - Add View
     
     private func addView(){
-        
+        [backButton, returnButton].forEach { view.addSubview($0)
+        }
     }
     
     // MARK: - Corner Radius
@@ -43,7 +51,19 @@ class TakePictureViewController: UIViewController {
     // MARK: - Location
     
     private func location(){
+        backButton.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(self.view.frame.width/15)
+            make.top.equalToSuperview().offset(self.view.frame.height/10.02)
+            make.width.equalToSuperview().dividedBy(46.88)
+            make.height.equalToSuperview().dividedBy(47.76)
+        }
         
+        returnButton.snp.makeConstraints { make in
+            make.right.equalToSuperview().inset(self.view.frame.width/12.93)
+            make.centerY.equalTo(backButton)
+            make.width.equalToSuperview().dividedBy(19.74)
+            make.height.equalToSuperview().dividedBy(42.74)
+        }
     }
     
 }
