@@ -39,7 +39,7 @@ class ChoicePicturesView: UIView {
     private lazy var imageCheckView = UIStackView(arrangedSubviews: [imageCheckLine1, imageCheckLine2, imageCheckLine3]).then {
         $0.axis = .vertical
         $0.distribution = .fillEqually
-        $0.spacing = viewBounds.height/24.5
+        $0.spacing = viewBounds.height/58
     }
     
     
