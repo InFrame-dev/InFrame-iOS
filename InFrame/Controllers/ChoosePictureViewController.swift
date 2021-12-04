@@ -45,8 +45,8 @@ class ChoosePictureViewController: UIViewController {
     
     @objc private func chooseFilterButtonClicked(sender:UIButton){
         print("필터 선택하러 가기")
-//        let nextVC = 필터선택VC()
-//        self.navigationController?.pushViewController(nextVC, animated: true)
+        let nextVC = ChooseFilterViewController()
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     //MARK: - Helpers
