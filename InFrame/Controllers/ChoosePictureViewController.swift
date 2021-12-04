@@ -1,5 +1,5 @@
 //
-//  ChoicePictureViewController.swift
+//  ChoosePictureViewController.swift
 //  InFrame
 //
 //  Created by 노연주 on 2021/12/03.
@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class ChoicePictureViewController: UIViewController {
+class ChoosePictureViewController: UIViewController {
     //MARK: - Properties
     
     private let choiceValueLabel = UILabel().then {

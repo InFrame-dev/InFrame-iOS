@@ -119,7 +119,7 @@ class MainViewController: UIViewController {
     }
     
     @objc private func choosePictureButtonClicked(sender:UIButton){
-        let nextVC = ChoicePictureViewController()
+        let nextVC = ChoosePictureViewController()
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
