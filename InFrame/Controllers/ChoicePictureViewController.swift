@@ -20,10 +20,12 @@ class ChoicePictureViewController: UIViewController {
     
     private let downloadButton = UIButton().then {
         $0.setImage(UIImage(named: "InFrame_Download"), for: .normal)
+        $0.addTarget(self, action: #selector(downloadButtonClicked(sender:)), for: .touchUpInside)
     }
     
-    private let goChoiceFilterButton = ChoiceGradientButton().then {
+    private let chooseFilterButton = ChoiceGradientButton().then {
         $0.dataSetting(buttonText: "필터 선택하러 가기")
+        $0.addTarget(self, action: #selector(chooseFilterButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private let choicePictures = ChoicePicturesView()
@@ -36,24 +38,28 @@ class ChoicePictureViewController: UIViewController {
     
     //MARK: - Selectors
     
+    @objc private func downloadButtonClicked(sender:UIButton){
+        print("Download")
+        // 사진 저장 기능 코드
+    }
+    
+    @objc private func chooseFilterButtonClicked(sender:UIButton){
+        print("필터 선택하러 가기")
+//        let nextVC = 필터선택VC()
+//        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
     //MARK: - Helpers
     private func configureUI(){
         view.backgroundColor = .white
         addView()
-        cornerRadius()
         location()
     }
     
     // MARK: - Add View
     
     private func addView(){
-        [choiceValueLabel, downloadButton, goChoiceFilterButton, choicePictures].forEach{ view.addSubview($0) }
-    }
-    
-    // MARK: - Corner Radius
-    
-    private func cornerRadius(){
-        
+        [choiceValueLabel, downloadButton, chooseFilterButton, choicePictures].forEach{ view.addSubview($0) }
     }
     
     // MARK: - Location
@@ -71,7 +77,7 @@ class ChoicePictureViewController: UIViewController {
             make.height.equalTo(downloadButton.snp.width)
         }
         
-        goChoiceFilterButton.snp.makeConstraints { make in
+        chooseFilterButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().inset(self.view.frame.height/12.5)
             make.height.equalToSuperview().dividedBy(19.80)
@@ -87,30 +93,3 @@ class ChoicePictureViewController: UIViewController {
     }
     
 }
-
-//MARK: - Preview
-#if DEBUG
-import SwiftUI
-struct ChoicePictureViewControllerRepresentable: UIViewControllerRepresentable {
-    
-func updateUIViewController(_ uiView: UIViewController,context: Context) {
-        // leave this empty
-}
-    @available(iOS 13.0.0, *)
-    func makeUIViewController(context: Context) -> UIViewController{
-        ChoicePictureViewController()
-    }
-}
-@available(iOS 13.0, *)
-struct ViewControllerRepresentable_PreviewProvider: PreviewProvider {
-    static var previews: some View {
-        Group {
-            ChoicePictureViewControllerRepresentable()
-                .ignoresSafeArea()
-                .previewDisplayName(/*@START_MENU_TOKEN@*/"Preview"/*@END_MENU_TOKEN@*/)
-                .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
-        }
-        
-    }
-} #endif
-
