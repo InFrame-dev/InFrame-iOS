@@ -12,6 +12,8 @@ import Then
 class ChooseFilterViewController: UIViewController {
     //MARK: - Properties
     
+    private let imageFilterView = ImageFilterView()
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,13 +32,18 @@ class ChooseFilterViewController: UIViewController {
     // MARK: - Add View
     
     private func addView(){
-        
+        [imageFilterView].forEach { view.addSubview($0) }
     }
     
     // MARK: - Location
     
     private func location(){
-        
+        imageFilterView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(self.view.frame.height/4.16)
+            make.width.equalToSuperview().dividedBy(1.16)
+            make.height.equalToSuperview().dividedBy(3.64)
+        }
     }
     
 }
