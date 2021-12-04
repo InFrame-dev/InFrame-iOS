@@ -28,6 +28,7 @@
 		AAA1D096275A30B500BD446A /* ChoicePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D095275A30B500BD446A /* ChoicePictureViewController.swift */; };
 		AAA1D098275A367300BD446A /* ChoiceGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D097275A367300BD446A /* ChoiceGradientButton.swift */; };
 		AAA1D09A275A3B7600BD446A /* ImageCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D099275A3B7600BD446A /* ImageCheckView.swift */; };
+		AAA1D09C275B10E300BD446A /* ChoicePicturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D09B275B10E300BD446A /* ChoicePicturesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		AAA1D095275A30B500BD446A /* ChoicePictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoicePictureViewController.swift; sourceTree = "<group>"; };
 		AAA1D097275A367300BD446A /* ChoiceGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceGradientButton.swift; sourceTree = "<group>"; };
 		AAA1D099275A3B7600BD446A /* ImageCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCheckView.swift; sourceTree = "<group>"; };
+		AAA1D09B275B10E300BD446A /* ChoicePicturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoicePicturesView.swift; sourceTree = "<group>"; };
 		BABB722AD0F623D03DEA37D0 /* Pods_InFrame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InFrame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -146,6 +148,7 @@
 				6AA8FB5C2702AD2000E8B198 /* MainButton.swift */,
 				AAA1D097275A367300BD446A /* ChoiceGradientButton.swift */,
 				AAA1D099275A3B7600BD446A /* ImageCheckView.swift */,
+				AAA1D09B275B10E300BD446A /* ChoicePicturesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				6AA8FB5D2702AD2000E8B198 /* MainButton.swift in Sources */,
 				AA478B8826F08164009C628B /* SceneDelegate.swift in Sources */,
 				AAA1D098275A367300BD446A /* ChoiceGradientButton.swift in Sources */,
+				AAA1D09C275B10E300BD446A /* ChoicePicturesView.swift in Sources */,
 				AA478BA526F08CAD009C628B /* Extension.swift in Sources */,
 				6A89DA0B2757B3AA00AE4190 /* InputView.swift in Sources */,
 				6A89DA11275851E900AE4190 /* NewPasswordEmailCheckViewController.swift in Sources */,
