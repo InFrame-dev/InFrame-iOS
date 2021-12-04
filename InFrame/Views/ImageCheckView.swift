@@ -17,7 +17,6 @@ class ImageCheckView: UIView {
     
     private let checkButton = UIButton().then {
         $0.setImage(UIImage(named: "InFrame_AgreeButtonImage"), for: .normal)
-        $0.backgroundColor = .black
     }
     
     // MARK: - LifeCycles
