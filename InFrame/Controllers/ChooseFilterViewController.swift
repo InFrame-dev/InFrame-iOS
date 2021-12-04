@@ -14,6 +14,9 @@ class ChooseFilterViewController: UIViewController {
     
     private let imageFilterView = ImageFilterView()
     
+    private let chooseFrameButton = ChoiceGradientButton().then {
+        $0.dataSetting(buttonText: "프레임 선택하러 가기")
+    }
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +35,7 @@ class ChooseFilterViewController: UIViewController {
     // MARK: - Add View
     
     private func addView(){
-        [imageFilterView].forEach { view.addSubview($0) }
+        [imageFilterView, chooseFrameButton].forEach { view.addSubview($0) }
     }
     
     // MARK: - Location
@@ -43,6 +46,13 @@ class ChooseFilterViewController: UIViewController {
             make.top.equalToSuperview().offset(self.view.frame.height/4.16)
             make.width.equalToSuperview().dividedBy(1.16)
             make.height.equalToSuperview().dividedBy(3.64)
+        }
+        
+        chooseFrameButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(self.view.frame.height/12.5)
+            make.height.equalToSuperview().dividedBy(19.80)
+            make.left.equalToSuperview().offset(self.view.frame.width/8.52)
         }
     }
     
