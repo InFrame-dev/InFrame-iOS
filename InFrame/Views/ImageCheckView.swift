@@ -55,8 +55,8 @@ class ImageCheckView: UIView {
         }
         
         checkButton.snp.makeConstraints { make in
-            make.top.equalTo(choiceImage).offset(viewBounds.height/18.26)
-            make.left.equalTo(choiceImage).offset(viewBounds.width/23.28)
+            make.top.equalTo(choiceImage).offset(viewBounds.height/144.23)
+            make.left.equalTo(choiceImage).offset(viewBounds.width/55.89)
             make.width.equalTo(choiceImage).dividedBy(8.57)
             make.height.equalTo(checkButton.snp.width)
         }
