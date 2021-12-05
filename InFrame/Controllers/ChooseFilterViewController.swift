@@ -50,8 +50,8 @@ class ChooseFilterViewController: UIViewController {
     
     @objc private func chooseFrameButtonClicked(sender:UIButton){
         print("프레임 선택하러 가기")
-//        let nextVC = 프레임선택VC()
-//        self.navigationController?.pushViewController(nextVC, animated: true)
+        let nextVC = ChooseFrameViewController()
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     @objc private func chooseBlackFilterClicked(sender:UIButton){
