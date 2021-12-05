@@ -75,7 +75,7 @@ class FilterButtonLayerView: UIView {
     
     // MARK: - dataSetting
     func dataSetting(image:String, koreanText:String, englishText:String){
-        filterImage.image = UIImage(named: image)!
+        filterImage.image = UIImage(named: image)
         filterKorean.text = koreanText
         filterEnglish.text = englishText
     }
