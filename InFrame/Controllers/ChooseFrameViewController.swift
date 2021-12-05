@@ -14,6 +14,40 @@ class ChooseFrameViewController: UIViewController {
     
     private let imageFrameView = ImagesFrameView()
     
+    private let whiteFrameButton = FrameColorButton().then {
+        $0.dataSetting(color: .white)
+    }
+    
+    private let blackFrameButton = FrameColorButton().then {
+        $0.dataSetting(color: .black)
+    }
+    
+    private let gradienFrameButton = FrameColorButton().then {
+        $0.dataSetting(color: .orange)
+    }
+    
+    private let yellowFrameButton = FrameColorButton().then {
+        $0.dataSetting(color: .rgb(red: 248, green: 238, blue: 156))
+    }
+    
+    private let greenFrameButton = FrameColorButton().then {
+        $0.dataSetting(color: .rgb(red: 190, green: 236, blue: 203))
+    }
+    
+    private let blueFrameButton = FrameColorButton().then {
+        $0.dataSetting(color: .rgb(red: 183, green: 198, blue: 235))
+    }
+    
+    private let purpleFrameButton = FrameColorButton().then {
+        $0.dataSetting(color: .rgb(red: 173, green: 172, blue: 241))
+    }
+    
+    private lazy var frameColorButtonStack = UIStackView(arrangedSubviews: [whiteFrameButton, blackFrameButton, gradienFrameButton, yellowFrameButton, greenFrameButton, blueFrameButton, purpleFrameButton]).then {
+        $0.axis = .vertical
+        $0.distribution = .fillEqually
+        $0.spacing = self.view.frame.height/24.61
+    }
+    
     private let chooseDownButton = ChoiceGradientButton().then {
         $0.dataSetting(buttonText: "사진 저장하기")
     }
@@ -36,7 +70,7 @@ class ChooseFrameViewController: UIViewController {
     // MARK: - Add View
     
     private func addView(){
-        [imageFrameView, chooseDownButton].forEach { view.addSubview($0)}
+        [imageFrameView, frameColorButtonStack, chooseDownButton].forEach { view.addSubview($0)}
     }
     
     // MARK: - Location
@@ -47,6 +81,13 @@ class ChooseFrameViewController: UIViewController {
             make.top.equalToSuperview().offset(self.view.frame.height/9.02)
             make.width.equalToSuperview().dividedBy(1.98)
             make.height.equalToSuperview().dividedBy(1.48)
+        }
+        
+        frameColorButtonStack.snp.makeConstraints { make in
+            make.centerY.equalTo(imageFrameView)
+            make.left.equalTo(imageFrameView.snp.right).offset(self.view.frame.width/10.71)
+            make.width.equalToSuperview().dividedBy(9.38)
+            make.height.equalToSuperview().dividedBy(1.7)
         }
         
         chooseDownButton.snp.makeConstraints { make in
