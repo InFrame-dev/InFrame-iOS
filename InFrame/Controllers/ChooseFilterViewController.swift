@@ -16,14 +16,17 @@ class ChooseFilterViewController: UIViewController {
     
     private let blackButton = FilterButton().then {
         $0.dataSetting(image: "InFrame_FilterBlack", koreanText: "흑백", englishText: "BLACK")
+        $0.addTarget(self, action: #selector(chooseBlackFilterClicked(sender:)), for: .touchUpInside)
     }
     
     private let basicButton = FilterButton().then {
         $0.dataSetting(image: "InFrame_FilterBasic", koreanText: "기본", englishText: "BASIC")
+        $0.addTarget(self, action: #selector(chooseBasicFilterClicked(sender:)), for: .touchUpInside)
     }
     
     private let lightButton = FilterButton().then {
         $0.dataSetting(image: "InFrame_FilterLight", koreanText: "밝게", englishText: "LIGHT")
+        $0.addTarget(self, action: #selector(chooseLightFilterClicked(sender:)), for: .touchUpInside)
     }
     
     private lazy var filterButtonStackView = UIStackView(arrangedSubviews: [blackButton, basicButton, lightButton]).then {
@@ -34,6 +37,7 @@ class ChooseFilterViewController: UIViewController {
     
     private let chooseFrameButton = ChoiceGradientButton().then {
         $0.dataSetting(buttonText: "프레임 선택하러 가기")
+        $0.addTarget(self, action: #selector(chooseFrameButtonClicked(sender:)), for: .touchUpInside)
     }
 
     //MARK: - Lifecycle
@@ -43,6 +47,28 @@ class ChooseFilterViewController: UIViewController {
     }
     
     //MARK: - Selectors
+    
+    @objc private func chooseFrameButtonClicked(sender:UIButton){
+        print("프레임 선택하러 가기")
+//        let nextVC = 프레임선택VC()
+//        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    @objc private func chooseBlackFilterClicked(sender:UIButton){
+        print("Black")
+        // 사진 흑백 효과
+    }
+    
+    @objc private func chooseBasicFilterClicked(sender:UIButton){
+        print("Basic")
+        // 사진 기본
+    }
+
+    @objc private func chooseLightFilterClicked(sender:UIButton){
+        print("Light")
+        // 사진 밝게 효과
+    }
+
     
     //MARK: - Helpers
     private func configureUI(){
