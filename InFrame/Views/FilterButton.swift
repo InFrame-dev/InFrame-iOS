@@ -31,7 +31,12 @@ class FilterButton: UIButton {
     // MARK: - Helpers
     private func configureUI(){
         addView()
-        self.backgroundColor = .black
+        self.backgroundColor = .white
+        self.layer.cornerRadius = 10
+        self.layer.shadowColor = UIColor.lightGray.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 2)
+        self.layer.shadowRadius = 10
+        self.layer.shadowOpacity = 0.3
     }
     
     // MARK: - addView
