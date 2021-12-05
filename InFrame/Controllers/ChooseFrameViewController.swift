@@ -12,6 +12,8 @@ import Then
 class ChooseFrameViewController: UIViewController {
     //MARK: - Properties
     
+    private let imageFrameView = ImagesFrameView()
+    
     private let chooseDownButton = ChoiceGradientButton().then {
         $0.dataSetting(buttonText: "사진 저장하기")
     }
@@ -34,12 +36,19 @@ class ChooseFrameViewController: UIViewController {
     // MARK: - Add View
     
     private func addView(){
-        [chooseDownButton].forEach { view.addSubview($0)}
+        [imageFrameView, chooseDownButton].forEach { view.addSubview($0)}
     }
     
     // MARK: - Location
     
     private func location(){
+        imageFrameView.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(self.view.frame.width/6.94)
+            make.top.equalToSuperview().offset(self.view.frame.height/9.02)
+            make.width.equalToSuperview().dividedBy(1.98)
+            make.height.equalToSuperview().dividedBy(1.48)
+        }
+        
         chooseDownButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().inset(self.view.frame.height/12.5)
