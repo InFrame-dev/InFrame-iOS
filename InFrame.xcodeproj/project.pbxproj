@@ -34,6 +34,7 @@
 		AAA1D0A2275C626B00BD446A /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D0A1275C626B00BD446A /* FilterButton.swift */; };
 		AAA1D0A4275C669D00BD446A /* FilterButtonLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D0A3275C669D00BD446A /* FilterButtonLayerView.swift */; };
 		AAA1D0A6275C792400BD446A /* ChooseFrameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D0A5275C792400BD446A /* ChooseFrameViewController.swift */; };
+		AAB67A63275CB39D004685EF /* ImagesFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB67A62275CB39D004685EF /* ImagesFrameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		AAA1D0A1275C626B00BD446A /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		AAA1D0A3275C669D00BD446A /* FilterButtonLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButtonLayerView.swift; sourceTree = "<group>"; };
 		AAA1D0A5275C792400BD446A /* ChooseFrameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFrameViewController.swift; sourceTree = "<group>"; };
+		AAB67A62275CB39D004685EF /* ImagesFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesFrameView.swift; sourceTree = "<group>"; };
 		BABB722AD0F623D03DEA37D0 /* Pods_InFrame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InFrame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -164,6 +166,7 @@
 				AAA1D09F275BCBA600BD446A /* ImageFilterView.swift */,
 				AAA1D0A3275C669D00BD446A /* FilterButtonLayerView.swift */,
 				AAA1D0A1275C626B00BD446A /* FilterButton.swift */,
+				AAB67A62275CB39D004685EF /* ImagesFrameView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				6AA8FB5B2702AB5600E8B198 /* MainViewController.swift in Sources */,
 				6A89DA0F2757B97B00AE4190 /* GradientButton.swift in Sources */,
 				AA478B9A26F083FE009C628B /* LoginViewController.swift in Sources */,
+				AAB67A63275CB39D004685EF /* ImagesFrameView.swift in Sources */,
 				6AA8FB572701DCD400E8B198 /* TermsOfServiceViewController.swift in Sources */,
 				AAA1D09E275BC5E200BD446A /* ChooseFilterViewController.swift in Sources */,
 				AAA1D0702753CEED00BD446A /* TakePictureViewController.swift in Sources */,
