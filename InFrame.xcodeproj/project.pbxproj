@@ -25,6 +25,17 @@
 		AA478BA326F08BF6009C628B /* CarterOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA478BA226F08BDB009C628B /* CarterOne-Regular.ttf */; };
 		AA478BA526F08CAD009C628B /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA478BA426F08CAD009C628B /* Extension.swift */; };
 		AAA1D0702753CEED00BD446A /* TakePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D06F2753CEED00BD446A /* TakePictureViewController.swift */; };
+		AAA1D096275A30B500BD446A /* ChoosePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D095275A30B500BD446A /* ChoosePictureViewController.swift */; };
+		AAA1D098275A367300BD446A /* ChoiceGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D097275A367300BD446A /* ChoiceGradientButton.swift */; };
+		AAA1D09A275A3B7600BD446A /* ImageCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D099275A3B7600BD446A /* ImageCheckView.swift */; };
+		AAA1D09C275B10E300BD446A /* ChoicePicturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D09B275B10E300BD446A /* ChoicePicturesView.swift */; };
+		AAA1D09E275BC5E200BD446A /* ChooseFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D09D275BC5E200BD446A /* ChooseFilterViewController.swift */; };
+		AAA1D0A0275BCBA600BD446A /* ImageFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D09F275BCBA600BD446A /* ImageFilterView.swift */; };
+		AAA1D0A2275C626B00BD446A /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D0A1275C626B00BD446A /* FilterButton.swift */; };
+		AAA1D0A4275C669D00BD446A /* FilterButtonLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D0A3275C669D00BD446A /* FilterButtonLayerView.swift */; };
+		AAA1D0A6275C792400BD446A /* ChooseFrameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D0A5275C792400BD446A /* ChooseFrameViewController.swift */; };
+		AAB67A63275CB39D004685EF /* ImagesFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB67A62275CB39D004685EF /* ImagesFrameView.swift */; };
+		AAB67A65275CEB67004685EF /* FrameColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB67A64275CEB67004685EF /* FrameColorButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +60,17 @@
 		AA478BA226F08BDB009C628B /* CarterOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CarterOne-Regular.ttf"; sourceTree = "<group>"; };
 		AA478BA426F08CAD009C628B /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		AAA1D06F2753CEED00BD446A /* TakePictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePictureViewController.swift; sourceTree = "<group>"; };
+		AAA1D095275A30B500BD446A /* ChoosePictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePictureViewController.swift; sourceTree = "<group>"; };
+		AAA1D097275A367300BD446A /* ChoiceGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceGradientButton.swift; sourceTree = "<group>"; };
+		AAA1D099275A3B7600BD446A /* ImageCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCheckView.swift; sourceTree = "<group>"; };
+		AAA1D09B275B10E300BD446A /* ChoicePicturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoicePicturesView.swift; sourceTree = "<group>"; };
+		AAA1D09D275BC5E200BD446A /* ChooseFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFilterViewController.swift; sourceTree = "<group>"; };
+		AAA1D09F275BCBA600BD446A /* ImageFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFilterView.swift; sourceTree = "<group>"; };
+		AAA1D0A1275C626B00BD446A /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
+		AAA1D0A3275C669D00BD446A /* FilterButtonLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButtonLayerView.swift; sourceTree = "<group>"; };
+		AAA1D0A5275C792400BD446A /* ChooseFrameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFrameViewController.swift; sourceTree = "<group>"; };
+		AAB67A62275CB39D004685EF /* ImagesFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesFrameView.swift; sourceTree = "<group>"; };
+		AAB67A64275CEB67004685EF /* FrameColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameColorButton.swift; sourceTree = "<group>"; };
 		BABB722AD0F623D03DEA37D0 /* Pods_InFrame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InFrame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -127,6 +149,9 @@
 				6AA8FB602702DA2000E8B198 /* NewPasswordViewController.swift */,
 				6A89DA10275851E900AE4190 /* NewPasswordEmailCheckViewController.swift */,
 				AAA1D06F2753CEED00BD446A /* TakePictureViewController.swift */,
+				AAA1D095275A30B500BD446A /* ChoosePictureViewController.swift */,
+				AAA1D09D275BC5E200BD446A /* ChooseFilterViewController.swift */,
+				AAA1D0A5275C792400BD446A /* ChooseFrameViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -137,6 +162,14 @@
 				6A89DA0E2757B97B00AE4190 /* GradientButton.swift */,
 				6A89DA0A2757B3AA00AE4190 /* InputView.swift */,
 				6AA8FB5C2702AD2000E8B198 /* MainButton.swift */,
+				AAA1D097275A367300BD446A /* ChoiceGradientButton.swift */,
+				AAA1D099275A3B7600BD446A /* ImageCheckView.swift */,
+				AAA1D09B275B10E300BD446A /* ChoicePicturesView.swift */,
+				AAA1D09F275BCBA600BD446A /* ImageFilterView.swift */,
+				AAA1D0A3275C669D00BD446A /* FilterButtonLayerView.swift */,
+				AAA1D0A1275C626B00BD446A /* FilterButton.swift */,
+				AAB67A62275CB39D004685EF /* ImagesFrameView.swift */,
+				AAB67A64275CEB67004685EF /* FrameColorButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -286,15 +319,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAA1D0A0275BCBA600BD446A /* ImageFilterView.swift in Sources */,
 				6AA8FB5B2702AB5600E8B198 /* MainViewController.swift in Sources */,
 				6A89DA0F2757B97B00AE4190 /* GradientButton.swift in Sources */,
 				AA478B9A26F083FE009C628B /* LoginViewController.swift in Sources */,
+				AAB67A63275CB39D004685EF /* ImagesFrameView.swift in Sources */,
 				6AA8FB572701DCD400E8B198 /* TermsOfServiceViewController.swift in Sources */,
+				AAA1D09E275BC5E200BD446A /* ChooseFilterViewController.swift in Sources */,
 				AAA1D0702753CEED00BD446A /* TakePictureViewController.swift in Sources */,
 				AA478B8626F08164009C628B /* AppDelegate.swift in Sources */,
+				AAA1D09A275A3B7600BD446A /* ImageCheckView.swift in Sources */,
 				6AA8FB612702DA2000E8B198 /* NewPasswordViewController.swift in Sources */,
+				AAB67A65275CEB67004685EF /* FrameColorButton.swift in Sources */,
+				AAA1D096275A30B500BD446A /* ChoosePictureViewController.swift in Sources */,
 				6AA8FB5D2702AD2000E8B198 /* MainButton.swift in Sources */,
 				AA478B8826F08164009C628B /* SceneDelegate.swift in Sources */,
+				AAA1D0A6275C792400BD446A /* ChooseFrameViewController.swift in Sources */,
+				AAA1D0A2275C626B00BD446A /* FilterButton.swift in Sources */,
+				AAA1D0A4275C669D00BD446A /* FilterButtonLayerView.swift in Sources */,
+				AAA1D098275A367300BD446A /* ChoiceGradientButton.swift in Sources */,
+				AAA1D09C275B10E300BD446A /* ChoicePicturesView.swift in Sources */,
 				AA478BA526F08CAD009C628B /* Extension.swift in Sources */,
 				6A89DA0B2757B3AA00AE4190 /* InputView.swift in Sources */,
 				6A89DA11275851E900AE4190 /* NewPasswordEmailCheckViewController.swift in Sources */,
