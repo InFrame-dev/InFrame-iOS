@@ -33,6 +33,7 @@
 		AAA1D0A0275BCBA600BD446A /* ImageFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D09F275BCBA600BD446A /* ImageFilterView.swift */; };
 		AAA1D0A2275C626B00BD446A /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D0A1275C626B00BD446A /* FilterButton.swift */; };
 		AAA1D0A4275C669D00BD446A /* FilterButtonLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D0A3275C669D00BD446A /* FilterButtonLayerView.swift */; };
+		AAA1D0A6275C792400BD446A /* ChooseFrameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D0A5275C792400BD446A /* ChooseFrameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		AAA1D09F275BCBA600BD446A /* ImageFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFilterView.swift; sourceTree = "<group>"; };
 		AAA1D0A1275C626B00BD446A /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		AAA1D0A3275C669D00BD446A /* FilterButtonLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButtonLayerView.swift; sourceTree = "<group>"; };
+		AAA1D0A5275C792400BD446A /* ChooseFrameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFrameViewController.swift; sourceTree = "<group>"; };
 		BABB722AD0F623D03DEA37D0 /* Pods_InFrame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InFrame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -145,6 +147,7 @@
 				AAA1D06F2753CEED00BD446A /* TakePictureViewController.swift */,
 				AAA1D095275A30B500BD446A /* ChoosePictureViewController.swift */,
 				AAA1D09D275BC5E200BD446A /* ChooseFilterViewController.swift */,
+				AAA1D0A5275C792400BD446A /* ChooseFrameViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				AAA1D096275A30B500BD446A /* ChoosePictureViewController.swift in Sources */,
 				6AA8FB5D2702AD2000E8B198 /* MainButton.swift in Sources */,
 				AA478B8826F08164009C628B /* SceneDelegate.swift in Sources */,
+				AAA1D0A6275C792400BD446A /* ChooseFrameViewController.swift in Sources */,
 				AAA1D0A2275C626B00BD446A /* FilterButton.swift in Sources */,
 				AAA1D0A4275C669D00BD446A /* FilterButtonLayerView.swift in Sources */,
 				AAA1D098275A367300BD446A /* ChoiceGradientButton.swift in Sources */,
