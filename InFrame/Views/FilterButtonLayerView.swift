@@ -57,25 +57,25 @@ class FilterButtonLayerView: UIView {
     private func location(){
         filterImage.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(viewBounds.height/40.6)
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview().dividedBy(1.71)
+            make.left.equalToSuperview().offset(viewBounds.width/19.74)
+            make.width.equalTo(viewBounds.width/6.82)
             make.height.equalTo(filterImage.snp.width)
         }
         
         filterKorean.snp.makeConstraints { make in
             make.top.equalTo(filterImage.snp.bottom).offset(viewBounds.height/90.22)
-            make.centerX.equalToSuperview()
+            make.centerX.equalTo(filterImage)
         }
         
         filterEnglish.snp.makeConstraints { make in
-            make.top.equalTo(filterKorean.snp.bottom).offset(viewBounds.height/90.22)
-            make.centerX.equalToSuperview()
+            make.top.equalTo(filterKorean.snp.bottom).offset(viewBounds.height/270.67)
+            make.centerX.equalTo(filterImage)
         }
     }
     
     // MARK: - dataSetting
-    func dataSetting(image:UIImage, koreanText:String, englishText:String){
-        filterImage.image = image
+    func dataSetting(image:String, koreanText:String, englishText:String){
+        filterImage.image = UIImage(named: image)!
         filterKorean.text = koreanText
         filterEnglish.text = englishText
     }
