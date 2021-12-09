@@ -49,6 +49,7 @@ class NewPasswordViewController: UIViewController {
     private func configureUI(){
         self.view.backgroundColor = .white
         
+        passwordInputview.callKeyboard()
         addView()
         location()
     }

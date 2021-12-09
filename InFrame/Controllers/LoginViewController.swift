@@ -62,7 +62,6 @@ class LoginViewController: UIViewController {
         
         addView()
         location()
-        registerForKeyboardNotification()
     }
     
     // MARK: - location
@@ -111,6 +110,7 @@ class LoginViewController: UIViewController {
     @objc func logInButtonClicked(sender:UIButton){
         if isValidEmail(email: emailInputView.getInfo()) == true{
             if isValidPassword(password: passwordInputview.getInfo()) == true{
+                
                 let nextVC = MainViewController()
                 self.navigationController?.pushViewController(nextVC, animated: true)
                 
@@ -119,41 +119,17 @@ class LoginViewController: UIViewController {
     }
     
     @objc func noAccountButtonClicked(sender:UIButton){
+        emailInputView.disappearKeyboard()
+        passwordInputview.disappearKeyboard()
         let nextVC = SignUpViewController()
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     @objc func forgetButtonClicked(sender:UIButton){
+        emailInputView.disappearKeyboard()
+        passwordInputview.disappearKeyboard()
         let nextVC = FindPasswardEmailViewController()
         self.navigationController?.pushViewController(nextVC, animated: true)
-    }
-    
-    @objc func keyBoardShow(notification: NSNotification){
-        UIView.animate(withDuration: 0.3) {
-            self.logInTitleLabel.snp.remakeConstraints { make in
-                make.top.equalToSuperview().offset(self.view.frame.height/8)
-                make.left.equalToSuperview().offset(self.view.frame.width/5.75)
-            }
-            
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    @objc func keyboardHide(notification: NSNotification){
-        UIView.animate(withDuration: 0.3) {
-            self.logInTitleLabel.snp.remakeConstraints { make in
-                make.top.equalToSuperview().offset(self.view.frame.height/4.65)
-                make.left.equalToSuperview().offset(self.view.frame.width/5.75)
-            }
-            
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    // MARK: - registerForKeyboardNotification
-    private func registerForKeyboardNotification(){
-         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-         NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     // MARK: - isValidEmail

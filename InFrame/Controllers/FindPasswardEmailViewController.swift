@@ -42,14 +42,11 @@ class FindPasswardEmailViewController: UIViewController {
         configureUI()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
     // MARK: - Helpers
     private func configureUI(){
         self.view.backgroundColor = .white
         
+        emailInputView.callKeyboard()
         addView()
         location()
     }

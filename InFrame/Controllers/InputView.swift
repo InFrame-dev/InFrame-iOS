@@ -95,4 +95,14 @@ class InputView: UIView{
     func getInfo() -> String{
         return infoTextField.text!
     }
+    
+    // MARK: - callKeyboard
+    func callKeyboard(){
+        infoTextField.becomeFirstResponder()
+    }
+    
+    // MARK: - disappearKeyboard
+    func disappearKeyboard(){
+        infoTextField.resignFirstResponder()
+    }
 }
