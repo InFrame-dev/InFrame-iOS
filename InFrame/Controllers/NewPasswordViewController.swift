@@ -34,7 +34,6 @@ class NewPasswordViewController: UIViewController {
         $0.addTarget(self, action: #selector(nextButtonClicked(sender:)), for: .touchUpInside)
     }
     
-    
     // MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +49,7 @@ class NewPasswordViewController: UIViewController {
     private func configureUI(){
         self.view.backgroundColor = .white
         
+        passwordInputview.callKeyboard()
         addView()
         location()
     }
@@ -90,10 +90,23 @@ class NewPasswordViewController: UIViewController {
 
     // MARK: - Selectors
     @objc func nextButtonClicked(sender:UIButton){
-        navigationController?.popToRootViewController(animated: true)
+        if isValidPassword(password: passwordInputview.getInfo()) == true{
+            
+            navigationController?.popToRootViewController(animated: true)
+            
+        }else{ passwordInputview.shakeView(passwordInputview) }
     }
     
     @objc func backButtonClicked(sender:UIButton){
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - isValidPassword
+    private func isValidPassword(password: String?) -> Bool {
+        guard password != nil else { return false }
+            
+        let passwordRegEx = ("(?=.*[A-Za-z~!@#$%^&*])(?=.*[0-9]).{8,}")
+        let pred = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
+        return pred.evaluate(with: password)
     }
 }

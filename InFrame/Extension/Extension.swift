@@ -7,11 +7,22 @@
 
 import UIKit
 
-//MARK: - TextField 재정의
+// MARK: - TextField 재정의
 extension UITextField {
       private func resizeFont(calculatedFont: UIFont?, weight: UIFont.Weight) {
           self.font = calculatedFont
           self.font = UIFont.systemFont(ofSize: calculatedFont!.pointSize, weight: weight)
+    }
+}
+
+// MARK: - dateFormatter extension
+extension String {
+    func stringFromDate() -> String {
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = self
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        return dateFormatter.string(from: now)
     }
 }
 
@@ -26,7 +37,7 @@ extension UIColor{
     }
 }
 
-//MARK: - UILabel dynamic font extension
+// MARK: - UILabel dynamic font extension
 extension UILabel {
     func dynamicFont(fontSize size: CGFloat, currentFontName: String) {
     let bounds = UIScreen.main.bounds
@@ -64,7 +75,7 @@ extension UILabel {
   }
 }
 
-//MARK: - UITextField dynamic font extension
+// MARK: - UITextField dynamic font extension
 extension UITextField {
     func dynamicFont(fontSize size: CGFloat, currentFontName: String) {
     let bounds = UIScreen.main.bounds
@@ -102,7 +113,7 @@ extension UITextField {
   }
 }
 
-//MARK: - UIView roundCornerRadius extension
+// MARK: - UIView roundCornerRadius extension
 extension UIView {
     func roundCorners(cornerRadius: CGFloat, maskedCorners: CACornerMask) {
         clipsToBounds = true
@@ -111,7 +122,7 @@ extension UIView {
     }
 }
 
-//MARK: - UIButton dynamic font extension
+// MARK: - UIButton dynamic font extension
 extension UIButton {
     func dynamicFont(fontSize size: CGFloat, currentFontName: String) {
     let bounds = UIScreen.main.bounds
@@ -149,7 +160,7 @@ extension UIButton {
   }
 }
 
-//MARK: - UITextView dynamic font extension
+// MARK: - UITextView dynamic font extension
 extension UITextView {
     func dynamicFont(fontSize size: CGFloat, currentFontName: String) {
     let bounds = UIScreen.main.bounds
@@ -187,7 +198,7 @@ extension UITextView {
   }
 }
 
-//MARK: - label gradient extension
+// MARK: - label gradient extension
 extension UILabel{
     public func updateGradientTextColor_horizontal(gradientColors: [UIColor] = [UIColor(white: 0, alpha: 0.95), UIColor(white: 0, alpha: 0.6)]){
         let size = CGSize(width: intrinsicContentSize.width, height: 1)
@@ -262,7 +273,7 @@ extension UIView {
 }
 
 
-//MARK: - Shadow extension
+// MARK: - Shadow extension
 extension CALayer {
 func applySketchShadow(color: UIColor = .lightGray,alpha: Float = 0.5,x:CGFloat,y:CGFloat,blur: CGFloat,spread: CGFloat = 0){
         shadowColor = color.cgColor
@@ -281,7 +292,7 @@ func applySketchShadow(color: UIColor = .lightGray,alpha: Float = 0.5,x:CGFloat,
     }
 }
 
-//MARK: - TextField placeholder dynamic font
+// MARK: - TextField placeholder dynamic font
 extension UITextField {
     func dynamicFont(fontSize size: CGFloat, weight: UIFont.Weight) {
         let currentFontName = self.font?.fontName
@@ -326,5 +337,18 @@ extension UITextField {
         print("not an iPhone")
         break
       }
+    }
+}
+
+extension UIView{
+    // MARK: - shakeAnimation
+    func shakeView(_ view: UIView?) {
+        let shake = CABasicAnimation(keyPath: "position")
+        shake.duration = 0.08
+        shake.repeatCount = 2
+        shake.autoreverses = true
+        shake.fromValue = NSValue(cgPoint: CGPoint(x: (view?.center.x)! - 2, y: view?.center.y ?? 0.0))
+        shake.toValue = NSValue(cgPoint: CGPoint(x: (view?.center.x)! + 2, y: view?.center.y ?? 0.0))
+        view?.layer.add(shake, forKey: "position")
     }
 }
