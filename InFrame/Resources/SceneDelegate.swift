@@ -16,12 +16,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         
-        let mainViewController = ChooseFilterViewController()
+        let mainViewController = NewPasswordEmailCheckViewController()
         
         let navigationController = UINavigationController(rootViewController: mainViewController)
         navigationController.navigationBar.isHidden = true
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+        
+        for fontFaily in UIFont.familyNames{
+            for fontName in UIFont.fontNames(forFamilyName: fontFaily){
+                print(fontName)
+            }
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
