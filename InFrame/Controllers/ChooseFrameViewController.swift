@@ -24,8 +24,7 @@ class ChooseFrameViewController: UIViewController {
         $0.addTarget(self, action: #selector(blackButtonClicked(sender:)), for: .touchUpInside)
     }
     
-    private let gradienFrameButton = FrameColorButton().then {
-        $0.dataSetting(color: .orange)
+    private let gradienFrameButton = GradientFrameColorButton().then {
         $0.addTarget(self, action: #selector(gradientButtonClicked(sender:)), for: .touchUpInside)
     }
     
