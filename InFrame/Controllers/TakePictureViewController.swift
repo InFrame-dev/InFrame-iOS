@@ -8,9 +8,14 @@
 import UIKit
 import Then
 import SnapKit
+import AVFoundation
 
-class TakePictureViewController: UIViewController {
+class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     //MARK: - Properties
+    
+    var captureSession: AVCaptureSession!
+    var stillImageOutput: AVCapturePhotoOutput!
+    var videoPreviewLayer: AVCaptureVideoPreviewLayer!
     
     private let backButton = UIButton().then {
         $0.setImage(UIImage(named: "InFrame_BackButtonImage"), for: .normal)
@@ -28,7 +33,7 @@ class TakePictureViewController: UIViewController {
         $0.textColor = .rgb(red: 196, green: 196, blue: 196)
     }
     
-    private let takeImageView = UIImageView().then {
+    private let takeImageView = UIView().then {
         $0.backgroundColor = .gray
     }
     
@@ -37,10 +42,47 @@ class TakePictureViewController: UIViewController {
         $0.addTarget(self, action: #selector(takeButtonClicked(sender:)), for: .touchUpInside)
     }
     
+    private let camera = UIImagePickerController().then{
+        $0.sourceType = .camera
+        $0.allowsEditing = false
+        $0.cameraDevice = .rear
+        $0.cameraFlashMode = .off
+    }
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        captureSession = AVCaptureSession()
+        captureSession.sessionPreset = .medium
+        
+        guard let backCamera = AVCaptureDevice.default(for: AVMediaType.video)
+            else {
+                print("후면 카메라 접근 불가")
+                return
+        }
+        
+        do {
+            let input = try AVCaptureDeviceInput(device: backCamera)
+            stillImageOutput = AVCapturePhotoOutput()
+            
+            if captureSession.canAddInput(input) && captureSession.canAddOutput(stillImageOutput) {
+                captureSession.addInput(input)
+                captureSession.addOutput(stillImageOutput)
+                setupLivePreview()
+            }
+        }
+        catch let error  {
+            print("Error Unable to initialize back camera:  \(error.localizedDescription)")
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.captureSession.stopRunning()
     }
     
     //MARK: - Selectors
@@ -57,6 +99,8 @@ class TakePictureViewController: UIViewController {
     @objc private func takeButtonClicked(sender:UIButton){
         print("take")
         // 카메라 촬영 기능 코드
+        let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
+        stillImageOutput.capturePhoto(with: settings, delegate: self)
     }
     
     //MARK: - Helpers
@@ -107,6 +151,30 @@ class TakePictureViewController: UIViewController {
             make.width.equalToSuperview().dividedBy(6.25)
             make.height.equalTo(takeButton.snp.width)
         }
+    }
+    
+    func setupLivePreview() {
+        
+        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        
+        videoPreviewLayer.videoGravity = .resizeAspect
+        videoPreviewLayer.connection?.videoOrientation = .portrait
+        takeImageView.layer.addSublayer(videoPreviewLayer)
+        DispatchQueue.global(qos: .userInitiated).async { //[weak self] in
+            self.captureSession.startRunning()
+            DispatchQueue.main.async {
+                self.videoPreviewLayer.frame = self.takeImageView.bounds
+            }
+        }
+    }
+    
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        
+        guard let imageData = photo.fileDataRepresentation()
+            else { return }
+        
+//        let image = UIImage(data: imageData)
+//        captureImageView.image = image
     }
     
 }
