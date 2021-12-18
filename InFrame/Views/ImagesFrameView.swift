@@ -114,4 +114,8 @@ class ImagesFrameView: UIView {
         frameImage3.image = UIImage(named: image3)
         frameImage4.image = UIImage(named: image4)
     }
+    
+    func layerSetting(startColor:CGColor, endColor:CGColor){
+        backgroundLayer.colors = [startColor, endColor]
+    }
 }
