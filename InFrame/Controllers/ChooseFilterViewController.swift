@@ -39,6 +39,11 @@ class ChooseFilterViewController: UIViewController {
         $0.dataSetting(buttonText: "프레임 선택하러 가기")
         $0.addTarget(self, action: #selector(chooseFrameButtonClicked(sender:)), for: .touchUpInside)
     }
+    
+    private let imageUrl1 = URL(fileURLWithPath: "")
+    private let imageUrl2 = URL(fileURLWithPath: "")
+    private let imageUrl3 = URL(fileURLWithPath: "")
+    private let imageUrl4 = URL(fileURLWithPath: "")
 
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -55,18 +60,15 @@ class ChooseFilterViewController: UIViewController {
     }
     
     @objc private func chooseBlackFilterClicked(sender:UIButton){
-        print("Black")
-        // 사진 흑백 효과
+        imageFilterView.dataSetting(imageArray: applyFilterImage(imageUrlArray: [imageUrl1, imageUrl2, imageUrl3, imageUrl4], filter: "CIPhotoEffectNoir"))
     }
     
     @objc private func chooseBasicFilterClicked(sender:UIButton){
-        print("Basic")
-        // 사진 기본
+        imageFilterView.dataSetting(imageArray: applyFilterImage(imageUrlArray: [imageUrl1, imageUrl2, imageUrl3, imageUrl4], filter: "basic"))
     }
 
     @objc private func chooseLightFilterClicked(sender:UIButton){
-        print("Light")
-        // 사진 밝게 효과
+        imageFilterView.dataSetting(imageArray: applyFilterImage(imageUrlArray: [imageUrl1, imageUrl2, imageUrl3, imageUrl4], filter: "CIPhotoEffectNoir"))
     }
 
     
@@ -106,7 +108,25 @@ class ChooseFilterViewController: UIViewController {
             make.height.equalToSuperview().dividedBy(19.80)
             make.left.equalToSuperview().offset(self.view.frame.width/8.52)
         }
-
     }
     
+    // 사진을 받아 필터를 적용시켜 반환하는 함수
+    private func applyFilter(_ input: CIImage, intensity: Double, filterName: String) -> CIImage? {
+        let sepiaFilter = CIFilter(name: filterName)
+        sepiaFilter?.setValue(input, forKey: kCIInputImageKey)
+        sepiaFilter?.setValue(intensity, forKey: kCIInputIntensityKey)
+        return filterName == "" ? input : sepiaFilter?.outputImage
+    }
+    
+    // 필터가 적용된 사진을 담은 배열을 반환하는 함수
+    private func applyFilterImage(imageUrlArray:[URL], filter: String) -> [UIImage]{
+        var resultImageArray: [UIImage] = []
+        
+        for i in 0...3{
+            let beginImage = CIImage(contentsOf: imageUrlArray[i])
+            resultImageArray.append(UIImage(ciImage: applyFilter(beginImage!, intensity: 0.8, filterName: filter)!))
+        }
+        
+        return [UIImage]()
+    }
 }

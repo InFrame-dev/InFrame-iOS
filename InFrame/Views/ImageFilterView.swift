@@ -10,22 +10,14 @@ import UIKit
 class ImageFilterView: UIView {
     // MARK: - Properties
     private let viewBounds = UIScreen.main.bounds
-
-    private let imageFilter1 = UIImageView().then {
-        $0.backgroundColor = .gray
-    }
     
-    private let imageFilter2 = UIImageView().then {
-        $0.backgroundColor = .gray
-    }
+    private let imageFilter1 = UIImageView()
     
-    private let imageFilter3 = UIImageView().then {
-        $0.backgroundColor = .gray
-    }
+    private let imageFilter2 = UIImageView()
     
-    private let imageFilter4 = UIImageView().then {
-        $0.backgroundColor = .gray
-    }
+    private let imageFilter3 = UIImageView()
+    
+    private let imageFilter4 = UIImageView()
     
     private lazy var imageFilterLine1 = UIStackView(arrangedSubviews: [imageFilter1, imageFilter2]).then {
         $0.axis = .horizontal
@@ -44,7 +36,7 @@ class ImageFilterView: UIView {
         $0.distribution = .fillEqually
         $0.spacing = viewBounds.height/58
     }
-    
+        
     // MARK: - LifeCycles
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -79,15 +71,15 @@ class ImageFilterView: UIView {
     }
     
     // MARK: - dataSetting
-    func dataSetting(image1: UIImage, image2: UIImage, image3: UIImage, image4: UIImage){
+    func dataSetting(imageArray: [UIImage]){
         imageFilter1.backgroundColor = .white
         imageFilter2.backgroundColor = .white
         imageFilter3.backgroundColor = .white
         imageFilter4.backgroundColor = .white
         
-        imageFilter1.image = image1
-        imageFilter2.image = image2
-        imageFilter3.image = image3
-        imageFilter4.image = image4
+        imageFilter1.image = imageArray[0]
+        imageFilter2.image = imageArray[1]
+        imageFilter3.image = imageArray[2]
+        imageFilter4.image = imageArray[3]
     }
 }

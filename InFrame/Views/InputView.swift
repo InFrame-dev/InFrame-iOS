@@ -16,7 +16,7 @@ class InputView: UIView{
         $0.dynamicFont(fontSize: 13, currentFontName: "CarterOne")
     }
     
-    private let textField = UITextField().then{
+    private let infoTextField = UITextField().then{
         $0.dynamicFont(fontSize: 12, currentFontName: "AppleSDGothicNeo-Medium")
         $0.textColor = UIColor.rgb(red: 123, green: 123, blue: 123)
     }
@@ -60,7 +60,7 @@ class InputView: UIView{
     
     // MARK: - addView
     private func addView(){
-        [mainTitleLabel, textField, lineView].forEach { addSubview($0) }
+        [mainTitleLabel, infoTextField, lineView].forEach { addSubview($0) }
     }
     
     // MARK: - location
@@ -69,7 +69,7 @@ class InputView: UIView{
             make.left.equalToSuperview().offset(viewBounds.width/6.46)
             make.top.equalToSuperview()
         }
-        textField.snp.makeConstraints { make in
+        infoTextField.snp.makeConstraints { make in
             make.left.equalTo(mainTitleLabel).offset(viewBounds.width/172.5)
             make.height.equalToSuperview().dividedBy(2)
             make.centerX.equalToSuperview()
@@ -79,15 +79,30 @@ class InputView: UIView{
             make.height.equalTo(1)
             make.left.equalTo(mainTitleLabel)
             make.centerX.equalToSuperview()
-            make.top.equalTo(textField.snp.bottom).offset(viewBounds.width/172.5)
+            make.top.equalTo(infoTextField.snp.bottom).offset(viewBounds.width/172.5)
         }
     }
     
     // MARK: - dataSetting
     func dataSetting(titleText: String, placeholderText: String){
         mainTitleLabel.text = titleText
-        textField.placeholder = placeholderText
+        infoTextField.placeholder = placeholderText
         
         mainTitleLabel.updateGradientTextColor_horizontal(gradientColors: [UIColor.rgb(red: 126, green: 152, blue: 212), UIColor.rgb(red: 251, green: 186, blue: 200)])
+    }
+    
+    // MARK: - getInfo
+    func getInfo() -> String{
+        return infoTextField.text!
+    }
+    
+    // MARK: - callKeyboard
+    func callKeyboard(){
+        infoTextField.becomeFirstResponder()
+    }
+    
+    // MARK: - disappearKeyboard
+    func disappearKeyboard(){
+        infoTextField.resignFirstResponder()
     }
 }
