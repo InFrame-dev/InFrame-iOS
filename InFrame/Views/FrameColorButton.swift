@@ -29,10 +29,8 @@ class FrameColorButton: UIButton {
     // MARK: - Helpers
     private func configureUI(){
         self.layer.cornerRadius = viewBounds.width/18.75
-        self.layer.shadowColor = UIColor.lightGray.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 2)
         self.layer.shadowRadius = viewBounds.width/18.75
-        self.layer.shadowOpacity = 0.3
+        self.layer.applySketchShadow(x: 0, y: 4, blur: 4)
     }
     
     // MARK: - dataSetting
