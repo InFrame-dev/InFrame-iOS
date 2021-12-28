@@ -27,8 +27,15 @@ class ImagesFrameView: UIView {
         $0.backgroundColor = .gray
     }
     
-    private let backgroundFrameView = UIView().then {
-        $0.backgroundColor = .orange
+    private lazy var backgroundLayer = CAGradientLayer().then {
+        $0.frame = CGRect(x: 0, y: 0, width: viewBounds.width/1.98, height: viewBounds.height/1.48)
+        $0.colors = [UIColor.rgb(red: 216, green: 227, blue: 255).cgColor, UIColor.rgb(red: 255, green: 231, blue: 236).cgColor]
+        $0.startPoint = CGPoint(x: 0, y: 0)
+        $0.endPoint = CGPoint(x: 1, y: 1)
+    }
+    
+    private lazy var backgroundFrameView = UIView().then {
+        $0.layer.insertSublayer(backgroundLayer, at: 0)
     }
     
     private lazy var imageStackView = UIStackView(arrangedSubviews: [frameImage1, frameImage2, frameImage3, frameImage4]).then {
@@ -106,5 +113,9 @@ class ImagesFrameView: UIView {
         frameImage2.image = UIImage(named: image2)
         frameImage3.image = UIImage(named: image3)
         frameImage4.image = UIImage(named: image4)
+    }
+    
+    func layerSetting(startColor:CGColor, endColor:CGColor){
+        backgroundLayer.colors = [startColor, endColor]
     }
 }
