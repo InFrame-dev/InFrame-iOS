@@ -12,6 +12,11 @@ import Alamofire
 
 class LoginViewController: UIViewController {
     //MARK: - Properties
+    final class API : APIService<KakaoDataModel>{
+        //MARK: - SingleTon
+        static let shared = APIService<KakaoDataModel>()
+    }
+    
     private let logInTitleLabel = UILabel().then{
         $0.text = "LogIn"
         $0.dynamicFont(fontSize: 30, currentFontName: "CarterOne")
@@ -111,8 +116,7 @@ class LoginViewController: UIViewController {
         if isValidEmail(email: emailInputView.getInfo()) == true{
             if isValidPassword(password: passwordInputview.getInfo()) == true{
                 
-                let nextVC = MainViewController()
-                self.navigationController?.pushViewController(nextVC, animated: true)
+                loginAPI()
                 
             }else{ passwordInputview.shakeView(passwordInputview) }
         }else{ emailInputView.shakeView(emailInputView) }
@@ -148,5 +152,50 @@ class LoginViewController: UIViewController {
         let passwordRegEx = ("(?=.*[A-Za-z~!@#$%^&*])(?=.*[0-9]).{8,}")
         let pred = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
         return pred.evaluate(with: password)
+    }
+    
+    private func loginAPI(){
+        let param: Parameters = ["email": emailInputView.getInfo(), "password": passwordInputview.getInfo()]
+        
+        API.shared.request(url: "http://52.78.178.248:8080/login", method: .post, param: param, header: .none, JSONDecodeUsingStatus: false) { result in
+            switch result {
+            case .success(let data):
+                print(data)
+                let nextVC = MainViewController()
+                self.navigationController?.pushViewController(nextVC, animated: true)
+
+                break
+            case .requestErr(let err):
+                print(err)
+                break
+            case .pathErr:
+                print("pathErr")
+                break
+            case .serverErr:
+                print("serverErr")
+                break
+            case .networkFail:
+                print("networkFail")
+                break
+            case .tokenErr:
+                print("tokenErr")
+                break
+            case .authorityErr:
+                print("authorityErr")
+                break
+            }
+        }
+    }
+}
+
+class KakaoDataModel : Codable{
+    let documents : [KakaoDocuments]
+}
+struct KakaoDocuments : Codable{
+    var addressName,placeName, roadAddressName : String
+    enum CodingKeys : String,CodingKey{
+        case addressName  = "address_name"
+        case placeName = "place_name"
+        case roadAddressName = "road_address_name"
     }
 }
