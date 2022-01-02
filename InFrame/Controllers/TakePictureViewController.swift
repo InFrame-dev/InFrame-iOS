@@ -94,6 +94,14 @@ class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     @objc private func returnButtonClicked(sender:UIButton){
         print("return")
         // 카메라 전환 기능 코드
+        captureSession?.beginConfiguration()
+        let currentInput = captureSession?.inputs.first as? AVCaptureDeviceInput
+        captureSession?.removeInput(currentInput!)
+
+        let newCameraDevice = currentInput?.device.position == .back ? camera(with: .front) : camera(with: .back)
+        let newVideoInput = try? AVCaptureDeviceInput(device: newCameraDevice!)
+        captureSession?.addInput(newVideoInput!)
+        captureSession?.commitConfiguration()
     }
     
     @objc private func takeButtonClicked(sender:UIButton){
@@ -173,8 +181,13 @@ class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         guard let imageData = photo.fileDataRepresentation()
             else { return }
         
+        
 //        let image = UIImage(data: imageData)
 //        captureImageView.image = image
     }
     
+    func camera(with position: AVCaptureDevice.Position) -> AVCaptureDevice? {
+        let devices = AVCaptureDevice.devices(for: AVMediaType.video)
+        return devices.filter { $0.position == position }.first
+    }
 }
