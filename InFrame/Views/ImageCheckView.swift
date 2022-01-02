@@ -11,7 +11,7 @@ class ImageCheckView: UIView {
     // MARK: - Properties
     private let viewBounds = UIScreen.main.bounds
 
-    private let choiceImage = UIImageView().then {
+    let choiceImage = UIImageView().then {
         $0.backgroundColor = .gray
     }
     
@@ -63,7 +63,7 @@ class ImageCheckView: UIView {
     }
     
     // MARK: - dataSetting
-    func dataSetting(image:UIImage){
+    func dataSetting(image:UIImage?){
         choiceImage.backgroundColor = .white
         choiceImage.image = image
     }

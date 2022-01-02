@@ -19,6 +19,13 @@ class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     
     var takeValues:Int = 1
     
+    var image1:UIImage?
+    var image2:UIImage?
+    var image3:UIImage?
+    var image4:UIImage?
+    var image5:UIImage?
+    var image6:UIImage?
+    
     private let backButton = UIButton().then {
         $0.setImage(UIImage(named: "InFrame_BackButtonImage"), for: .normal)
         $0.addTarget(self, action: #selector(backButtonClicked(sender:)), for: .touchUpInside)
@@ -44,12 +51,6 @@ class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         $0.addTarget(self, action: #selector(takeButtonClicked(sender:)), for: .touchUpInside)
     }
     
-//    private let camera = UIImagePickerController().then{
-//        $0.sourceType = .camera
-//        $0.allowsEditing = false
-//        $0.cameraDevice = .rear
-//        $0.cameraFlashMode = .off
-//    }
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,10 +110,16 @@ class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     @objc private func takeButtonClicked(sender:UIButton){
         print("take")
         // 카메라 촬영 기능 코드
-        if(takeValues == 6) {
-            let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
-            stillImageOutput.capturePhoto(with: settings, delegate: self)
+        if(takeValues == 7) {
             let nextVC = ChoosePictureViewController()
+            
+            nextVC.choicePictures.imageCheck1.dataSetting(image: image1)
+            nextVC.choicePictures.imageCheck2.dataSetting(image: image2)
+            nextVC.choicePictures.imageCheck3.dataSetting(image: image3)
+            nextVC.choicePictures.imageCheck4.dataSetting(image: image4)
+            nextVC.choicePictures.imageCheck5.dataSetting(image: image5)
+            nextVC.choicePictures.imageCheck6.dataSetting(image: image6)
+            
             self.navigationController?.pushViewController(nextVC, animated: true)
         } else {
             let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
@@ -192,8 +199,24 @@ class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         guard let imageData = photo.fileDataRepresentation()
             else { return }
         
-//        let image = UIImage(data: imageData)
-//        captureImageView.image = image
+        let image = UIImage(data: imageData)
+        
+        switch takeValues-1 {
+        case 1:
+            image1 = image
+        case 2:
+            image2 = image
+        case 3:
+            image3 = image
+        case 4:
+            image4 = image
+        case 5:
+            image5 = image
+        case 6:
+            image6 = image
+        default:
+            return
+        }
     }
     
     func camera(with position: AVCaptureDevice.Position) -> AVCaptureDevice? {

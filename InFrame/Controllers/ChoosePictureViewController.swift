@@ -23,7 +23,7 @@ class ChoosePictureViewController: UIViewController {
         $0.addTarget(self, action: #selector(downloadButtonClicked(sender:)), for: .touchUpInside)
     }
     
-    private let choicePictures = ChoicePicturesView()
+    let choicePictures = ChoicePicturesView()
     
     private let chooseFilterButton = ChoiceGradientButton().then {
         $0.dataSetting(buttonText: "필터 선택하러 가기")
