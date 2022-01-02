@@ -13,7 +13,8 @@ class ImageCheckView: UIView {
 
     let choiceImage = UIImageView().then {
         $0.backgroundColor = .gray
-        $0.contentMode = .scaleToFill
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
     private let checkButton = UIButton().then {
