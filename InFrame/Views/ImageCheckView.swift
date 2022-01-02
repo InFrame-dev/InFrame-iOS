@@ -17,7 +17,7 @@ class ImageCheckView: UIView {
         $0.clipsToBounds = true
     }
     
-    private let checkButton = UIButton().then {
+    let checkButton = UIButton().then {
         $0.backgroundColor = UIColor.white
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.rgb(red: 225, green: 225, blue: 225).cgColor

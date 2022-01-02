@@ -25,7 +25,14 @@ class ChoosePictureViewController: UIViewController {
         $0.addTarget(self, action: #selector(downloadButtonClicked(sender:)), for: .touchUpInside)
     }
     
-    let choicePictures = ChoicePicturesView()
+    let choicePictures = ChoicePicturesView().then {
+        $0.imageCheck1.checkButton.addTarget(self, action: #selector(choice1Clicked(sender:)), for: .touchUpInside)
+        $0.imageCheck2.checkButton.addTarget(self, action: #selector(choice2Clicked(sender:)), for: .touchUpInside)
+        $0.imageCheck3.checkButton.addTarget(self, action: #selector(choice3Clicked(sender:)), for: .touchUpInside)
+        $0.imageCheck4.checkButton.addTarget(self, action: #selector(choice4Clicked(sender:)), for: .touchUpInside)
+        $0.imageCheck5.checkButton.addTarget(self, action: #selector(choice5Clicked(sender:)), for: .touchUpInside)
+        $0.imageCheck6.checkButton.addTarget(self, action: #selector(choice6Clicked(sender:)), for: .touchUpInside)
+    }
     
     private let chooseFilterButton = ChoiceGradientButton().then {
         $0.dataSetting(buttonText: "필터 선택하러 가기")
@@ -50,6 +57,54 @@ class ChoosePictureViewController: UIViewController {
         if chooseValues == 4 {
             let nextVC = ChooseFilterViewController()
             self.navigationController?.pushViewController(nextVC, animated: true)
+        }
+    }
+    
+    @objc func choice1Clicked(sender:UIButton){
+        if choicePictures.imageCheck1.checkButton.isSelected == true {
+            agreeButtonUnSelected(button: choicePictures.imageCheck1.checkButton)
+        } else {
+            agreeButtonSelected(button: choicePictures.imageCheck1.checkButton)
+        }
+    }
+    
+    @objc func choice2Clicked(sender:UIButton){
+        if choicePictures.imageCheck2.checkButton.isSelected == true {
+            agreeButtonUnSelected(button: choicePictures.imageCheck2.checkButton)
+        } else {
+            agreeButtonSelected(button: choicePictures.imageCheck2.checkButton)
+        }
+    }
+    
+    @objc func choice3Clicked(sender:UIButton){
+        if choicePictures.imageCheck3.checkButton.isSelected == true {
+            agreeButtonUnSelected(button: choicePictures.imageCheck3.checkButton)
+        } else {
+            agreeButtonSelected(button: choicePictures.imageCheck3.checkButton)
+        }
+    }
+    
+    @objc func choice4Clicked(sender:UIButton){
+        if choicePictures.imageCheck4.checkButton.isSelected == true {
+            agreeButtonUnSelected(button: choicePictures.imageCheck4.checkButton)
+        } else {
+            agreeButtonSelected(button: choicePictures.imageCheck4.checkButton)
+        }
+    }
+    
+    @objc func choice5Clicked(sender:UIButton){
+        if choicePictures.imageCheck5.checkButton.isSelected == true {
+            agreeButtonUnSelected(button: choicePictures.imageCheck5.checkButton)
+        } else {
+            agreeButtonSelected(button: choicePictures.imageCheck5.checkButton)
+        }
+    }
+    
+    @objc func choice6Clicked(sender:UIButton){
+        if choicePictures.imageCheck6.checkButton.isSelected == true {
+            agreeButtonUnSelected(button: choicePictures.imageCheck6.checkButton)
+        } else {
+            agreeButtonSelected(button: choicePictures.imageCheck6.checkButton)
         }
     }
     
