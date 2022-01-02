@@ -62,14 +62,14 @@ class ChoosePictureViewController: UIViewController {
             let nextVC = ChooseFilterViewController()
             let checkButton:[ImageCheckView] = [choicePictures.imageCheck1, choicePictures.imageCheck2, choicePictures.imageCheck3, choicePictures.imageCheck4, choicePictures.imageCheck5, choicePictures.imageCheck6]
             var images:[UIImage?] = [image1, image2, image3, image4]
-            for i in 0 ..< 6{
+            for i in 0..<6{
                 for j in 0..<4 {
-                    if checkButton[i].checkButton.isSelected == true {
+                    if checkButton[i].checkButton.isSelected == true && images[j] == nil {
                         images[j] = checkButton[i].choiceImage.image
                     }
                 }
             }
-            nextVC.imageFilterView.dataSetting(imageArray: [image1, image2, image3, image4])
+            nextVC.imageFilterView.dataSetting(imageArray: images)
             self.navigationController?.pushViewController(nextVC, animated: true)
         }
     }
