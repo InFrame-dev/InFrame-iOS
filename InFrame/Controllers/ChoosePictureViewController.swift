@@ -61,50 +61,86 @@ class ChoosePictureViewController: UIViewController {
     }
     
     @objc func choice1Clicked(sender:UIButton){
-        if choicePictures.imageCheck1.checkButton.isSelected == true {
-            agreeButtonUnSelected(button: choicePictures.imageCheck1.checkButton)
-        } else {
-            agreeButtonSelected(button: choicePictures.imageCheck1.checkButton)
+        if chooseValues < 4 {
+            if choicePictures.imageCheck1.checkButton.isSelected == true {
+                agreeButtonUnSelected(button: choicePictures.imageCheck1.checkButton)
+                chooseValues = chooseValues - 1
+                choiceValueLabel.text = String(chooseValues)+"/4"
+            } else {
+                agreeButtonSelected(button: choicePictures.imageCheck1.checkButton)
+                chooseValues = chooseValues + 1
+                choiceValueLabel.text = String(chooseValues)+"/4"
+            }
         }
     }
     
     @objc func choice2Clicked(sender:UIButton){
-        if choicePictures.imageCheck2.checkButton.isSelected == true {
-            agreeButtonUnSelected(button: choicePictures.imageCheck2.checkButton)
-        } else {
-            agreeButtonSelected(button: choicePictures.imageCheck2.checkButton)
+        if chooseValues < 4 {
+            if choicePictures.imageCheck2.checkButton.isSelected == true {
+                agreeButtonUnSelected(button: choicePictures.imageCheck2.checkButton)
+                chooseValues = chooseValues - 1
+                choiceValueLabel.text = String(chooseValues)+"/4"
+            } else {
+                agreeButtonSelected(button: choicePictures.imageCheck2.checkButton)
+                chooseValues = chooseValues + 1
+                choiceValueLabel.text = String(chooseValues)+"/4"
+            }
         }
     }
     
     @objc func choice3Clicked(sender:UIButton){
-        if choicePictures.imageCheck3.checkButton.isSelected == true {
-            agreeButtonUnSelected(button: choicePictures.imageCheck3.checkButton)
-        } else {
-            agreeButtonSelected(button: choicePictures.imageCheck3.checkButton)
+        if chooseValues < 4 {
+            if choicePictures.imageCheck3.checkButton.isSelected == true {
+                agreeButtonUnSelected(button: choicePictures.imageCheck3.checkButton)
+                chooseValues = chooseValues - 1
+                choiceValueLabel.text = String(chooseValues)+"/4"
+            } else {
+                agreeButtonSelected(button: choicePictures.imageCheck3.checkButton)
+                chooseValues = chooseValues + 1
+                choiceValueLabel.text = String(chooseValues)+"/4"
+            }
         }
     }
     
     @objc func choice4Clicked(sender:UIButton){
-        if choicePictures.imageCheck4.checkButton.isSelected == true {
-            agreeButtonUnSelected(button: choicePictures.imageCheck4.checkButton)
-        } else {
-            agreeButtonSelected(button: choicePictures.imageCheck4.checkButton)
+        if chooseValues < 4 {
+            if choicePictures.imageCheck4.checkButton.isSelected == true {
+                agreeButtonUnSelected(button: choicePictures.imageCheck4.checkButton)
+                chooseValues = chooseValues - 1
+                choiceValueLabel.text = String(chooseValues)+"/4"
+            } else {
+                agreeButtonSelected(button: choicePictures.imageCheck4.checkButton)
+                chooseValues = chooseValues + 1
+                choiceValueLabel.text = String(chooseValues)+"/4"
+            }
         }
     }
     
     @objc func choice5Clicked(sender:UIButton){
-        if choicePictures.imageCheck5.checkButton.isSelected == true {
-            agreeButtonUnSelected(button: choicePictures.imageCheck5.checkButton)
-        } else {
-            agreeButtonSelected(button: choicePictures.imageCheck5.checkButton)
+        if chooseValues < 4 {
+            if choicePictures.imageCheck5.checkButton.isSelected == true {
+                agreeButtonUnSelected(button: choicePictures.imageCheck5.checkButton)
+                chooseValues = chooseValues - 1
+                choiceValueLabel.text = String(chooseValues)+"/4"
+            } else {
+                agreeButtonSelected(button: choicePictures.imageCheck5.checkButton)
+                chooseValues = chooseValues + 1
+                choiceValueLabel.text = String(chooseValues)+"/4"
+            }
         }
     }
     
     @objc func choice6Clicked(sender:UIButton){
-        if choicePictures.imageCheck6.checkButton.isSelected == true {
-            agreeButtonUnSelected(button: choicePictures.imageCheck6.checkButton)
-        } else {
-            agreeButtonSelected(button: choicePictures.imageCheck6.checkButton)
+        if chooseValues < 4 {
+            if choicePictures.imageCheck6.checkButton.isSelected == true {
+                agreeButtonUnSelected(button: choicePictures.imageCheck6.checkButton)
+                chooseValues = chooseValues - 1
+                choiceValueLabel.text = String(chooseValues)+"/4"
+            } else {
+                agreeButtonSelected(button: choicePictures.imageCheck6.checkButton)
+                chooseValues = chooseValues + 1
+                choiceValueLabel.text = String(chooseValues)+"/4"
+            }
         }
     }
     
