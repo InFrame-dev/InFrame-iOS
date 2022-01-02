@@ -18,6 +18,10 @@ class ImageCheckView: UIView {
     }
     
     private let checkButton = UIButton().then {
+        $0.backgroundColor = UIColor.white
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.rgb(red: 225, green: 225, blue: 225).cgColor
+        $0.layer.cornerRadius = 5
         $0.setImage(UIImage(named: "InFrame_AgreeButtonImage"), for: .normal)
     }
     
@@ -40,6 +44,7 @@ class ImageCheckView: UIView {
     private func configureUI(){
         addView()
         location()
+        agreeButtonUnSelected(button: checkButton)
     }
     
     // MARK: - addView
@@ -68,5 +73,30 @@ class ImageCheckView: UIView {
     func dataSetting(image:UIImage?){
         choiceImage.backgroundColor = .white
         choiceImage.image = image
+    }
+    
+    // MARK: - agreeButtonUnSelected
+    func agreeButtonUnSelected(button:UIButton){
+        button.layer.sublayers?.remove(at: 0)
+        button.backgroundColor = .white
+        button.layer.borderWidth = 1
+        button.isSelected = false
+    }
+    
+    // MARK: - agreeButtonSelected
+    func agreeButtonSelected(button:UIButton){
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: viewBounds.width/16, height: viewBounds.width/16))
+        let gradient = CAGradientLayer()
+
+        gradient.frame = view.bounds
+        gradient.colors = [UIColor(red: 126/255, green: 152/255, blue: 212/255, alpha: 1).cgColor,UIColor(red: 250/255, green: 186/255, blue: 200/255, alpha: 1).cgColor]
+        gradient.locations = [0.0 , 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+
+        button.layer.insertSublayer(gradient, at: 0)
+        button.layer.borderWidth = 0
+        button.clipsToBounds = true
+        button.isSelected = true
     }
 }
