@@ -17,6 +17,8 @@ class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     var stillImageOutput: AVCapturePhotoOutput!
     var videoPreviewLayer: AVCaptureVideoPreviewLayer!
     
+    var takeValues:Int = 1
+    
     private let backButton = UIButton().then {
         $0.setImage(UIImage(named: "InFrame_BackButtonImage"), for: .normal)
         $0.addTarget(self, action: #selector(backButtonClicked(sender:)), for: .touchUpInside)
@@ -27,8 +29,8 @@ class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         $0.addTarget(self, action: #selector(returnButtonClicked(sender:)), for: .touchUpInside)
     }
     
-    private let takeValueLabel = UILabel().then {
-        $0.text = "3/6"
+    lazy var takeValueLabel = UILabel().then {
+        $0.text = String(takeValues) + "/6"
         $0.dynamicFont(fontSize: 14, currentFontName: "CarterOne")
         $0.textColor = .rgb(red: 196, green: 196, blue: 196)
     }
@@ -42,12 +44,12 @@ class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         $0.addTarget(self, action: #selector(takeButtonClicked(sender:)), for: .touchUpInside)
     }
     
-    private let camera = UIImagePickerController().then{
-        $0.sourceType = .camera
-        $0.allowsEditing = false
-        $0.cameraDevice = .rear
-        $0.cameraFlashMode = .off
-    }
+//    private let camera = UIImagePickerController().then{
+//        $0.sourceType = .camera
+//        $0.allowsEditing = false
+//        $0.cameraDevice = .rear
+//        $0.cameraFlashMode = .off
+//    }
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,8 +109,17 @@ class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     @objc private func takeButtonClicked(sender:UIButton){
         print("take")
         // 카메라 촬영 기능 코드
-        let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
-        stillImageOutput.capturePhoto(with: settings, delegate: self)
+        if(takeValues == 6) {
+            let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
+            stillImageOutput.capturePhoto(with: settings, delegate: self)
+            let nextVC = ChoosePictureViewController()
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        } else {
+            let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
+            stillImageOutput.capturePhoto(with: settings, delegate: self)
+            takeValues = takeValues + 1
+            takeValueLabel.text = String(takeValues) + "/6"
+        }
     }
     
     //MARK: - Helpers
@@ -180,7 +191,6 @@ class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         
         guard let imageData = photo.fileDataRepresentation()
             else { return }
-        
         
 //        let image = UIImage(data: imageData)
 //        captureImageView.image = image
