@@ -71,7 +71,7 @@ class ImageFilterView: UIView {
     }
     
     // MARK: - dataSetting
-    func dataSetting(imageArray: [UIImage]){
+    func dataSetting(imageArray: [UIImage?]){
         imageFilter1.backgroundColor = .white
         imageFilter2.backgroundColor = .white
         imageFilter3.backgroundColor = .white

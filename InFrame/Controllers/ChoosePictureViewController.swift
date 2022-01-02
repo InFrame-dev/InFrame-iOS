@@ -13,6 +13,10 @@ class ChoosePictureViewController: UIViewController {
     //MARK: - Properties
     
     var chooseValues:Int = 0
+    var image1:UIImage?
+    var image2:UIImage?
+    var image3:UIImage?
+    var image4:UIImage?
     
     lazy var choiceValueLabel = UILabel().then {
         $0.text = String(chooseValues)+"/4"
@@ -56,6 +60,16 @@ class ChoosePictureViewController: UIViewController {
         print("필터 선택하러 가기")
         if chooseValues == 4 {
             let nextVC = ChooseFilterViewController()
+            let checkButton:[ImageCheckView] = [choicePictures.imageCheck1, choicePictures.imageCheck2, choicePictures.imageCheck3, choicePictures.imageCheck4, choicePictures.imageCheck5, choicePictures.imageCheck6]
+            var images:[UIImage?] = [image1, image2, image3, image4]
+            for i in 0 ..< 6{
+                for j in 0..<4 {
+                    if checkButton[i].checkButton.isSelected == true {
+                        images[j] = checkButton[i].choiceImage.image
+                    }
+                }
+            }
+            nextVC.imageFilterView.dataSetting(imageArray: [image1, image2, image3, image4])
             self.navigationController?.pushViewController(nextVC, animated: true)
         }
     }
