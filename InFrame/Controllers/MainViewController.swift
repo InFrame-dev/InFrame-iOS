@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import BSImagePicker
 
 class MainViewController: UIViewController {
     // MARK: - Properties
@@ -119,7 +120,6 @@ class MainViewController: UIViewController {
     }
     
     @objc private func choosePictureButtonClicked(sender:UIButton){
-        let nextVC = ChoosePictureViewController()
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        
     }
 }
