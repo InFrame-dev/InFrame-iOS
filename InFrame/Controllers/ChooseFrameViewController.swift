@@ -79,6 +79,7 @@ class ChooseFrameViewController: UIViewController {
     @objc private func whiteButtonClicked(sender:UIButton){
         print("white")
         imageFrameView.layerSetting(startColor: UIColor.rgb(red: 255, green: 255, blue: 255).cgColor, endColor: UIColor.rgb(red: 255, green: 255, blue: 255).cgColor)
+        imageFrameView.inFrameLabel.textColor = .black
     }
     
     @objc private func blackButtonClicked(sender:UIButton){

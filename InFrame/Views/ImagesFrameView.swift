@@ -44,7 +44,7 @@ class ImagesFrameView: UIView {
         $0.spacing = viewBounds.height/62.46
     }
     
-    private let inFrameLabel = UILabel().then {
+    let inFrameLabel = UILabel().then {
         $0.text = "InFrame"
         $0.textColor = .white
         $0.dynamicFont(fontSize: 15, currentFontName: "CarterOne")
@@ -76,6 +76,7 @@ class ImagesFrameView: UIView {
     
     // MARK: - Helpers
     private func configureUI(){
+        self.layer.applySketchShadow(color: .black, alpha: 0.25, x: 2, y: 2, blur: 10, spread: 0)
         addView()
         location()
     }
