@@ -54,6 +54,12 @@ class ChoosePictureViewController: UIViewController {
     @objc private func downloadButtonClicked(sender:UIButton){
         print("Download")
         // 사진 저장 기능 코드
+        UIImageWriteToSavedPhotosAlbum(choicePictures.imageCheck1.choiceImage.image!, self, nil, nil)
+        UIImageWriteToSavedPhotosAlbum(choicePictures.imageCheck2.choiceImage.image!, self, nil, nil)
+        UIImageWriteToSavedPhotosAlbum(choicePictures.imageCheck3.choiceImage.image!, self, nil, nil)
+        UIImageWriteToSavedPhotosAlbum(choicePictures.imageCheck4.choiceImage.image!, self, nil, nil)
+        UIImageWriteToSavedPhotosAlbum(choicePictures.imageCheck5.choiceImage.image!, self, nil, nil)
+        UIImageWriteToSavedPhotosAlbum(choicePictures.imageCheck6.choiceImage.image!, self, nil, nil)
     }
     
     @objc private func chooseFilterButtonClicked(sender:UIButton){
