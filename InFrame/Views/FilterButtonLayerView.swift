@@ -74,8 +74,10 @@ class FilterButtonLayerView: UIView {
     }
     
     // MARK: - dataSetting
-    func dataSetting(image:String, koreanText:String, englishText:String){
-        filterImage.image = UIImage(named: image)
+    func dataSetting(image:UIImage, koreanText:String, englishText:String){
+        filterImage.image = image
+        filterImage.layer.cornerRadius = 9
+        filterImage.clipsToBounds = true
         filterKorean.text = koreanText
         filterEnglish.text = englishText
     }
