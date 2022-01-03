@@ -345,11 +345,11 @@ class ChooseFrameViewController: UIViewController {
             make.left.equalToSuperview().offset(-self.view.frame.width/5.86)
             make.top.equalToSuperview().offset(self.view.frame.height/11.6)
         }
+        
         imageFrameView.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(self.view.frame.width/3.18)
-            make.top.equalToSuperview().offset(self.view.frame.height/40.6)
-            make.width.equalToSuperview().dividedBy(1.98)
-            make.height.equalToSuperview().dividedBy(1.48)
+            make.center.equalTo(backView)
+            make.width.equalToSuperview().dividedBy(2.17)
+            make.height.equalToSuperview().dividedBy(1.07)
         }
 
         frameColorButtonStack.snp.makeConstraints { make in
