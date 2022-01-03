@@ -70,6 +70,8 @@ class ChooseFrameViewController: UIViewController {
     @objc private func chooseSaveButtonClicked(sender:UIButton){
         print("사진 저장하기")
         // 사진 저장 코드
+        let saveImage = imageFrameView.asImage()
+        UIImageWriteToSavedPhotosAlbum(saveImage, self, nil, nil)
         let nextVC = MainViewController()
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
