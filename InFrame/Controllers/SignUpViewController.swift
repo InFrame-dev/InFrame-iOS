@@ -6,9 +6,15 @@
 //
 
 import UIKit
+import Alamofire
 
 class SignUpViewController: UIViewController {
     // MARK: - Properties
+    final class API : APIService<KakaoDataModel>{
+        //MARK: - SingleTon
+        static let shared = APIService<KakaoDataModel>()
+    }
+    
     private let signUpTitleLabel = UILabel().then{
         $0.text = "SignUp"
         $0.dynamicFont(fontSize: 30, currentFontName: "CarterOne")
@@ -119,8 +125,7 @@ class SignUpViewController: UIViewController {
                 if isValidPassword(password: passwordCheckInputview.getInfo()) == true{
                     if samePassword() == true{
                         
-                        let nextVC = TermsOfServiceViewController()
-                        self.navigationController?.pushViewController(nextVC, animated: true)
+                        signupAPI()
                         
                     }else{ passwordCheckInputview.shakeView(passwordCheckInputview) }
                 }else{ passwordCheckInputview.shakeView(passwordCheckInputview) }
@@ -157,5 +162,42 @@ class SignUpViewController: UIViewController {
         let passwordRegEx = ("(?=.*[A-Za-z~!@#$%^&*])(?=.*[0-9]).{8,}")
         let pred = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
         return pred.evaluate(with: password)
+    }
+    
+    private func signupAPI(){
+        let param: Parameters = ["email": emailInputview.getInfo(), "password": passwordCheckInputview.getInfo()]
+
+        API.shared.request(url: "http://52.78.178.248:8080/signup", method: .post, param: param, header: .none, JSONDecodeUsingStatus: false) { result in
+            switch result {
+            case .success(let data):
+                print(data)
+                print("success")
+                
+                UserDefaults.standard.set(self.emailInputview.getInfo(), forKey: "userEmail")
+                
+                let nextVC = SignUpEmailCheckViewController()
+                self.navigationController?.pushViewController(nextVC, animated: true)
+                
+                break
+            case .requestErr(let err):
+                print(err)
+                break
+            case .pathErr:
+                print("pathErr")
+                break
+            case .serverErr:
+                print("serverErr")
+                break
+            case .networkFail:
+                print("networkFail")
+                break
+            case .tokenErr:
+                print("tokenErr")
+                break
+            case .authorityErr:
+                print("authorityErr")
+                break
+            }
+        }
     }
 }

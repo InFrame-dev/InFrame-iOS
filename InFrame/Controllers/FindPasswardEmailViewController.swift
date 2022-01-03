@@ -6,9 +6,15 @@
 //
 
 import UIKit
+import Alamofire
 
 class FindPasswardEmailViewController: UIViewController {
     // MARK: - Properties
+    final class API : APIService<KakaoDataModel>{
+        //MARK: - SingleTon
+        static let shared = APIService<KakaoDataModel>()
+    }
+    
     private let backButton = UIButton().then{
         $0.setImage(UIImage(named: "InFrame_BackButtonImage"), for: .normal)
         $0.addTarget(self, action: #selector(backButtonClicked(sender:)), for: .touchUpInside)
@@ -88,9 +94,8 @@ class FindPasswardEmailViewController: UIViewController {
     @objc private func nextButtonClicked(sender:UIButton){
         if isValidEmail(email: emailInputView.getInfo()) == true{
             
-            let nextVC = NewPasswordEmailCheckViewController()
-            self.navigationController?.pushViewController(nextVC, animated: true)
-                
+            findPasswordAPI()
+
         }else{ emailInputView.shakeView(emailInputView) }
     }
     
@@ -105,5 +110,42 @@ class FindPasswardEmailViewController: UIViewController {
         let idRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let pred = NSPredicate(format:"SELF MATCHES %@", idRegEx)
         return pred.evaluate(with: email)
+    }
+
+    private func findPasswordAPI(){
+        let userEmail: String = UserDefaults.standard.string(forKey: "userEmail")!
+        
+        let param: Parameters = ["email": emailInputView.getInfo()]
+
+        API.shared.request(url: "http://52.78.178.248:8080/findPassword", method: .post, param: param, header: .none, JSONDecodeUsingStatus: false) { result in
+            switch result {
+            case .success(let data):
+                print(data)
+                print("success")
+                
+                let nextVC = NewPasswordEmailCheckViewController()
+                self.navigationController?.pushViewController(nextVC, animated: true)
+                    
+                break
+            case .requestErr(let err):
+                print(err)
+                break
+            case .pathErr:
+                print("pathErr")
+                break
+            case .serverErr:
+                print("serverErr")
+                break
+            case .networkFail:
+                print("networkFail")
+                break
+            case .tokenErr:
+                print("tokenErr")
+                break
+            case .authorityErr:
+                print("authorityErr")
+                break
+            }
+        }
     }
 }

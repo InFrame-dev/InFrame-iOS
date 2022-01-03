@@ -6,9 +6,15 @@
 //
 
 import UIKit
+import Alamofire
 
 class NewPasswordEmailCheckViewController: UIViewController{
     // MARK: - Properties
+    final class API : APIService<KakaoDataModel>{
+        //MARK: - SingleTon
+        static let shared = APIService<KakaoDataModel>()
+    }
+    
     private let backButton = UIButton().then{
         $0.setImage(UIImage(named: "InFrame_BackButtonImage"), for: .normal)
         $0.addTarget(self, action: #selector(backButtonClicked(sender:)), for: .touchUpInside)
@@ -100,11 +106,47 @@ class NewPasswordEmailCheckViewController: UIViewController{
     
     // MARK: - Selectors
     @objc private func nextButtonClicked(sender:UIButton){
-        let nextVC = NewPasswordViewController()
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        newPasswordCodeAPI()
     }
     
     @objc private func backButtonClicked(sender:UIButton){
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    private func newPasswordCodeAPI(){
+        let userEmail: String = UserDefaults.standard.string(forKey: "userEmail")!
+        
+        let param: Parameters = ["code": codeTextField.text!]
+        
+        API.shared.request(url: "http://52.78.178.248:8080/passwordCode/\(userEmail)", method: .post, param: param, header: .none, JSONDecodeUsingStatus: false) { result in
+            switch result {
+            case .success(let data):
+                print(data)
+                print("success")
+                
+                let nextVC = NewPasswordViewController()
+                self.navigationController?.pushViewController(nextVC, animated: true)
+                
+                break
+            case .requestErr(let err):
+                print(err)
+                break
+            case .pathErr:
+                print("pathErr")
+                break
+            case .serverErr:
+                print("serverErr")
+                break
+            case .networkFail:
+                print("networkFail")
+                break
+            case .tokenErr:
+                print("tokenErr")
+                break
+            case .authorityErr:
+                print("authorityErr")
+                break
+            }
+        }
     }
 }
