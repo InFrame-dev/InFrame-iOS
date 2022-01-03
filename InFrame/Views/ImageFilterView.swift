@@ -11,13 +11,25 @@ class ImageFilterView: UIView {
     // MARK: - Properties
     private let viewBounds = UIScreen.main.bounds
     
-    private let imageFilter1 = UIImageView()
+    private let imageFilter1 = UIImageView().then {
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
+    }
     
-    private let imageFilter2 = UIImageView()
+    private let imageFilter2 = UIImageView().then {
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
+    }
     
-    private let imageFilter3 = UIImageView()
+    private let imageFilter3 = UIImageView().then {
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
+    }
     
-    private let imageFilter4 = UIImageView()
+    private let imageFilter4 = UIImageView().then {
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
+    }
     
     private lazy var imageFilterLine1 = UIStackView(arrangedSubviews: [imageFilter1, imageFilter2]).then {
         $0.axis = .horizontal

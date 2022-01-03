@@ -64,8 +64,9 @@ class ChoosePictureViewController: UIViewController {
             var images:[UIImage?] = [image1, image2, image3, image4]
             for i in 0..<6{
                 for j in 0..<4 {
-                    if checkButton[i].checkButton.isSelected == true && images[j] == nil {
+                    if checkButton[i].checkButton.isSelected == true && images[j] == nil{
                         images[j] = checkButton[i].choiceImage.image
+                        break
                     }
                 }
             }
