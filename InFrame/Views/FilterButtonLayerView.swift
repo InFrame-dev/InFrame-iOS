@@ -13,6 +13,8 @@ class FilterButtonLayerView: UIView {
     
     private let filterImage = UIImageView().then {
         $0.image = UIImage(named: "InFrame_FilterBlack")
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
     private let filterKorean = UILabel().then {
