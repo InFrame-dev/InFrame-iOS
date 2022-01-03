@@ -51,7 +51,10 @@ class ImagesFrameView: UIView {
     }
     
     private let dateLabel = UILabel().then {
-        $0.text = "2021.11.13"
+        var formatter_date = DateFormatter()
+        formatter_date.dateFormat = "yyyy.MM.dd"
+        var current_date_string = formatter_date.string(from: Date())
+        $0.text = current_date_string
         $0.dynamicFont(fontSize: 10, currentFontName: "AppleSDGothicNeo-Thin")
         $0.textColor = .rgb(red: 119, green: 119, blue: 119)
     }
