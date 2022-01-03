@@ -13,18 +13,26 @@ class ImagesFrameView: UIView {
 
     private let frameImage1 = UIImageView().then {
         $0.backgroundColor = .gray
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
     private let frameImage2 = UIImageView().then {
         $0.backgroundColor = .gray
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
     private let frameImage3 = UIImageView().then {
         $0.backgroundColor = .gray
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
     private let frameImage4 = UIImageView().then {
         $0.backgroundColor = .gray
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
     private lazy var backgroundLayer = CAGradientLayer().then {
@@ -111,12 +119,12 @@ class ImagesFrameView: UIView {
     }
     
     // MARK: - dataSetting
-    func dataSetting(image1: String, image2: String, image3: String, image4: String){
+    func dataSetting(image1: UIImage?, image2: UIImage?, image3: UIImage?, image4: UIImage?){
         [frameImage1, frameImage2, frameImage3, frameImage4].forEach { $0.backgroundColor = .white }
-        frameImage1.image = UIImage(named: image1)
-        frameImage2.image = UIImage(named: image2)
-        frameImage3.image = UIImage(named: image3)
-        frameImage4.image = UIImage(named: image4)
+        frameImage1.image = image1
+        frameImage2.image = image2
+        frameImage3.image = image3
+        frameImage4.image = image4
     }
     
     func layerSetting(startColor:CGColor, endColor:CGColor){

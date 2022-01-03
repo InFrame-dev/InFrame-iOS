@@ -12,6 +12,11 @@ import Then
 class ChooseFrameViewController: UIViewController {
     //MARK: - Properties
     
+    var lastImage1:UIImage?
+    var lastImage2:UIImage?
+    var lastImage3:UIImage?
+    var lastImage4:UIImage?
+    
     private let imageFrameView = ImagesFrameView()
     
     private let whiteFrameButton = FrameColorButton().then {
@@ -116,6 +121,7 @@ class ChooseFrameViewController: UIViewController {
     //MARK: - Helpers
     private func configureUI(){
         view.backgroundColor = .white
+        imageFrameView.dataSetting(image1: self.lastImage1, image2: self.lastImage2, image3: self.lastImage3, image4: self.lastImage4)
         addView()
         location()
     }

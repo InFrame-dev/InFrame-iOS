@@ -54,14 +54,14 @@ class ChooseFilterViewController: UIViewController {
     @objc private func chooseFrameButtonClicked(sender:UIButton){
         print("프레임 선택하러 가기")
         let nextVC = ChooseFrameViewController()
+        nextVC.lastImage1 = imageFilterView.imageFilter1.image
+        nextVC.lastImage2 = imageFilterView.imageFilter2.image
+        nextVC.lastImage3 = imageFilterView.imageFilter3.image
+        nextVC.lastImage4 = imageFilterView.imageFilter4.image
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     @objc private func chooseBlackFilterClicked(sender:UIButton){
-//        applyFilter(to: UIImage(named: "InFrame_TestImage")!, filterName: "CIPhotoEffectNoir") { image in
-//            self.resetImage()
-//        }
-//
         self.resetImage()
         applyFilter(to: imageFilterView.imageFilter1.image!, filterName: "CIPhotoEffectNoir") { image in
             self.imageFilterView.imageFilter1.image = image
@@ -82,9 +82,6 @@ class ChooseFilterViewController: UIViewController {
     }
     
     @objc private func chooseLightFilterClicked(sender:UIButton){
-//        applyFilter(to: UIImage(named: "InFrame_TestImage")!, filterName: "CIExposureAdjust") { image in
-//            self.resetImage()
-//        }
         self.resetImage()
         applyFilter(to: imageFilterView.imageFilter1.image!, filterName: "CIExposureAdjust") { image in
             self.imageFilterView.imageFilter1.image = image
