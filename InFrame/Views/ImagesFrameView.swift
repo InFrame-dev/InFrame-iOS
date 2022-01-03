@@ -97,7 +97,9 @@ class ImagesFrameView: UIView {
     // MARK: - location
     private func location(){
         backgroundFrameView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalToSuperview()
+            make.center.equalToSuperview()
         }
         
         imageStackView.snp.makeConstraints { make in
