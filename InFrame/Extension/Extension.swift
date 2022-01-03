@@ -352,3 +352,13 @@ extension UIView{
         view?.layer.add(shake, forKey: "position")
     }
 }
+
+// MARK: - asImage
+extension UIView {
+  func asImage() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        return renderer.image { rendererContext in
+            layer.render(in: rendererContext.cgContext)
+        }
+    }
+}

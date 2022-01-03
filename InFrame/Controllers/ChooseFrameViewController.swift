@@ -12,6 +12,11 @@ import Then
 class ChooseFrameViewController: UIViewController {
     //MARK: - Properties
     
+    var lastImage1:UIImage?
+    var lastImage2:UIImage?
+    var lastImage3:UIImage?
+    var lastImage4:UIImage?
+    
     private let imageFrameView = ImagesFrameView()
     
     private let whiteFrameButton = FrameColorButton().then {
@@ -70,6 +75,8 @@ class ChooseFrameViewController: UIViewController {
     @objc private func chooseSaveButtonClicked(sender:UIButton){
         print("사진 저장하기")
         // 사진 저장 코드
+        let saveImage = imageFrameView.asImage()
+        UIImageWriteToSavedPhotosAlbum(saveImage, self, nil, nil)
         let nextVC = MainViewController()
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
@@ -77,6 +84,7 @@ class ChooseFrameViewController: UIViewController {
     @objc private func whiteButtonClicked(sender:UIButton){
         print("white")
         imageFrameView.layerSetting(startColor: UIColor.rgb(red: 255, green: 255, blue: 255).cgColor, endColor: UIColor.rgb(red: 255, green: 255, blue: 255).cgColor)
+        imageFrameView.inFrameLabel.textColor = .black
     }
     
     @objc private func blackButtonClicked(sender:UIButton){
@@ -113,6 +121,7 @@ class ChooseFrameViewController: UIViewController {
     //MARK: - Helpers
     private func configureUI(){
         view.backgroundColor = .white
+        imageFrameView.dataSetting(image1: self.lastImage1, image2: self.lastImage2, image3: self.lastImage3, image4: self.lastImage4)
         addView()
         location()
     }

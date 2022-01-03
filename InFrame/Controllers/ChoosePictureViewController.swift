@@ -71,6 +71,7 @@ class ChoosePictureViewController: UIViewController {
                 }
             }
             nextVC.imageFilterView.dataSetting(imageArray: images)
+            nextVC.images = images
             self.navigationController?.pushViewController(nextVC, animated: true)
         }
     }
