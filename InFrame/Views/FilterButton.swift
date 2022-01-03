@@ -45,7 +45,7 @@ class FilterButton: UIButton {
     }
     
     // MARK: - dataSetting
-    func dataSetting(image:String, koreanText:String, englishText:String){
+    func dataSetting(image:UIImage, koreanText:String, englishText:String){
         filterButtonBackground.dataSetting(image: image, koreanText: koreanText, englishText: englishText)
     }
 }

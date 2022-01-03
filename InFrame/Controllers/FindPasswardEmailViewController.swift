@@ -6,9 +6,15 @@
 //
 
 import UIKit
+import Alamofire
 
 class FindPasswardEmailViewController: UIViewController {
     // MARK: - Properties
+    final class API : APIService<KakaoDataModel>{
+        //MARK: - SingleTon
+        static let shared = APIService<KakaoDataModel>()
+    }
+    
     private let backButton = UIButton().then{
         $0.setImage(UIImage(named: "InFrame_BackButtonImage"), for: .normal)
         $0.addTarget(self, action: #selector(backButtonClicked(sender:)), for: .touchUpInside)
@@ -25,7 +31,7 @@ class FindPasswardEmailViewController: UIViewController {
         $0.dynamicFont(fontSize: 16, currentFontName: "AppleSDGothicNeo-Thin")
     }
     
-    private let emailInputview = InputView().then{
+    private let emailInputView = InputView().then{
         $0.dataSetting(titleText: "Email", placeholderText: "이메일을 입력해주세요")
     }
     
@@ -42,21 +48,18 @@ class FindPasswardEmailViewController: UIViewController {
         configureUI()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
     // MARK: - Helpers
     private func configureUI(){
         self.view.backgroundColor = .white
         
+        emailInputView.callKeyboard()
         addView()
         location()
     }
     
     // MARK: - addView
     private func addView(){
-        [backButton, findPasswardTitleLabel, writeEmailLabel, emailInputview, nextButton].forEach { view.addSubview($0) }
+        [backButton, findPasswardTitleLabel, writeEmailLabel, emailInputView, nextButton].forEach { view.addSubview($0) }
     }
     
     // MARK: - location
@@ -73,28 +76,76 @@ class FindPasswardEmailViewController: UIViewController {
             make.left.equalTo(findPasswardTitleLabel)
             make.top.equalTo(findPasswardTitleLabel.snp.bottom)
         }
-        emailInputview.snp.makeConstraints { make in
+        emailInputView.snp.makeConstraints { make in
             make.width.equalToSuperview()
             make.top.equalTo(writeEmailLabel.snp.bottom).offset(self.view.frame.height/15.03)
             make.height.equalToSuperview().dividedBy(16)
             make.centerX.equalToSuperview()
         }
         nextButton.snp.makeConstraints { make in
-            make.left.equalTo(emailInputview).offset(self.view.frame.width/6.46)
+            make.left.equalTo(emailInputView).offset(self.view.frame.width/6.46)
             make.centerX.equalToSuperview()
             make.height.equalToSuperview().dividedBy(19.8)
-            make.top.equalTo(emailInputview.snp.bottom).offset(self.view.frame.height/19.8)
+            make.top.equalTo(emailInputView.snp.bottom).offset(self.view.frame.height/19.8)
         }
     }
     
-
     // MARK: - Selectors
     @objc private func nextButtonClicked(sender:UIButton){
-        let nextVC = NewPasswordEmailCheckViewController()
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        if isValidEmail(email: emailInputView.getInfo()) == true{
+            
+            findPasswordAPI()
+
+        }else{ emailInputView.shakeView(emailInputView) }
     }
     
     @objc private func backButtonClicked(sender:UIButton){
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - isValidEmail
+    private func isValidEmail(email: String?) -> Bool {
+        guard email != nil else { return false }
+        
+        let idRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let pred = NSPredicate(format:"SELF MATCHES %@", idRegEx)
+        return pred.evaluate(with: email)
+    }
+
+    private func findPasswordAPI(){
+        let userEmail: String = UserDefaults.standard.string(forKey: "userEmail")!
+        
+        let param: Parameters = ["email": emailInputView.getInfo()]
+
+        API.shared.request(url: "http://52.78.178.248:8080/findPassword", method: .post, param: param, header: .none, JSONDecodeUsingStatus: false) { result in
+            switch result {
+            case .success(let data):
+                print(data)
+                print("success")
+                
+                let nextVC = NewPasswordEmailCheckViewController()
+                self.navigationController?.pushViewController(nextVC, animated: true)
+                    
+                break
+            case .requestErr(let err):
+                print(err)
+                break
+            case .pathErr:
+                print("pathErr")
+                break
+            case .serverErr:
+                print("serverErr")
+                break
+            case .networkFail:
+                print("networkFail")
+                break
+            case .tokenErr:
+                print("tokenErr")
+                break
+            case .authorityErr:
+                print("authorityErr")
+                break
+            }
+        }
     }
 }

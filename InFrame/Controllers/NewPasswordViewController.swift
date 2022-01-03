@@ -6,9 +6,15 @@
 //
 
 import UIKit
+import Alamofire
 
 class NewPasswordViewController: UIViewController {
     // MARK: - Properties
+    final class API : APIService<KakaoDataModel>{
+        //MARK: - SingleTon
+        static let shared = APIService<KakaoDataModel>()
+    }
+    
     private let backButton = UIButton().then{
         $0.setImage(UIImage(named: "InFrame_BackButtonImage"), for: .normal)
         $0.addTarget(self, action: #selector(backButtonClicked(sender:)), for: .touchUpInside)
@@ -34,7 +40,6 @@ class NewPasswordViewController: UIViewController {
         $0.addTarget(self, action: #selector(nextButtonClicked(sender:)), for: .touchUpInside)
     }
     
-    
     // MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,14 +47,11 @@ class NewPasswordViewController: UIViewController {
         configureUI()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
     // MARK: - Helpers
     private func configureUI(){
         self.view.backgroundColor = .white
         
+        passwordInputview.callKeyboard()
         addView()
         location()
     }
@@ -90,10 +92,59 @@ class NewPasswordViewController: UIViewController {
 
     // MARK: - Selectors
     @objc func nextButtonClicked(sender:UIButton){
-        navigationController?.popToRootViewController(animated: true)
+        if isValidPassword(password: passwordInputview.getInfo()) == true{
+            
+            newPasswordAPI()
+            
+        }else{ passwordInputview.shakeView(passwordInputview) }
     }
     
     @objc func backButtonClicked(sender:UIButton){
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - isValidPassword
+    private func isValidPassword(password: String?) -> Bool {
+        guard password != nil else { return false }
+            
+        let passwordRegEx = ("(?=.*[A-Za-z~!@#$%^&*])(?=.*[0-9]).{8,}")
+        let pred = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
+        return pred.evaluate(with: password)
+    }
+    
+    private func newPasswordAPI(){
+        let userEmail: String = UserDefaults.standard.string(forKey: "userEmail")!
+        
+        let param: Parameters = ["password": passwordInputview.getInfo()]
+        
+        API.shared.request(url: "http://52.78.178.248:8080/newPassword/\(userEmail)", method: .post, param: param, header: .none, JSONDecodeUsingStatus: false) { result in
+            switch result {
+            case .success(let data):
+                print(data)
+                print("success")
+                
+                self.navigationController?.popToRootViewController(animated: true)
+
+                break
+            case .requestErr(let err):
+                print(err)
+                break
+            case .pathErr:
+                print("pathErr")
+                break
+            case .serverErr:
+                print("serverErr")
+                break
+            case .networkFail:
+                print("networkFail")
+                break
+            case .tokenErr:
+                print("tokenErr")
+                break
+            case .authorityErr:
+                print("authorityErr")
+                break
+            }
+        }
     }
 }

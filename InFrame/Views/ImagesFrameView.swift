@@ -13,22 +13,37 @@ class ImagesFrameView: UIView {
 
     private let frameImage1 = UIImageView().then {
         $0.backgroundColor = .gray
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
     private let frameImage2 = UIImageView().then {
         $0.backgroundColor = .gray
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
     private let frameImage3 = UIImageView().then {
         $0.backgroundColor = .gray
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
     private let frameImage4 = UIImageView().then {
         $0.backgroundColor = .gray
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
-    private let backgroundFrameView = UIView().then {
-        $0.backgroundColor = .orange
+    private lazy var backgroundLayer = CAGradientLayer().then {
+        $0.frame = CGRect(x: 0, y: 0, width: viewBounds.width/1.98, height: viewBounds.height/1.48)
+        $0.colors = [UIColor.rgb(red: 216, green: 227, blue: 255).cgColor, UIColor.rgb(red: 255, green: 231, blue: 236).cgColor]
+        $0.startPoint = CGPoint(x: 0, y: 0)
+        $0.endPoint = CGPoint(x: 1, y: 1)
+    }
+    
+    private lazy var backgroundFrameView = UIView().then {
+        $0.layer.insertSublayer(backgroundLayer, at: 0)
     }
     
     private lazy var imageStackView = UIStackView(arrangedSubviews: [frameImage1, frameImage2, frameImage3, frameImage4]).then {
@@ -37,14 +52,17 @@ class ImagesFrameView: UIView {
         $0.spacing = viewBounds.height/62.46
     }
     
-    private let inFrameLabel = UILabel().then {
+    let inFrameLabel = UILabel().then {
         $0.text = "InFrame"
         $0.textColor = .white
         $0.dynamicFont(fontSize: 15, currentFontName: "CarterOne")
     }
     
     private let dateLabel = UILabel().then {
-        $0.text = "2021.11.13"
+        var formatter_date = DateFormatter()
+        formatter_date.dateFormat = "yyyy.MM.dd"
+        var current_date_string = formatter_date.string(from: Date())
+        $0.text = current_date_string
         $0.dynamicFont(fontSize: 10, currentFontName: "AppleSDGothicNeo-Thin")
         $0.textColor = .rgb(red: 119, green: 119, blue: 119)
     }
@@ -66,6 +84,7 @@ class ImagesFrameView: UIView {
     
     // MARK: - Helpers
     private func configureUI(){
+        self.layer.applySketchShadow(color: .black, alpha: 0.25, x: 2, y: 2, blur: 10, spread: 0)
         addView()
         location()
     }
@@ -100,11 +119,15 @@ class ImagesFrameView: UIView {
     }
     
     // MARK: - dataSetting
-    func dataSetting(image1: String, image2: String, image3: String, image4: String){
+    func dataSetting(image1: UIImage?, image2: UIImage?, image3: UIImage?, image4: UIImage?){
         [frameImage1, frameImage2, frameImage3, frameImage4].forEach { $0.backgroundColor = .white }
-        frameImage1.image = UIImage(named: image1)
-        frameImage2.image = UIImage(named: image2)
-        frameImage3.image = UIImage(named: image3)
-        frameImage4.image = UIImage(named: image4)
+        frameImage1.image = image1
+        frameImage2.image = image2
+        frameImage3.image = image3
+        frameImage4.image = image4
+    }
+    
+    func layerSetting(startColor:CGColor, endColor:CGColor){
+        backgroundLayer.colors = [startColor, endColor]
     }
 }

@@ -12,6 +12,11 @@ import Then
 class ChooseFrameViewController: UIViewController {
     //MARK: - Properties
     
+    var lastImage1:UIImage?
+    var lastImage2:UIImage?
+    var lastImage3:UIImage?
+    var lastImage4:UIImage?
+    
     private let imageFrameView = ImagesFrameView()
     
     private let whiteFrameButton = FrameColorButton().then {
@@ -24,8 +29,7 @@ class ChooseFrameViewController: UIViewController {
         $0.addTarget(self, action: #selector(blackButtonClicked(sender:)), for: .touchUpInside)
     }
     
-    private let gradienFrameButton = FrameColorButton().then {
-        $0.dataSetting(color: .orange)
+    private let gradienFrameButton = GradientFrameColorButton().then {
         $0.addTarget(self, action: #selector(gradientButtonClicked(sender:)), for: .touchUpInside)
     }
     
@@ -71,49 +75,53 @@ class ChooseFrameViewController: UIViewController {
     @objc private func chooseSaveButtonClicked(sender:UIButton){
         print("사진 저장하기")
         // 사진 저장 코드
+        let saveImage = imageFrameView.asImage()
+        UIImageWriteToSavedPhotosAlbum(saveImage, self, nil, nil)
         let nextVC = MainViewController()
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     @objc private func whiteButtonClicked(sender:UIButton){
         print("white")
-        // white frame
+        imageFrameView.layerSetting(startColor: UIColor.rgb(red: 255, green: 255, blue: 255).cgColor, endColor: UIColor.rgb(red: 255, green: 255, blue: 255).cgColor)
+        imageFrameView.inFrameLabel.textColor = .black
     }
     
     @objc private func blackButtonClicked(sender:UIButton){
         print("black")
-        // black frame
+        imageFrameView.layerSetting(startColor: UIColor.rgb(red: 0, green: 0, blue: 0).cgColor, endColor: UIColor.rgb(red: 0, green: 0, blue: 0).cgColor)
     }
 
     @objc private func gradientButtonClicked(sender:UIButton){
         print("gradient")
-        // gradient frame
+        imageFrameView.layerSetting(startColor: UIColor.rgb(red: 216, green: 227, blue: 255).cgColor, endColor: UIColor.rgb(red: 255, green: 231, blue: 236).cgColor)
     }
 
     @objc private func yellowButtonClicked(sender:UIButton){
         print("yellow")
-        // yellow frame
+        imageFrameView.layerSetting(startColor: UIColor.rgb(red: 248, green: 238, blue: 156).cgColor, endColor: UIColor.rgb(red: 248, green: 238, blue: 156).cgColor)
     }
 
     @objc private func greenButtonClicked(sender:UIButton){
         print("green")
-        // green frame
+        imageFrameView.layerSetting(startColor: UIColor.rgb(red: 190, green: 236, blue: 203).cgColor, endColor: UIColor.rgb(red: 190, green: 236, blue: 203).cgColor)
     }
 
     @objc private func blueButtonClicked(sender:UIButton){
         print("blue")
-        // blue frame
+        imageFrameView.layerSetting(startColor: UIColor.rgb(red: 183, green: 198, blue: 235).cgColor, endColor: UIColor.rgb(red: 183, green: 198, blue: 235).cgColor)
     }
 
     @objc private func purpleButtonClicked(sender:UIButton){
         print("purple")
-        // purple frame
+        imageFrameView.layerSetting(startColor: UIColor.rgb(red: 173, green: 172, blue: 241).cgColor, endColor: UIColor.rgb(red: 173, green: 172, blue: 241).cgColor)
     }
 
     
     //MARK: - Helpers
     private func configureUI(){
         view.backgroundColor = .white
+        imageFrameView.dataSetting(image1: self.lastImage1, image2: self.lastImage2, image3: self.lastImage3, image4: self.lastImage4)
         addView()
         location()
     }

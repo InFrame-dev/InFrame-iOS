@@ -6,9 +6,15 @@
 //
 
 import UIKit
+import Alamofire
 
 class SignUpViewController: UIViewController {
     // MARK: - Properties
+    final class API : APIService<KakaoDataModel>{
+        //MARK: - SingleTon
+        static let shared = APIService<KakaoDataModel>()
+    }
+    
     private let signUpTitleLabel = UILabel().then{
         $0.text = "SignUp"
         $0.dynamicFont(fontSize: 30, currentFontName: "CarterOne")
@@ -114,11 +120,84 @@ class SignUpViewController: UIViewController {
     
     //MARK: - Selectors    
     @objc func signUpButtonClicked(sender:UIButton){
-        let nextVC = TermsOfServiceViewController()
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        if isValidEmail(email: emailInputview.getInfo()) == true{
+            if isValidPassword(password: passwordInputview.getInfo()) == true{
+                if isValidPassword(password: passwordCheckInputview.getInfo()) == true{
+                    if samePassword() == true{
+                        
+                        signupAPI()
+                        
+                    }else{ passwordCheckInputview.shakeView(passwordCheckInputview) }
+                }else{ passwordCheckInputview.shakeView(passwordCheckInputview) }
+            }else{ passwordInputview.shakeView(passwordInputview) }
+        }else{ emailInputview.shakeView(emailInputview) }
     }
     
     @objc func haveAccountButtonClicked(sender:UIButton){
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - samePassword
+    private func samePassword() -> Bool{
+        if passwordInputview.getInfo() == passwordCheckInputview.getInfo(){
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    // MARK: - isValidEmail
+    private func isValidEmail(email: String?) -> Bool {
+        guard email != nil else { return false }
+        
+        let idRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let pred = NSPredicate(format:"SELF MATCHES %@", idRegEx)
+        return pred.evaluate(with: email)
+    }
+    
+    // MARK: - isValidPassword
+    private func isValidPassword(password: String?) -> Bool {
+        guard password != nil else { return false }
+            
+        let passwordRegEx = ("(?=.*[A-Za-z~!@#$%^&*])(?=.*[0-9]).{8,}")
+        let pred = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
+        return pred.evaluate(with: password)
+    }
+    
+    private func signupAPI(){
+        let param: Parameters = ["email": emailInputview.getInfo(), "password": passwordCheckInputview.getInfo()]
+
+        API.shared.request(url: "http://52.78.178.248:8080/signup", method: .post, param: param, header: .none, JSONDecodeUsingStatus: false) { result in
+            switch result {
+            case .success(let data):
+                print(data)
+                print("success")
+                
+                UserDefaults.standard.set(self.emailInputview.getInfo(), forKey: "userEmail")
+                
+                let nextVC = SignUpEmailCheckViewController()
+                self.navigationController?.pushViewController(nextVC, animated: true)
+                
+                break
+            case .requestErr(let err):
+                print(err)
+                break
+            case .pathErr:
+                print("pathErr")
+                break
+            case .serverErr:
+                print("serverErr")
+                break
+            case .networkFail:
+                print("networkFail")
+                break
+            case .tokenErr:
+                print("tokenErr")
+                break
+            case .authorityErr:
+                print("authorityErr")
+                break
+            }
+        }
     }
 }

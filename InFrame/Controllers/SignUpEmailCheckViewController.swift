@@ -1,32 +1,25 @@
 //
-//  NewPasswordEmailCheckViewController.swift
+//  SignUpEmailCheckViewController.swift
 //  InFrame
 //
-//  Created by 김유진 on 2021/12/02.
+//  Created by 김유진 on 2021/12/15.
 //
 
 import UIKit
 import Alamofire
 
-class NewPasswordEmailCheckViewController: UIViewController{
+class SignUpEmailCheckViewController: UIViewController{
+    
     // MARK: - Properties
     final class API : APIService<KakaoDataModel>{
         //MARK: - SingleTon
         static let shared = APIService<KakaoDataModel>()
     }
     
-    private let backButton = UIButton().then{
-        $0.setImage(UIImage(named: "InFrame_BackButtonImage"), for: .normal)
-        $0.addTarget(self, action: #selector(backButtonClicked(sender:)), for: .touchUpInside)
-    }
-    private let findPasswardTitleLabel = UILabel().then{
-        $0.text = "Find Password"
+    private let signUpTitleLabel = UILabel().then{
+        $0.text = "SignUp"
         $0.dynamicFont(fontSize: 30, currentFontName: "CarterOne")
         $0.updateGradientTextColor_horizontal(gradientColors: [UIColor.rgb(red: 126, green: 152, blue: 212), UIColor.rgb(red: 251, green: 186, blue: 200)])
-    }
-    private let nextButton = GradientButton().then{
-        $0.dataSetting(buttonText: "확인버튼 클릭했어요!")
-        $0.addTarget(self, action: #selector(nextButtonClicked(sender:)), for: .touchUpInside)
     }
     private let introLabel = UILabel().then{
         $0.text = "이메일로 전송된 코드 6자리를 입력해주세요!"
@@ -45,6 +38,10 @@ class NewPasswordEmailCheckViewController: UIViewController{
         $0.dynamicFont(fontSize: 11, currentFontName: "AppleSDGothicNeo-SemiBold")
         $0.textAlignment = .center
     }
+    private let signUpButton = GradientButton().then{
+        $0.dataSetting(buttonText: "다음으로 가기")
+        $0.addTarget(self, action: #selector(signUpButtonClicked(sender:)), for: .touchUpInside)
+    }
     
     // MARK: - LifeCycles
     override func viewDidLoad() {
@@ -53,37 +50,30 @@ class NewPasswordEmailCheckViewController: UIViewController{
         configureUI()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        codeTextField.becomeFirstResponder()
-    }
-    
     // MARK: - Helpers
     private func configureUI(){
-        self.view.backgroundColor = .white
+        view.backgroundColor = .white
         
         addView()
+        
         location()
     }
     
     // MARK: - addView
     private func addView(){
-        [backButton, findPasswardTitleLabel, nextButton, introLabel, codeBackgroundView].forEach { view.addSubview($0) }
+        [signUpTitleLabel, introLabel, codeBackgroundView, signUpButton].forEach { view.addSubview($0) }
         [codeTextField].forEach { codeBackgroundView.addSubview($0) }
     }
     
     // MARK: - location
     private func location(){
-        backButton.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(self.view.frame.width/6.04)
-            make.top.equalToSuperview().offset(self.view.frame.height/8.63)
-        }
-        findPasswardTitleLabel.snp.makeConstraints { make in
-            make.left.equalTo(backButton)
-            make.top.equalTo(backButton.snp.bottom).offset(self.view.frame.height/10.54)
+        signUpTitleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(self.view.frame.height/5.75)
+            make.left.equalToSuperview().offset(self.view.frame.width/5.75)
         }
         introLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(findPasswardTitleLabel.snp.bottom).offset(self.view.frame.height/14)
+            $0.top.equalTo(signUpTitleLabel.snp.bottom).offset(self.view.frame.height/8.92)
         }
         codeBackgroundView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -96,35 +86,33 @@ class NewPasswordEmailCheckViewController: UIViewController{
             $0.width.equalToSuperview().dividedBy(1.3)
             $0.height.equalToSuperview().dividedBy(2)
         }
-        nextButton.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(self.view.frame.width/6.46)
+        signUpButton.snp.makeConstraints { make in
+            make.width.equalToSuperview().dividedBy(1.45)
             make.centerX.equalToSuperview()
             make.height.equalToSuperview().dividedBy(19.8)
-            make.top.equalTo(codeTextField.snp.bottom).offset(self.view.frame.height/19.8)
+            make.top.equalTo(codeBackgroundView.snp.bottom).offset(self.view.frame.height/5.4)
         }
     }
     
     // MARK: - Selectors
-    @objc private func nextButtonClicked(sender:UIButton){
-        newPasswordCodeAPI()
+    @objc private func signUpButtonClicked(sender:UIButton){
+        
+        signupCodeAPI()
+
     }
     
-    @objc private func backButtonClicked(sender:UIButton){
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    private func newPasswordCodeAPI(){
+    private func signupCodeAPI(){
         let userEmail: String = UserDefaults.standard.string(forKey: "userEmail")!
         
         let param: Parameters = ["code": codeTextField.text!]
-        
-        API.shared.request(url: "http://52.78.178.248:8080/passwordCode/\(userEmail)", method: .post, param: param, header: .none, JSONDecodeUsingStatus: false) { result in
+
+        API.shared.request(url: "http://52.78.178.248:8080/signupCode/\(userEmail)", method: .post, param: param, header: .none, JSONDecodeUsingStatus: false) { result in
             switch result {
             case .success(let data):
                 print(data)
                 print("success")
                 
-                let nextVC = NewPasswordViewController()
+                let nextVC = TermsOfServiceViewController()
                 self.navigationController?.pushViewController(nextVC, animated: true)
                 
                 break

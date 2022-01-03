@@ -11,11 +11,17 @@ class ImageCheckView: UIView {
     // MARK: - Properties
     private let viewBounds = UIScreen.main.bounds
 
-    private let choiceImage = UIImageView().then {
+    let choiceImage = UIImageView().then {
         $0.backgroundColor = .gray
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
-    private let checkButton = UIButton().then {
+    let checkButton = UIButton().then {
+        $0.backgroundColor = UIColor.white
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.rgb(red: 225, green: 225, blue: 225).cgColor
+        $0.layer.cornerRadius = 5
         $0.setImage(UIImage(named: "InFrame_AgreeButtonImage"), for: .normal)
     }
     
@@ -63,7 +69,7 @@ class ImageCheckView: UIView {
     }
     
     // MARK: - dataSetting
-    func dataSetting(image:UIImage){
+    func dataSetting(image:UIImage?){
         choiceImage.backgroundColor = .white
         choiceImage.image = image
     }
