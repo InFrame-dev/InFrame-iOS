@@ -12,7 +12,7 @@ import Then
 class ChooseFilterViewController: UIViewController {
     //MARK: - Properties
     
-    private let imageFilterView = ImageFilterView()
+    let imageFilterView = ImageFilterView()
     
     private let blackButton = FilterButton().then {
         $0.dataSetting(image: "InFrame_FilterBlack", koreanText: "흑백", englishText: "BLACK")

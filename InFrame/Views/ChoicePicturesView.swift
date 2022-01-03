@@ -11,12 +11,12 @@ class ChoicePicturesView: UIView {
     // MARK: - Properties
     private let viewBounds = UIScreen.main.bounds
     
-    private let imageCheck1 = ImageCheckView()
-    private let imageCheck2 = ImageCheckView()
-    private let imageCheck3 = ImageCheckView()
-    private let imageCheck4 = ImageCheckView()
-    private let imageCheck5 = ImageCheckView()
-    private let imageCheck6 = ImageCheckView()
+    let imageCheck1 = ImageCheckView()
+    let imageCheck2 = ImageCheckView()
+    let imageCheck3 = ImageCheckView()
+    let imageCheck4 = ImageCheckView()
+    let imageCheck5 = ImageCheckView()
+    let imageCheck6 = ImageCheckView()
     
     private lazy var imageCheckLine1 = UIStackView(arrangedSubviews: [imageCheck1, imageCheck2]).then {
         $0.axis = .horizontal
