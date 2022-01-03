@@ -15,6 +15,8 @@ class ChooseFilterViewController: UIViewController {
     
     private var context = CIContext()
     
+    var images:[UIImage?]?
+    
     let imageFilterView = ImageFilterView()
     
     private let blackButton = FilterButton().then {
@@ -39,42 +41,6 @@ class ChooseFilterViewController: UIViewController {
         $0.dataSetting(buttonText: "프레임 선택하러 가기")
         $0.addTarget(self, action: #selector(chooseFrameButtonClicked(sender:)), for: .touchUpInside)
     }
-    
-    private var imageUrl1 = UIImageView().then{
-        $0.image = UIImage(named: "InFrame_TestImage")
-        $0.contentMode = .scaleAspectFill
-        $0.clipsToBounds = true
-    }
-    
-    private var imageUrl2 = UIImageView().then{
-        $0.image = UIImage(named: "InFrame_TestImage")
-        $0.contentMode = .scaleAspectFill
-        $0.clipsToBounds = true
-    }
-    
-    private var imageUrl3 = UIImageView().then{
-        $0.image = UIImage(named: "InFrame_TestImage")
-        $0.contentMode = .scaleAspectFill
-        $0.clipsToBounds = true
-    }
-    
-    private var imageUrl4 = UIImageView().then{
-        $0.image = UIImage(named: "InFrame_TestImage")
-        $0.contentMode = .scaleAspectFill
-        $0.clipsToBounds = true
-    }
-    
-    private lazy var imageTopStackView = UIStackView(arrangedSubviews: [imageUrl1, imageUrl2]).then {
-        $0.axis = .horizontal
-        $0.distribution = .fillEqually
-        $0.spacing = viewBounds.width/31.25
-    }
-
-    private lazy var imagebottomStackView = UIStackView(arrangedSubviews: [imageUrl3, imageUrl4]).then {
-        $0.axis = .horizontal
-        $0.distribution = .fillEqually
-        $0.spacing = viewBounds.width/31.25
-    }
 
     
     //MARK: - Lifecycle
@@ -92,18 +58,45 @@ class ChooseFilterViewController: UIViewController {
     }
     
     @objc private func chooseBlackFilterClicked(sender:UIButton){
-        applyFilter(to: UIImage(named: "InFrame_TestImage")!, filterName: "CIPhotoEffectNoir") { image in
-            self.resetImage(image: image)
+//        applyFilter(to: UIImage(named: "InFrame_TestImage")!, filterName: "CIPhotoEffectNoir") { image in
+//            self.resetImage()
+//        }
+//
+        self.resetImage()
+        applyFilter(to: imageFilterView.imageFilter1.image!, filterName: "CIPhotoEffectNoir") { image in
+            self.imageFilterView.imageFilter1.image = image
+        }
+        applyFilter(to: imageFilterView.imageFilter2.image!, filterName: "CIPhotoEffectNoir") { image in
+            self.imageFilterView.imageFilter2.image = image
+        }
+        applyFilter(to: imageFilterView.imageFilter3.image!, filterName: "CIPhotoEffectNoir") { image in
+            self.imageFilterView.imageFilter3.image = image
+        }
+        applyFilter(to: imageFilterView.imageFilter4.image!, filterName: "CIPhotoEffectNoir") { image in
+            self.imageFilterView.imageFilter4.image = image
         }
     }
     
     @objc private func chooseBasicFilterClicked(sender:UIButton){
-        resetImage(image: UIImage(named: "InFrame_TestImage")!)
+        resetImage()
     }
     
     @objc private func chooseLightFilterClicked(sender:UIButton){
-        applyFilter(to: UIImage(named: "InFrame_TestImage")!, filterName: "CIExposureAdjust") { image in
-            self.resetImage(image: image)
+//        applyFilter(to: UIImage(named: "InFrame_TestImage")!, filterName: "CIExposureAdjust") { image in
+//            self.resetImage()
+//        }
+        self.resetImage()
+        applyFilter(to: imageFilterView.imageFilter1.image!, filterName: "CIExposureAdjust") { image in
+            self.imageFilterView.imageFilter1.image = image
+        }
+        applyFilter(to: imageFilterView.imageFilter2.image!, filterName: "CIExposureAdjust") { image in
+            self.imageFilterView.imageFilter2.image = image
+        }
+        applyFilter(to: imageFilterView.imageFilter3.image!, filterName: "CIExposureAdjust") { image in
+            self.imageFilterView.imageFilter3.image = image
+        }
+        applyFilter(to: imageFilterView.imageFilter4.image!, filterName: "CIExposureAdjust") { image in
+            self.imageFilterView.imageFilter4.image = image
         }
     }
     
@@ -118,7 +111,7 @@ class ChooseFilterViewController: UIViewController {
     // MARK: - Add View
     
     private func addView(){
-        [imageFilterView, filterButtonStackView, chooseFrameButton, imageTopStackView, imagebottomStackView].forEach { view.addSubview($0) }
+        [imageFilterView, filterButtonStackView, chooseFrameButton].forEach { view.addSubview($0) }
     }
     
     // MARK: - Location
@@ -143,20 +136,6 @@ class ChooseFilterViewController: UIViewController {
             make.height.equalToSuperview().dividedBy(19.80)
             make.left.equalToSuperview().offset(viewBounds.width/8.52)
         }
-        
-        imageTopStackView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(viewBounds.height/5.37)
-            make.width.equalToSuperview().dividedBy(1.157)
-            make.centerX.equalToSuperview()
-            make.height.equalToSuperview().dividedBy(7.73)
-        }
-        
-        imagebottomStackView.snp.makeConstraints { make in
-            make.top.equalTo(imageTopStackView.snp.bottom).offset(viewBounds.width/31.25)
-            make.width.equalToSuperview().dividedBy(1.157)
-            make.centerX.equalToSuperview()
-            make.height.equalToSuperview().dividedBy(7.73)
-        }
     }
  
     func applyFilter(to inputImage: UIImage, filterName: String, completion: @escaping ((UIImage) -> ())) {
@@ -177,21 +156,21 @@ class ChooseFilterViewController: UIViewController {
         }
     }
     
-    private func resetImage(image: UIImage){
-        imageUrl1.image = image
-        imageUrl2.image = image
-        imageUrl3.image = image
-        imageUrl4.image = image
+    private func resetImage(){
+        imageFilterView.imageFilter1.image = images?[0]
+        imageFilterView.imageFilter2.image = images?[1]
+        imageFilterView.imageFilter3.image = images?[2]
+        imageFilterView.imageFilter4.image = images?[3]
     }
     
     private func filterPreviewImage(){
-        applyFilter(to: UIImage(named: "InFrame_TestImage")!, filterName: "CIPhotoEffectNoir") { image in
+        applyFilter(to: imageFilterView.imageFilter1.image!, filterName: "CIPhotoEffectNoir") { image in
             self.blackButton.dataSetting(image: image, koreanText: "흑백", englishText: "BLACK")
         }
 
-        basicButton.dataSetting(image: imageUrl1.image!, koreanText: "기본", englishText: "BASIC")
+        basicButton.dataSetting(image: imageFilterView.imageFilter1.image!, koreanText: "기본", englishText: "BASIC")
 
-        applyFilter(to: UIImage(named: "InFrame_TestImage")!, filterName: "CIExposureAdjust") { image in
+        applyFilter(to: imageFilterView.imageFilter1.image!, filterName: "CIExposureAdjust") { image in
             self.lightButton.dataSetting(image: image, koreanText: "밝게", englishText: "LIGHT")
         }
     }

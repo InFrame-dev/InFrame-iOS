@@ -11,22 +11,22 @@ class ImageFilterView: UIView {
     // MARK: - Properties
     private let viewBounds = UIScreen.main.bounds
     
-    private let imageFilter1 = UIImageView().then {
+    let imageFilter1 = UIImageView().then {
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
     }
     
-    private let imageFilter2 = UIImageView().then {
+    let imageFilter2 = UIImageView().then {
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
     }
     
-    private let imageFilter3 = UIImageView().then {
+    let imageFilter3 = UIImageView().then {
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
     }
     
-    private let imageFilter4 = UIImageView().then {
+    let imageFilter4 = UIImageView().then {
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
     }
