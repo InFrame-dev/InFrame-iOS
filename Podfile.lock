@@ -1,24 +1,28 @@
 PODS:
   - Alamofire (5.4.4)
+  - BSImagePicker (3.3.1)
   - SnapKit (5.0.1)
   - Then (2.7.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
+  - BSImagePicker (~> 3.1)
   - SnapKit (~> 5.0.0)
   - Then
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - BSImagePicker
     - SnapKit
     - Then
 
 SPEC CHECKSUMS:
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
+  BSImagePicker: 0fe04b574d4d6b81093785d2af6c26227efc8428
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: 6b23b55f4145505b85eb45394d7784ffc2c9ab69
+PODFILE CHECKSUM: 9b106096326882059f0d252c03646dddf876379a
 
 COCOAPODS: 1.11.2
