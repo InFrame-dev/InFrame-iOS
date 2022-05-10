@@ -40,7 +40,7 @@ class SignUpEmailCheckViewController: UIViewController{
     }
     private let signUpButton = GradientButton().then{
         $0.dataSetting(buttonText: "다음으로 가기")
-        $0.addTarget(self, action: #selector(signUpButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(SignUpEmailCheckViewController.self, action: #selector(signUpButtonClicked(sender:)), for: .touchUpInside)
     }
     
     // MARK: - LifeCycles

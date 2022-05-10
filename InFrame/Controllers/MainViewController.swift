@@ -24,7 +24,7 @@ class MainViewController: UIViewController {
     }
     
     private let takePictureButton = MainButton().then{
-        $0.addTarget(self, action: #selector(takePictureButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(MainViewController.self, action: #selector(takePictureButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private let takePictureLabel = UILabel().then{
@@ -37,7 +37,7 @@ class MainViewController: UIViewController {
     }
     
     private let choosePictureButton = MainButton().then{
-        $0.addTarget(self, action: #selector(choosePictureButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(MainViewController.self, action: #selector(choosePictureButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private let choosePictureLabel = UILabel().then{
