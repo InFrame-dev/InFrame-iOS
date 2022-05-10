@@ -35,19 +35,19 @@ class LoginViewController: UIViewController {
         $0.setTitle("비밀번호를 잊으셨나요?", for: .normal)
         $0.setTitleColor(UIColor(red: 178/255, green: 178/255, blue: 178/255, alpha: 1), for: .normal)
         $0.dynamicFont(fontSize: 10, currentFontName: "AppleSDGothicNeo-Medium")
-        $0.addTarget(self, action: #selector(forgetButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(LoginViewController.self, action: #selector(forgetButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private let logInButton = GradientButton().then{
         $0.dataSetting(buttonText: "로그인하기")
-        $0.addTarget(self, action: #selector(logInButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(LoginViewController.self, action: #selector(logInButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private let noAccountButton = UIButton().then{
         $0.setTitle("계정이 없으신가요?", for: .normal)
         $0.dynamicFont(fontSize: 11, currentFontName: "AppleSDGothicNeo-Bold")
         $0.setTitleColor(UIColor.rgb(red: 178, green: 178, blue: 178), for: .normal)
-        $0.addTarget(self, action: #selector(noAccountButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(LoginViewController.self, action: #selector(noAccountButtonClicked(sender:)), for: .touchUpInside)
     }
     
     //MARK: - LifeCycles

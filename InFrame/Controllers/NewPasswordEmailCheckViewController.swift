@@ -17,7 +17,7 @@ class NewPasswordEmailCheckViewController: UIViewController{
     
     private let backButton = UIButton().then{
         $0.setImage(UIImage(named: "InFrame_BackButtonImage"), for: .normal)
-        $0.addTarget(self, action: #selector(backButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(NewPasswordEmailCheckViewController.self, action: #selector(backButtonClicked(sender:)), for: .touchUpInside)
     }
     private let findPasswardTitleLabel = UILabel().then{
         $0.text = "Find Password"
@@ -26,7 +26,7 @@ class NewPasswordEmailCheckViewController: UIViewController{
     }
     private let nextButton = GradientButton().then{
         $0.dataSetting(buttonText: "확인버튼 클릭했어요!")
-        $0.addTarget(self, action: #selector(nextButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(NewPasswordEmailCheckViewController.self, action: #selector(nextButtonClicked(sender:)), for: .touchUpInside)
     }
     private let introLabel = UILabel().then{
         $0.text = "이메일로 전송된 코드 6자리를 입력해주세요!"

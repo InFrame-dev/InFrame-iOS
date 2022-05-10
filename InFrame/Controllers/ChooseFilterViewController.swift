@@ -20,15 +20,15 @@ class ChooseFilterViewController: UIViewController {
     let imageFilterView = ImageFilterView()
     
     private let blackButton = FilterButton().then {
-        $0.addTarget(self, action: #selector(chooseBlackFilterClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(ChooseFilterViewController.self, action: #selector(chooseBlackFilterClicked(sender:)), for: .touchUpInside)
     }
     
     private let basicButton = FilterButton().then {
-        $0.addTarget(self, action: #selector(chooseBasicFilterClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(ChooseFilterViewController.self, action: #selector(chooseBasicFilterClicked(sender:)), for: .touchUpInside)
     }
     
     private let lightButton = FilterButton().then {
-        $0.addTarget(self, action: #selector(chooseLightFilterClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(ChooseFilterViewController.self, action: #selector(chooseLightFilterClicked(sender:)), for: .touchUpInside)
     }
     
     private lazy var filterButtonStackView = UIStackView(arrangedSubviews: [blackButton, basicButton, lightButton]).then {
@@ -39,7 +39,7 @@ class ChooseFilterViewController: UIViewController {
     
     private let chooseFrameButton = ChoiceGradientButton().then {
         $0.dataSetting(buttonText: "프레임 선택하러 가기")
-        $0.addTarget(self, action: #selector(chooseFrameButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(ChooseFilterViewController.self, action: #selector(chooseFrameButtonClicked(sender:)), for: .touchUpInside)
     }
 
     

@@ -91,7 +91,7 @@ class TermsOfServiceViewController: UIViewController {
         $0.layer.borderColor = UIColor.rgb(red: 225, green: 225, blue: 225).cgColor
         $0.layer.cornerRadius = 5
         $0.setImage(UIImage(named: "InFrame_AgreeButtonImage"), for: .normal)
-        $0.addTarget(self, action: #selector(allAgreeButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(TermsOfServiceViewController.self, action: #selector(allAgreeButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private let useAgreeButton = UIButton().then{
@@ -100,7 +100,7 @@ class TermsOfServiceViewController: UIViewController {
         $0.layer.borderColor = UIColor.rgb(red: 225, green: 225, blue: 225).cgColor
         $0.layer.cornerRadius = 5
         $0.setImage(UIImage(named: "InFrame_AgreeButtonImage"), for: .normal)
-        $0.addTarget(self, action: #selector(useAgreeButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(TermsOfServiceViewController.self, action: #selector(useAgreeButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private let personalAgreeButton = UIButton().then{
@@ -109,7 +109,7 @@ class TermsOfServiceViewController: UIViewController {
         $0.layer.borderColor = UIColor.rgb(red: 225, green: 225, blue: 225).cgColor
         $0.layer.cornerRadius = 5
         $0.setImage(UIImage(named: "InFrame_AgreeButtonImage"), for: .normal)
-        $0.addTarget(self, action: #selector(personalAgreeButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(TermsOfServiceViewController.self, action: #selector(personalAgreeButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private let marketingAgreeButton = UIButton().then{
@@ -118,8 +118,9 @@ class TermsOfServiceViewController: UIViewController {
         $0.layer.borderColor = UIColor.rgb(red: 225, green: 225, blue: 225).cgColor
         $0.layer.cornerRadius = 5
         $0.setImage(UIImage(named: "InFrame_AgreeButtonImage"), for: .normal)
-        $0.addTarget(self, action: #selector(marketingAgreeButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(TermsOfServiceViewController.self, action: #selector(marketingAgreeButtonClicked(sender:)), for: .touchUpInside)
     }
+    
     
     private let locationAgreeButton = UIButton().then{
         $0.backgroundColor = UIColor.white
@@ -127,7 +128,7 @@ class TermsOfServiceViewController: UIViewController {
         $0.layer.borderColor = UIColor.rgb(red: 225, green: 225, blue: 225).cgColor
         $0.layer.cornerRadius = 5
         $0.setImage(UIImage(named: "InFrame_AgreeButtonImage"), for: .normal)
-        $0.addTarget(self, action: #selector(locationAgreeButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(TermsOfServiceViewController.self, action: #selector(locationAgreeButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private lazy var agreeButtonStackView = UIStackView(arrangedSubviews: [useAgreeButton, personalAgreeButton, marketingAgreeButton,locationAgreeButton]).then{
@@ -139,7 +140,7 @@ class TermsOfServiceViewController: UIViewController {
     
     private let completeButton = GradientButton().then{
         $0.dataSetting(buttonText: "완료")
-        $0.addTarget(self, action: #selector(completeButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(TermsOfServiceViewController.self, action: #selector(completeButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private lazy var agreeArrowButtonStackView = UIStackView(arrangedSubviews: [useAgreeArrowButton, personalAgreeArrowButton, marketingAgreeArrowButton, locationAgreeArrowButton]).then{

@@ -47,14 +47,14 @@ class SignUpViewController: UIViewController {
     
     private let signUpButton = GradientButton().then{
         $0.dataSetting(buttonText: "회원가입")
-        $0.addTarget(self, action: #selector(signUpButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(SignUpViewController.self, action: #selector(signUpButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private let haveAccountButton = UIButton().then{
         $0.setTitle("이미 계정이 있으신가요?", for: .normal)
         $0.dynamicFont(fontSize: 11, currentFontName: "AppleSDGothicNeo-Bold")
         $0.setTitleColor(UIColor.rgb(red: 178, green: 178, blue: 178), for: .normal)
-        $0.addTarget(self, action: #selector(haveAccountButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(SignUpViewController.self, action: #selector(haveAccountButtonClicked(sender:)), for: .touchUpInside)
     }
     
     //MARK: - LifeCycles

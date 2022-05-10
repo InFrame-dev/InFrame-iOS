@@ -28,12 +28,12 @@ class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     
     private let backButton = UIButton().then {
         $0.setImage(UIImage(named: "InFrame_BackButtonImage"), for: .normal)
-        $0.addTarget(self, action: #selector(backButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(TakePictureViewController.self, action: #selector(backButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private let returnButton = UIButton().then {
         $0.setImage(UIImage(named: "InFrame_Return"), for: .normal)
-        $0.addTarget(self, action: #selector(returnButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(TakePictureViewController.self, action: #selector(returnButtonClicked(sender:)), for: .touchUpInside)
     }
     
     lazy var takeValueLabel = UILabel().then {
@@ -48,7 +48,7 @@ class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     
     private let takeButton = UIButton().then {
         $0.setImage(UIImage(named: "InFrame_TakeButton"), for: .normal)
-        $0.addTarget(self, action: #selector(takeButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(TakePictureViewController.self, action: #selector(takeButtonClicked(sender:)), for: .touchUpInside)
     }
     
     //MARK: - Lifecycle
