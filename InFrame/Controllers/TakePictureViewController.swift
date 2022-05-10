@@ -43,7 +43,7 @@ class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     }
     
     private let takeImageView = UIView().then {
-        $0.backgroundColor = .gray
+        $0.backgroundColor = .white
     }
     
     private let takeButton = UIButton().then {
