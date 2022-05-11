@@ -43,7 +43,7 @@ class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     }
     
     private let takeImageView = UIView().then {
-        $0.backgroundColor = .gray
+        $0.backgroundColor = .white
     }
     
     private let takeButton = UIButton().then {
@@ -221,6 +221,8 @@ class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     
     func camera(with position: AVCaptureDevice.Position) -> AVCaptureDevice? {
         let devices = AVCaptureDevice.devices(for: AVMediaType.video)
+//        let devices = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .unspecified)
         return devices.filter { $0.position == position }.first
+//        return devices.devices.first(where: { &0.position == position })
     }
 }
