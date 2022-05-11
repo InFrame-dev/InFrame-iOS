@@ -221,6 +221,8 @@ class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     
     func camera(with position: AVCaptureDevice.Position) -> AVCaptureDevice? {
         let devices = AVCaptureDevice.devices(for: AVMediaType.video)
+//        let devices = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .unspecified)
         return devices.filter { $0.position == position }.first
+//        return devices.devices.first(where: { &0.position == position })
     }
 }
