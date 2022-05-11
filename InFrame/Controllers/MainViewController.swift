@@ -23,8 +23,8 @@ class MainViewController: UIViewController {
         $0.dynamicFont(fontSize: 16, currentFontName: "AppleSDGothicNeo-Thin")
     }
     
-    private let takePictureButton = MainButton().then{
-        $0.addTarget(MainViewController.self, action: #selector(takePictureButtonClicked(sender:)), for: .touchUpInside)
+    private lazy var takePictureButton = MainButton().then{
+        $0.addTarget(self, action: #selector(takePictureButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private let takePictureLabel = UILabel().then{
@@ -36,8 +36,8 @@ class MainViewController: UIViewController {
         $0.image = UIImage(named: "InFrame_TakePicture")
     }
     
-    private let choosePictureButton = MainButton().then{
-        $0.addTarget(MainViewController.self, action: #selector(choosePictureButtonClicked(sender:)), for: .touchUpInside)
+    private lazy var choosePictureButton = MainButton().then{
+        $0.addTarget(self, action: #selector(choosePictureButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private let choosePictureLabel = UILabel().then{

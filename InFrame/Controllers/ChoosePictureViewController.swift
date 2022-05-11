@@ -24,23 +24,23 @@ class ChoosePictureViewController: UIViewController {
         $0.textColor = .rgb(red: 196, green: 196, blue: 196)
     }
     
-    private let downloadButton = UIButton().then {
+    private lazy var downloadButton = UIButton().then {
         $0.setImage(UIImage(named: "InFrame_Download"), for: .normal)
-        $0.addTarget(ChoosePictureViewController.self, action: #selector(downloadButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(downloadButtonClicked(sender:)), for: .touchUpInside)
     }
     
-    let choicePictures = ChoicePicturesView().then {
-        $0.imageCheck1.checkButton.addTarget(ChoosePictureViewController.self, action: #selector(choice1Clicked(sender:)), for: .touchUpInside)
-        $0.imageCheck2.checkButton.addTarget(ChoosePictureViewController.self, action: #selector(choice2Clicked(sender:)), for: .touchUpInside)
-        $0.imageCheck3.checkButton.addTarget(ChoosePictureViewController.self, action: #selector(choice3Clicked(sender:)), for: .touchUpInside)
-        $0.imageCheck4.checkButton.addTarget(ChoosePictureViewController.self, action: #selector(choice4Clicked(sender:)), for: .touchUpInside)
-        $0.imageCheck5.checkButton.addTarget(ChoosePictureViewController.self, action: #selector(choice5Clicked(sender:)), for: .touchUpInside)
-        $0.imageCheck6.checkButton.addTarget(ChoosePictureViewController.self, action: #selector(choice6Clicked(sender:)), for: .touchUpInside)
+    lazy var choicePictures = ChoicePicturesView().then {
+        $0.imageCheck1.checkButton.addTarget(self, action: #selector(choice1Clicked(sender:)), for: .touchUpInside)
+        $0.imageCheck2.checkButton.addTarget(self, action: #selector(choice2Clicked(sender:)), for: .touchUpInside)
+        $0.imageCheck3.checkButton.addTarget(self, action: #selector(choice3Clicked(sender:)), for: .touchUpInside)
+        $0.imageCheck4.checkButton.addTarget(self, action: #selector(choice4Clicked(sender:)), for: .touchUpInside)
+        $0.imageCheck5.checkButton.addTarget(self, action: #selector(choice5Clicked(sender:)), for: .touchUpInside)
+        $0.imageCheck6.checkButton.addTarget(self, action: #selector(choice6Clicked(sender:)), for: .touchUpInside)
     }
     
-    private let chooseFilterButton = ChoiceGradientButton().then {
+    private lazy var chooseFilterButton = ChoiceGradientButton().then {
         $0.dataSetting(buttonText: "필터 선택하러 가기")
-        $0.addTarget(ChoosePictureViewController.self, action: #selector(chooseFilterButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(chooseFilterButtonClicked(sender:)), for: .touchUpInside)
     }
     
     //MARK: - Lifecycle
