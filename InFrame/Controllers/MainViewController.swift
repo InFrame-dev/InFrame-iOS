@@ -37,7 +37,7 @@ class MainViewController: UIViewController {
     }
     
     private let choosePictureButton = MainButton().then{
-        $0.addTarget(MainViewController.self, action: #selector(choosePictureButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(choosePictureButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private let choosePictureLabel = UILabel().then{
@@ -59,6 +59,9 @@ class MainViewController: UIViewController {
         $0.doneButtonTitle = "선택완료"
         $0.cancelButton.tintColor = .black
     }
+    
+    var selectedAssets = [PHAsset]()
+    var selectedImages = [UIImage]()
    
     // MARK: - LifeCycles
     override func viewDidLoad() {
@@ -125,9 +128,6 @@ class MainViewController: UIViewController {
         }
     }
     
-    var selectedAssets = [PHAsset]()
-    var selectedImages = [UIImage]()
-    
     // MARK: - Selectors
     @objc private func takePictureButtonClicked(sender:UIButton){
         let nextVC = TakePictureViewController()
@@ -135,27 +135,13 @@ class MainViewController: UIViewController {
     }
     
     @objc private func choosePictureButtonClicked(sender:UIButton){
-        presentImagePicker(imagePicker, select: {
-            (asset) in
-                // 사진 하나 선택할 때마다 실행되는 내용 쓰기
-        }, deselect: {
-            (asset) in
-                // 선택했던 사진들 중 하나를 선택 해제할 때마다 실행되는 내용 쓰기
-        }, cancel: {
-            (assets) in
-                // Cancel 버튼 누르면 실행되는 내용
-        }, finish: {
-            (assets) in
-                // Done 버튼 누르면 실행되는 내용
+        presentImagePicker(imagePicker, select: {(asset) in}, deselect: {(asset) in}, cancel: {(assets) in}, finish:{(assets) in
+            // 사진 3개 이하로 선택 시 오류 처리
+            self.selectedAssets.removeAll()
                 
-                self.selectedAssets.removeAll()
+            assets.forEach{ self.selectedAssets.append($0)}
+            self.convertAssetToImage()
                 
-                for i in assets {
-                    self.selectedAssets.append(i)
-                }
-                
-                self.convertAssetToImage()
-            
             let vc = ChooseFrameViewController()
             
             vc.lastImage1 = self.selectedImages[0]
@@ -168,7 +154,7 @@ class MainViewController: UIViewController {
     }
     
     
-    // PHAsset Type 이었던 사진을 UIImage Type 으로 변환하는 함수
+    //MARK: - convertAssetToImage : PHAsset Type 이었던 사진을 UIImage Type 으로 변환하는 함수
     func convertAssetToImage() {
         if selectedAssets.count != 0 {
                 for i in 0 ..< selectedAssets.count {
