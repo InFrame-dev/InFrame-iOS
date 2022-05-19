@@ -121,6 +121,12 @@ class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate
             nextVC.choicePictures.imageCheck6.dataSetting(image: image6)
             
             self.navigationController?.pushViewController(nextVC, animated: true)
+        } else if(takeValues == 6) {
+            let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
+            stillImageOutput.capturePhoto(with: settings, delegate: self)
+            takeValues = takeValues + 1
+            takeValueLabel.text = "촬영 버튼을 한 번 더 누르시면 다음으로 넘어갑니다."
+            takeValueLabel.dynamicFont(fontSize: 14, currentFontName: "AppleSDGothicNeo-SemiBold")
         } else {
             let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
             stillImageOutput.capturePhoto(with: settings, delegate: self)
