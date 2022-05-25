@@ -9,7 +9,7 @@ import UIKit
 import BSImagePicker
 import Photos
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     // MARK: - Properties
     
     private let inFrameTitleLabel = UILabel().then{

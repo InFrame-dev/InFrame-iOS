@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class InputView: UIView{
+final class InputView: UIView{
     // MARK: - Properties
     private let viewBounds = UIScreen.main.bounds
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainButton: UIButton {
+final class MainButton: UIButton {
 
     // MARK: - LifeCycles
     override init(frame: CGRect) {
