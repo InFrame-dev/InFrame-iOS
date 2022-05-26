@@ -135,23 +135,36 @@ final class MainViewController: UIViewController {
     }
     
     @objc private func choosePictureButtonClicked(sender:UIButton){
-        print("choosef")
+        var selectedPictureCount = 0
 
-        presentImagePicker(imagePicker, select: {(asset) in}, deselect: {(asset) in}, cancel: {(assets) in}, finish:{(assets) in
-            // 사진 3개 이하로 선택 시 오류 처리
-            self.selectedAssets.removeAll()
-                
-            assets.forEach{ self.selectedAssets.append($0)}
-            self.convertAssetToImage()
-                
-            let vc = ChooseFrameViewController()
+        presentImagePicker(imagePicker, select: {(asset) in
+            if selectedPictureCount == 3{
+                selectedPictureCount += 1
+                self.imagePicker.doneButton.isEnabled = true
+            }else{
+                selectedPictureCount += 1
+                self.imagePicker.doneButton.isEnabled = false
+            }
+        }, deselect: {(asset) in
+            selectedPictureCount -= 1
+            self.imagePicker.doneButton.isEnabled = false
+        }, cancel: { [self](assets) in
             
-            vc.lastImage1 = self.selectedImages[0]
-            vc.lastImage2 = self.selectedImages[1]
-            vc.lastImage3 = self.selectedImages[2]
-            vc.lastImage4 = self.selectedImages[3]
-            
-            self.navigationController?.pushViewController(vc, animated: true)
+        }, finish:{(assets) in
+                self.selectedAssets.removeAll()
+                
+                assets.forEach{ self.selectedAssets.append($0) }
+                self.convertAssetToImage()
+                    
+                let vc = ChooseFrameViewController()
+                
+                vc.lastImage1 = self.selectedImages[0]
+                vc.lastImage2 = self.selectedImages[1]
+                vc.lastImage3 = self.selectedImages[2]
+                vc.lastImage4 = self.selectedImages[3]
+                
+                self.navigationController?.pushViewController(vc, animated: true)
+
         })
     }
     
