@@ -54,10 +54,10 @@ final class MainViewController: UIViewController {
         $0.settings.selection.max = 4
         $0.settings.theme.selectionStyle = .numbered
         $0.settings.fetch.assets.supportedMediaTypes = [.image]
-        $0.settings.theme.selectionFillColor = .black
-        $0.doneButton.tintColor = .black
+        $0.settings.theme.selectionFillColor = UIColor.rgb(red: 246, green: 185, blue: 201)
+        $0.doneButton.tintColor = UIColor.rgb(red: 152, green: 152, blue: 152)
         $0.doneButtonTitle = "선택완료"
-        $0.cancelButton.tintColor = .black
+        $0.cancelButton.tintColor = UIColor.rgb(red: 152, green: 152, blue: 152)
     }
     
     var selectedAssets = [PHAsset]()
@@ -135,6 +135,8 @@ final class MainViewController: UIViewController {
     }
     
     @objc private func choosePictureButtonClicked(sender:UIButton){
+        print("choosef")
+
         presentImagePicker(imagePicker, select: {(asset) in}, deselect: {(asset) in}, cancel: {(assets) in}, finish:{(assets) in
             // 사진 3개 이하로 선택 시 오류 처리
             self.selectedAssets.removeAll()
