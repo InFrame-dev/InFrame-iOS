@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class GradientButton: UIButton{
+final class GradientButton: UIButton{
     // MARK: - Properties
     private let viewBounds = UIScreen.main.bounds
     
