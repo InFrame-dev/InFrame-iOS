@@ -128,7 +128,7 @@ final class MainViewController: UIViewController {
     @objc private func choosePictureButtonClicked(sender:UIButton){
         var selectedPictureCount = 0
 
-        let imagePicker = ImagePickerController().then{
+        lazy var imagePicker = ImagePickerController().then{
             $0.modalPresentationStyle = .fullScreen
             $0.settings.selection.max = 4
             $0.settings.theme.selectionStyle = .numbered
@@ -151,7 +151,7 @@ final class MainViewController: UIViewController {
             selectedPictureCount -= 1
             imagePicker.doneButton.isEnabled = false
         }, cancel: { [self](assets) in
-            
+            print(assets)
         }, finish:{(assets) in
             self.selectedAssets.removeAll()
             
