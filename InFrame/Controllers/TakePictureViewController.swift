@@ -13,6 +13,8 @@ import AVFoundation
 class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     //MARK: - Properties
     
+    private let viewBounds = UIScreen.main.bounds
+    
     var captureSession: AVCaptureSession!
     var stillImageOutput: AVCapturePhotoOutput!
     var videoPreviewLayer: AVCaptureVideoPreviewLayer!
@@ -48,6 +50,11 @@ class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     
     private lazy var takeButton = UIButton().then {
         $0.setImage(UIImage(named: "InFrame_TakeButton"), for: .normal)
+        $0.addTarget(self, action: #selector(takeButtonClicked(sender:)), for: .touchUpInside)
+    }
+    
+    private lazy var nextButton = ChoiceGradientButton().then {
+        $0.dataSetting(buttonText: "사진 선택하러 가기")
         $0.addTarget(self, action: #selector(takeButtonClicked(sender:)), for: .touchUpInside)
     }
     
@@ -125,8 +132,9 @@ class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate
             let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
             stillImageOutput.capturePhoto(with: settings, delegate: self)
             takeValues = takeValues + 1
-            takeValueLabel.text = "촬영 버튼을 한 번 더 누르시면 다음으로 넘어갑니다."
-            takeValueLabel.dynamicFont(fontSize: 14, currentFontName: "AppleSDGothicNeo-SemiBold")
+            takeButton.isHidden = true
+            nextButton.isHidden = false
+            
         } else {
             let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
             stillImageOutput.capturePhoto(with: settings, delegate: self)
@@ -138,6 +146,7 @@ class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     //MARK: - Helpers
     private func configureUI(){
         view.backgroundColor = .white
+        nextButton.isHidden = true
         addView()
         location()
     }
@@ -145,7 +154,7 @@ class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     // MARK: - Add View
     
     private func addView(){
-        [backButton, returnButton, takeValueLabel, takeImageView, takeButton].forEach { view.addSubview($0) }
+        [backButton, returnButton, takeValueLabel, takeImageView, takeButton, nextButton].forEach { view.addSubview($0) }
     }
     
     // MARK: - Location
@@ -182,6 +191,13 @@ class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate
             make.bottom.equalToSuperview().inset(self.view.frame.height/14)
             make.width.equalToSuperview().dividedBy(6.25)
             make.height.equalTo(takeButton.snp.width)
+        }
+        
+        nextButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(viewBounds.height/12.5)
+            make.height.equalToSuperview().dividedBy(19.80)
+            make.left.equalToSuperview().offset(viewBounds.width/8.52)
         }
     }
     
