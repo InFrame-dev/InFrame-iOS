@@ -12,7 +12,7 @@ import UIKit
 import SnapKit
 import Then
 
-class ChooseFrameViewController: UIViewController {
+final class ChooseFrameViewController: UIViewController {
     //MARK: - Properties
 
 

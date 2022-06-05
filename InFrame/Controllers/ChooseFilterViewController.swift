@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class ChooseFilterViewController: UIViewController {
+final class ChooseFilterViewController: UIViewController {
     //MARK: - Properties
     private let viewBounds = UIScreen.main.bounds
     

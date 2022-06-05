@@ -10,7 +10,7 @@ import Then
 import SnapKit
 import AVFoundation
 
-class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate {
+final class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     //MARK: - Properties
     
     private let viewBounds = UIScreen.main.bounds
