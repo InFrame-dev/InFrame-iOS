@@ -6,6 +6,9 @@ target 'InFrame' do
   use_frameworks!
 
   # Pods for InFrame
+
+source 'https://github.com/CocoaPods/Specs.git'
+# source 'https://cdn.cocoapods.org/'
 pod ‘Then’
 pod 'SnapKit', '~> 5.0.0'
 pod 'Alamofire', '~> 5.2'

@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class ChoosePictureViewController: UIViewController {
+final class ChoosePictureViewController: UIViewController {
     //MARK: - Properties
     
     var chooseValues:Int = 0
