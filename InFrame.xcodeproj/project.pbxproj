@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2EAADAF8B5F2EE0F61DB533B /* Pods_InFrame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABB722AD0F623D03DEA37D0 /* Pods_InFrame.framework */; };
 		6A7B2EA7278336F700E7BFDC /* GalleryChoosePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B2EA6278336F700E7BFDC /* GalleryChoosePictureViewController.swift */; };
-		6A89DA0B2757B3AA00AE4190 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A89DA0A2757B3AA00AE4190 /* InputView.swift */; };
 		6A89DA0F2757B97B00AE4190 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A89DA0E2757B97B00AE4190 /* GradientButton.swift */; };
 		6AA8FB5B2702AB5600E8B198 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8FB5A2702AB5600E8B198 /* MainViewController.swift */; };
 		6AA8FB5D2702AD2000E8B198 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8FB5C2702AD2000E8B198 /* MainButton.swift */; };
@@ -37,7 +36,6 @@
 /* Begin PBXFileReference section */
 		40A87FE2A3E5A0F1F709AC28 /* Pods-InFrame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InFrame.release.xcconfig"; path = "Target Support Files/Pods-InFrame/Pods-InFrame.release.xcconfig"; sourceTree = "<group>"; };
 		6A7B2EA6278336F700E7BFDC /* GalleryChoosePictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryChoosePictureViewController.swift; sourceTree = "<group>"; };
-		6A89DA0A2757B3AA00AE4190 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		6A89DA0E2757B97B00AE4190 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		6AA8FB5A2702AB5600E8B198 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		6AA8FB5C2702AD2000E8B198 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainButton.swift; path = InFrame/Controllers/MainButton.swift; sourceTree = SOURCE_ROOT; };
@@ -110,7 +108,6 @@
 			children = (
 				AA478BA126F08BA6009C628B /* Extension */,
 				AA478BA026F08B9B009C628B /* Font */,
-				AA478B9F26F08B89009C628B /* Models */,
 				AA478B9D26F08508009C628B /* Views */,
 				AA478B9C26F084B3009C628B /* Controllers */,
 				AA478B9B26F0848D009C628B /* Resources */,
@@ -147,7 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				6A89DA0E2757B97B00AE4190 /* GradientButton.swift */,
-				6A89DA0A2757B3AA00AE4190 /* InputView.swift */,
 				6AA8FB5C2702AD2000E8B198 /* MainButton.swift */,
 				AAA1D097275A367300BD446A /* ChoiceGradientButton.swift */,
 				AAA1D099275A3B7600BD446A /* ImageCheckView.swift */,
@@ -160,13 +156,6 @@
 				AA20E3B7276DE1DB00FB6139 /* GradientFrameColorButton.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		AA478B9F26F08B89009C628B /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		AA478BA026F08B9B009C628B /* Font */ = {
@@ -326,7 +315,6 @@
 				AAA1D098275A367300BD446A /* ChoiceGradientButton.swift in Sources */,
 				AAA1D09C275B10E300BD446A /* ChoicePicturesView.swift in Sources */,
 				AA478BA526F08CAD009C628B /* Extension.swift in Sources */,
-				6A89DA0B2757B3AA00AE4190 /* InputView.swift in Sources */,
 				AA20E3B8276DE1DB00FB6139 /* GradientFrameColorButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
