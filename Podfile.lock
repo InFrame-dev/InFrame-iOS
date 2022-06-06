@@ -11,7 +11,7 @@ DEPENDENCIES:
   - Then
 
 SPEC REPOS:
-  trunk:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - BSImagePicker
     - SnapKit
@@ -23,6 +23,6 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: 9b106096326882059f0d252c03646dddf876379a
+PODFILE CHECKSUM: b8ec37fe1da5e42bf561e46c9a9d8d4b92cc2fa8
 
 COCOAPODS: 1.11.2

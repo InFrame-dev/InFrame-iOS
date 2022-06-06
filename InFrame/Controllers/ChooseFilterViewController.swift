@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class ChooseFilterViewController: UIViewController {
+final class ChooseFilterViewController: UIViewController {
     //MARK: - Properties
     private let viewBounds = UIScreen.main.bounds
     
@@ -19,16 +19,16 @@ class ChooseFilterViewController: UIViewController {
     
     let imageFilterView = ImageFilterView()
     
-    private let blackButton = FilterButton().then {
-        $0.addTarget(ChooseFilterViewController.self, action: #selector(chooseBlackFilterClicked(sender:)), for: .touchUpInside)
+    private lazy var blackButton = FilterButton().then {
+        $0.addTarget(self, action: #selector(chooseBlackFilterClicked(sender:)), for: .touchUpInside)
     }
     
-    private let basicButton = FilterButton().then {
-        $0.addTarget(ChooseFilterViewController.self, action: #selector(chooseBasicFilterClicked(sender:)), for: .touchUpInside)
+    private lazy var basicButton = FilterButton().then {
+        $0.addTarget(self, action: #selector(chooseBasicFilterClicked(sender:)), for: .touchUpInside)
     }
     
-    private let lightButton = FilterButton().then {
-        $0.addTarget(ChooseFilterViewController.self, action: #selector(chooseLightFilterClicked(sender:)), for: .touchUpInside)
+    private lazy var lightButton = FilterButton().then {
+        $0.addTarget(self, action: #selector(chooseLightFilterClicked(sender:)), for: .touchUpInside)
     }
     
     private lazy var filterButtonStackView = UIStackView(arrangedSubviews: [blackButton, basicButton, lightButton]).then {
@@ -37,9 +37,9 @@ class ChooseFilterViewController: UIViewController {
         $0.spacing = self.view.frame.width/26.79
     }
     
-    private let chooseFrameButton = ChoiceGradientButton().then {
+    private lazy var chooseFrameButton = ChoiceGradientButton().then {
         $0.dataSetting(buttonText: "프레임 선택하러 가기")
-        $0.addTarget(ChooseFilterViewController.self, action: #selector(chooseFrameButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(chooseFrameButtonClicked(sender:)), for: .touchUpInside)
     }
 
     

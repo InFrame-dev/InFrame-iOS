@@ -9,7 +9,7 @@ import UIKit
 import BSImagePicker
 import Photos
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     // MARK: - Properties
     
     private let inFrameTitleLabel = UILabel().then{
@@ -23,8 +23,8 @@ class MainViewController: UIViewController {
         $0.dynamicFont(fontSize: 16, currentFontName: "AppleSDGothicNeo-Thin")
     }
     
-    private let takePictureButton = MainButton().then{
-        $0.addTarget(MainViewController.self, action: #selector(takePictureButtonClicked(sender:)), for: .touchUpInside)
+    private lazy var takePictureButton = MainButton().then{
+        $0.addTarget(self, action: #selector(takePictureButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private let takePictureLabel = UILabel().then{
@@ -36,8 +36,8 @@ class MainViewController: UIViewController {
         $0.image = UIImage(named: "InFrame_TakePicture")
     }
     
-    private let choosePictureButton = MainButton().then{
-        $0.addTarget(MainViewController.self, action: #selector(choosePictureButtonClicked(sender:)), for: .touchUpInside)
+    private lazy var choosePictureButton = MainButton().then{
+        $0.addTarget(self, action: #selector(choosePictureButtonClicked(sender:)), for: .touchUpInside)
     }
     
     private let choosePictureLabel = UILabel().then{
@@ -49,16 +49,10 @@ class MainViewController: UIViewController {
         $0.image = UIImage(named: "InFrame_ChoosePicture")
     }
     
-    let imagePicker = ImagePickerController().then{
-        $0.modalPresentationStyle = .fullScreen
-        $0.settings.selection.max = 4
-        $0.settings.theme.selectionStyle = .numbered
-        $0.settings.fetch.assets.supportedMediaTypes = [.image]
-        $0.settings.theme.selectionFillColor = .black
-        $0.doneButton.tintColor = .black
-        $0.doneButtonTitle = "선택완료"
-        $0.cancelButton.tintColor = .black
-    }
+
+    
+    var selectedAssets = [PHAsset]()
+    var selectedImages = [UIImage]()
    
     // MARK: - LifeCycles
     override func viewDidLoad() {
@@ -125,9 +119,6 @@ class MainViewController: UIViewController {
         }
     }
     
-    var selectedAssets = [PHAsset]()
-    var selectedImages = [UIImage]()
-    
     // MARK: - Selectors
     @objc private func takePictureButtonClicked(sender:UIButton){
         let nextVC = TakePictureViewController()
@@ -135,27 +126,38 @@ class MainViewController: UIViewController {
     }
     
     @objc private func choosePictureButtonClicked(sender:UIButton){
-        presentImagePicker(imagePicker, select: {
-            (asset) in
-                // 사진 하나 선택할 때마다 실행되는 내용 쓰기
-        }, deselect: {
-            (asset) in
-                // 선택했던 사진들 중 하나를 선택 해제할 때마다 실행되는 내용 쓰기
-        }, cancel: {
-            (assets) in
-                // Cancel 버튼 누르면 실행되는 내용
-        }, finish: {
-            (assets) in
-                // Done 버튼 누르면 실행되는 내용
-                
-                self.selectedAssets.removeAll()
-                
-                for i in assets {
-                    self.selectedAssets.append(i)
-                }
-                
-                self.convertAssetToImage()
+        var selectedPictureCount = 0
+
+        lazy var imagePicker = ImagePickerController().then{
+            $0.modalPresentationStyle = .fullScreen
+            $0.settings.selection.max = 4
+            $0.settings.theme.selectionStyle = .numbered
+            $0.settings.fetch.assets.supportedMediaTypes = [.image]
+            $0.settings.theme.selectionFillColor = UIColor.rgb(red: 246, green: 185, blue: 201)
+            $0.doneButton.tintColor = UIColor.rgb(red: 152, green: 152, blue: 152)
+            $0.doneButtonTitle = "선택완료"
+            $0.cancelButton.tintColor = UIColor.rgb(red: 152, green: 152, blue: 152)
+        }
+        
+        presentImagePicker(imagePicker, select: {(asset) in
+            if selectedPictureCount == 3{
+                selectedPictureCount += 1
+                imagePicker.doneButton.isEnabled = true
+            }else{
+                selectedPictureCount += 1
+                imagePicker.doneButton.isEnabled = false
+            }
+        }, deselect: {(asset) in
+            selectedPictureCount -= 1
+            imagePicker.doneButton.isEnabled = false
+        }, cancel: { [self](assets) in
+            print(assets)
+        }, finish:{(assets) in
+            self.selectedAssets.removeAll()
             
+            assets.forEach{ self.selectedAssets.append($0) }
+            self.convertAssetToImage()
+                
             let vc = ChooseFrameViewController()
             
             vc.lastImage1 = self.selectedImages[0]
@@ -168,23 +170,24 @@ class MainViewController: UIViewController {
     }
     
     
-    // PHAsset Type 이었던 사진을 UIImage Type 으로 변환하는 함수
+    //MARK: - convertAssetToImage : PHAsset Type 이었던 사진을 UIImage Type 으로 변환하는 함수
     func convertAssetToImage() {
         if selectedAssets.count != 0 {
-                for i in 0 ..< selectedAssets.count {
-                    let imageManager = PHImageManager.default()
-                        let option = PHImageRequestOptions()
-                        option.isSynchronous = true
-                        var thumbnail = UIImage()
-                        imageManager.requestImage(for: selectedAssets[i], targetSize: CGSize(width: selectedAssets[i].pixelWidth, height: selectedAssets[i].pixelHeight), contentMode: .aspectFill, options: option) {
-                                (result, info) in
-                                thumbnail = result!
-                    }
+            for i in 0 ..< selectedAssets.count {
+                let imageManager = PHImageManager.default()
+                let option = PHImageRequestOptions()
+                option.isSynchronous = true
+                var thumbnail = UIImage()
                 
-                        let data = thumbnail.jpegData(compressionQuality: 0.7)
-                        let newImage = UIImage(data: data!)
-                        self.selectedImages.append(newImage! as UIImage)
-                    }
+                imageManager.requestImage(for: selectedAssets[i], targetSize: CGSize(width: selectedAssets[i].pixelWidth,height: selectedAssets[i].pixelHeight), contentMode: .aspectFill, options: option) {
+                            (result, info) in
+                            thumbnail = result!
+                }
+            
+                let data = thumbnail.jpegData(compressionQuality: 0.7)
+                let newImage = UIImage(data: data!)
+                self.selectedImages.append(newImage! as UIImage)
             }
+        }
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class GalleryChoosePictureViewController: UIViewController {
+final class GalleryChoosePictureViewController: UIViewController {
     override func viewDidLoad() {
         self.view.backgroundColor = .blue
         super.viewDidLoad()
