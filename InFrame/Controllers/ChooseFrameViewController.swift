@@ -12,7 +12,7 @@ import UIKit
 import SnapKit
 import Then
 
-class ChooseFrameViewController: UIViewController {
+final class ChooseFrameViewController: UIViewController {
     //MARK: - Properties
 
 
@@ -23,38 +23,38 @@ class ChooseFrameViewController: UIViewController {
 
     private let imageFrameView = ImagesFrameView()
 
-    private let whiteFrameButton = FrameColorButton().then {
+    private lazy var whiteFrameButton = FrameColorButton().then {
         $0.dataSetting(color: .white)
-        $0.addTarget(ChooseFrameViewController.self, action: #selector(whiteButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(whiteButtonClicked(sender:)), for: .touchUpInside)
     }
 
-    private let blackFrameButton = FrameColorButton().then {
+    private lazy var blackFrameButton = FrameColorButton().then {
         $0.dataSetting(color: .black)
-        $0.addTarget(ChooseFrameViewController.self, action: #selector(blackButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(blackButtonClicked(sender:)), for: .touchUpInside)
     }
 
-    private let gradienFrameButton = GradientFrameColorButton().then {
-        $0.addTarget(ChooseFrameViewController.self, action: #selector(gradientButtonClicked(sender:)), for: .touchUpInside)
+    private lazy var gradienFrameButton = GradientFrameColorButton().then {
+        $0.addTarget(self, action: #selector(gradientButtonClicked(sender:)), for: .touchUpInside)
     }
 
-    private let yellowFrameButton = FrameColorButton().then {
+    private lazy var yellowFrameButton = FrameColorButton().then {
         $0.dataSetting(color: .rgb(red: 248, green: 238, blue: 156))
-        $0.addTarget(ChooseFrameViewController.self, action: #selector(yellowButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(yellowButtonClicked(sender:)), for: .touchUpInside)
     }
 
-    private let greenFrameButton = FrameColorButton().then {
+    private lazy var greenFrameButton = FrameColorButton().then {
         $0.dataSetting(color: .rgb(red: 190, green: 236, blue: 203))
-        $0.addTarget(ChooseFrameViewController.self, action: #selector(greenButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(greenButtonClicked(sender:)), for: .touchUpInside)
     }
 
-    private let blueFrameButton = FrameColorButton().then {
+    private lazy var blueFrameButton = FrameColorButton().then {
         $0.dataSetting(color: .rgb(red: 183, green: 198, blue: 235))
-        $0.addTarget(ChooseFrameViewController.self, action: #selector(blueButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(blueButtonClicked(sender:)), for: .touchUpInside)
     }
 
-    private let purpleFrameButton = FrameColorButton().then {
+    private lazy var purpleFrameButton = FrameColorButton().then {
         $0.dataSetting(color: .rgb(red: 173, green: 172, blue: 241))
-        $0.addTarget(ChooseFrameViewController.self, action: #selector(purpleButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(purpleButtonClicked(sender:)), for: .touchUpInside)
     }
 
     private lazy var frameColorButtonStack = UIStackView(arrangedSubviews: [whiteFrameButton, blackFrameButton, gradienFrameButton, yellowFrameButton, greenFrameButton, blueFrameButton, purpleFrameButton]).then {
@@ -63,9 +63,9 @@ class ChooseFrameViewController: UIViewController {
         $0.spacing = self.view.frame.height/24.61
     }
 
-    private let chooseDownButton = ChoiceGradientButton().then {
+    private lazy var chooseDownButton = ChoiceGradientButton().then {
         $0.dataSetting(buttonText: "사진 저장하기")
-        $0.addTarget(ChooseFrameViewController.self, action: #selector(chooseSaveButtonClicked(sender:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(chooseSaveButtonClicked(sender:)), for: .touchUpInside)
     }
 
     //MARK: - Lifecycle
