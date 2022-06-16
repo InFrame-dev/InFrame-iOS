@@ -22,12 +22,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         navigationController.navigationBar.isHidden = true
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-        
-        for fontFaily in UIFont.familyNames{
-            for fontName in UIFont.fontNames(forFamilyName: fontFaily){
-                print(fontName)
-            }
-        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

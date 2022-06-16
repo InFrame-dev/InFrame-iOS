@@ -71,7 +71,6 @@ final class TakePictureViewController: UIViewController, AVCapturePhotoCaptureDe
         
         guard let backCamera = AVCaptureDevice.default(for: AVMediaType.video)
             else {
-                print("후면 카메라 접근 불가")
                 return
         }
         

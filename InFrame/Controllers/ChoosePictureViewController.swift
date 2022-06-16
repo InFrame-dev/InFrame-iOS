@@ -52,8 +52,6 @@ final class ChoosePictureViewController: UIViewController {
     //MARK: - Selectors
     
     @objc private func downloadButtonClicked(sender:UIButton){
-        print("Download")
-        // 사진 저장 기능 코드
         UIImageWriteToSavedPhotosAlbum(choicePictures.imageCheck1.choiceImage.image!, self, nil, nil)
         UIImageWriteToSavedPhotosAlbum(choicePictures.imageCheck2.choiceImage.image!, self, nil, nil)
         UIImageWriteToSavedPhotosAlbum(choicePictures.imageCheck3.choiceImage.image!, self, nil, nil)
@@ -63,7 +61,6 @@ final class ChoosePictureViewController: UIViewController {
     }
     
     @objc private func chooseFilterButtonClicked(sender:UIButton){
-        print("필터 선택하러 가기")
         if chooseValues == 4 {
             let nextVC = ChooseFilterViewController()
             let checkButton:[ImageCheckView] = [choicePictures.imageCheck1, choicePictures.imageCheck2, choicePictures.imageCheck3, choicePictures.imageCheck4, choicePictures.imageCheck5, choicePictures.imageCheck6]

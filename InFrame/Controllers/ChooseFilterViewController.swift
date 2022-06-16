@@ -52,7 +52,6 @@ final class ChooseFilterViewController: UIViewController {
     //MARK: - Selectors
     
     @objc private func chooseFrameButtonClicked(sender:UIButton){
-        print("프레임 선택하러 가기")
         let nextVC = ChooseFrameViewController()
         nextVC.lastImage1 = imageFilterView.imageFilter1.image
         nextVC.lastImage2 = imageFilterView.imageFilter2.image

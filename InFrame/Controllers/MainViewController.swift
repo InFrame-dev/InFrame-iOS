@@ -151,7 +151,6 @@ final class MainViewController: UIViewController {
             selectedPictureCount -= 1
             imagePicker.doneButton.isEnabled = false
         }, cancel: { [self](assets) in
-            print(assets)
         }, finish:{(assets) in
             self.selectedAssets.removeAll()
             

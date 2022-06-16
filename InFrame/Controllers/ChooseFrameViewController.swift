@@ -73,7 +73,6 @@ final class ChooseFrameViewController: UIViewController {
     //MARK: - Selectors
 
     @objc private func chooseSaveButtonClicked(sender:UIButton){
-        print("사진 저장하기")
         // 사진 저장 코드
         let saveImage = imageFrameView.asImage()
         UIImageWriteToSavedPhotosAlbum(saveImage, self, nil, nil)
@@ -82,43 +81,36 @@ final class ChooseFrameViewController: UIViewController {
     }
 
     @objc private func whiteButtonClicked(sender:UIButton){
-        print("white")
         imageFrameView.layerSetting(startColor: UIColor.rgb(red: 255, green: 255, blue: 255).cgColor, endColor: UIColor.rgb(red: 255, green: 255, blue: 255).cgColor)
         imageFrameView.inFrameLabel.textColor = .black
     }
 
     @objc private func blackButtonClicked(sender:UIButton){
-        print("black")
         imageFrameView.layerSetting(startColor: UIColor.rgb(red: 0, green: 0, blue: 0).cgColor, endColor: UIColor.rgb(red: 0, green: 0, blue: 0).cgColor)
         imageFrameView.inFrameLabel.textColor = .white
     }
 
     @objc private func gradientButtonClicked(sender:UIButton){
-        print("gradient")
         imageFrameView.layerSetting(startColor: UIColor.rgb(red: 216, green: 227, blue: 255).cgColor, endColor: UIColor.rgb(red: 255, green: 231, blue: 236).cgColor)
         imageFrameView.inFrameLabel.textColor = .white
     }
 
     @objc private func yellowButtonClicked(sender:UIButton){
-        print("yellow")
         imageFrameView.layerSetting(startColor: UIColor.rgb(red: 248, green: 238, blue: 156).cgColor, endColor: UIColor.rgb(red: 248, green: 238, blue: 156).cgColor)
         imageFrameView.inFrameLabel.textColor = .white
     }
 
     @objc private func greenButtonClicked(sender:UIButton){
-        print("green")
         imageFrameView.layerSetting(startColor: UIColor.rgb(red: 190, green: 236, blue: 203).cgColor, endColor: UIColor.rgb(red: 190, green: 236, blue: 203).cgColor)
         imageFrameView.inFrameLabel.textColor = .white
     }
 
     @objc private func blueButtonClicked(sender:UIButton){
-        print("blue")
         imageFrameView.layerSetting(startColor: UIColor.rgb(red: 183, green: 198, blue: 235).cgColor, endColor: UIColor.rgb(red: 183, green: 198, blue: 235).cgColor)
         imageFrameView.inFrameLabel.textColor = .white
     }
 
     @objc private func purpleButtonClicked(sender:UIButton){
-        print("purple")
         imageFrameView.layerSetting(startColor: UIColor.rgb(red: 173, green: 172, blue: 241).cgColor, endColor: UIColor.rgb(red: 173, green: 172, blue: 241).cgColor)
         imageFrameView.inFrameLabel.textColor = .white
     }
