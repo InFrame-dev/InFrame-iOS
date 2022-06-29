@@ -160,6 +160,7 @@ final class ChooseFilterViewController: UIViewController {
     }
     
     private func filterPreviewImage(){
+        imageFilterView.dataSetting(imageArray: images!)
         applyFilter(to: imageFilterView.imageFilter1.image!, filterName: "CIPhotoEffectNoir") { image in
             self.blackButton.dataSetting(image: image, koreanText: "흑백", englishText: "BLACK")
         }
