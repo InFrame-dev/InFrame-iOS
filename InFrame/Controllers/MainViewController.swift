@@ -157,14 +157,10 @@ final class MainViewController: UIViewController {
             assets.forEach{ self.selectedAssets.append($0) }
             self.convertAssetToImage()
                 
-            let vc = ChooseFrameViewController()
+            let nextVC = ChooseFilterViewController()
+            nextVC.images = self.selectedImages
             
-            vc.lastImage1 = self.selectedImages[0]
-            vc.lastImage2 = self.selectedImages[1]
-            vc.lastImage3 = self.selectedImages[2]
-            vc.lastImage4 = self.selectedImages[3]
-            
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.navigationController?.pushViewController(nextVC, animated: true)
         })
     }
     
